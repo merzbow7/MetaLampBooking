@@ -1,0 +1,40 @@
+@import 'nullstyle';
+@import 'typography';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+// coponents
+@import '../pug/components/button/button';
+
+.container_test {      
+  display: flex;  
+  height: 200px;
+
+  .green-btn .green-btn{    
+    height: 200px;
+    flex: 0 0 150px;
+    gap: 10px 10px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+}
+
+.test-color {
+  background-color: $Purple;
+  height: 100px;
+  width: 100px;
+}
+.test-color2 {
+  background-color: scale-color($Purple, $red: 1%); 
+  height: 100px;
+  width: 100px;
+}
+.test-color3 {
+  background-color: $PurpleGradient;
+  height: 100px;
+  width: 100px;
+}
+

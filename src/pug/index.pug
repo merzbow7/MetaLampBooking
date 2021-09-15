@@ -1,0 +1,19 @@
+extends base
+
+//- components include
+include components/button/button
+  
+block content
+  main
+    .container_test
+      .green-btn
+        +button({background: "green"})=  "Click me"
+        +button({background: "green", outline: true})= "Advanced"
+        +button({background: "hazy-green"})= "Green"
+        +button({background: "hazy-green", outline: true})= "Hazy green"
+      .purple-btn      
+        +button({background: "purple"})= "Press me"
+        +button({background: "purple", outline: true})= "Press me"
+        +button({background: "hazy-purple"})= "Hazy"      
+        +button({background: "hazy-purple", outline: true})= "Hazy"
+      

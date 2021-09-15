@@ -1,0 +1,9 @@
+mixin button(options)
+  unless options.background
+    - options.background = "";  
+  if options.outline == true
+    - buttonClass = "button-outline";
+  else
+    - buttonClass = "button";
+  button(class=buttonClass + " " + buttonClass + "_" + options.background)
+    block
