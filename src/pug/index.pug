@@ -7,10 +7,30 @@ block content
   main
     .container_test
       .green-btn
-        +button({background: "green"})=  "Click me"
-        +button({background: "green", outline: true})= "Advanced"
-        +button({background: "hazy-green"})= "Green"
-        +button({background: "hazy-green", outline: true})= "Hazy green"
+        +button({background: "green"})
+          | Click me        
+        +button({background: "green", outline: true})
+          | Advanced
+        +button({background: "hazy-green"})
+          | Green
+        +button({background: "hazy-green", outline: true})
+          | Hazy green        
+        +button({background: "green", round: true})
+          | 1
+        +button({background: "purple", round: true, outline: true})
+          | 3
+        +button({background: "green", round: true})
+          +arrow("arrow_forward")        
+        +button({background: "purple", round: true})
+          +arrow("arrow_back")        
+        +button({background: "green", big: true})
+          | Click me
+        +button({background: "green", big: true, outline: true})
+          | Click me
+        +button({background: "purple", big: true})
+          | Click me
+          +arrow("arrow_forward", "end")
+        
       .purple-btn      
         +button({background: "purple"})= "Press me"
         +button({background: "purple", outline: true})= "Press me"

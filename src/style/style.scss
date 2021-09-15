@@ -8,7 +8,7 @@
 
 .container_test {      
   display: flex;  
-  height: 200px;
+  height: 600px;
 
   .green-btn .green-btn{    
     height: 200px;
@@ -21,20 +21,3 @@
     
   }
 }
-
-.test-color {
-  background-color: $Purple;
-  height: 100px;
-  width: 100px;
-}
-.test-color2 {
-  background-color: scale-color($Purple, $red: 1%); 
-  height: 100px;
-  width: 100px;
-}
-.test-color3 {
-  background-color: $PurpleGradient;
-  height: 100px;
-  width: 100px;
-}
-

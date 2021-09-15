@@ -1,21 +1,16 @@
 $button-width: 99px;
 $button-height: 44px;
 $round-button-size: 40px;
+$arrow-height: 24px;
+$big-button-size: 320px;
 $outline-border: 2px;
-
-@mixin base-button {
-  width: $button-width;
-  height: $button-height;
-  border-radius: 100rem;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 0em;
-  color: white;
-}
 
 @mixin button-background($from, $to, $opacity, $outline) {
   @if $outline != 0 {
+    border: solid $outline-border transparent;
+    background-origin: border-box;
+    box-shadow: $outline-border $button-height $outline-border #fff inset;
+    color: $from;
     background-image: linear-gradient(
         rgba(255, 255, 255, 0),
         rgba(255, 255, 255, 0)
@@ -34,56 +29,74 @@ $outline-border: 2px;
   }
 }
 
-.button {
-  @include base-button();
+@mixin base-button($outline) {  
+  width: $button-width;
+  height: $button-height;
+  border-radius: 1000rem;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  color: white;
+
+  & img {
+    vertical-align: middle;
+  }
 
   &_green {
-    @include button-background($Green, $GreenGradient, 0, 0);
+    @include button-background($Green, $GreenGradient, 0, $outline);
   }
 
   &_hazy-green {
-    @include button-background($Green, $GreenGradient, 0.5, 0);
+    @include button-background($Green, $GreenGradient, 0.5, $outline);
   }
 
   &_purple {
-    @include button-background($Purple, $PurpleGradient, 0, 0);
+    @include button-background($Purple, $PurpleGradient, 0, $outline);
   }
 
   &_hazy-purple {
-    @include button-background($Purple, $PurpleGradient, 0.5, 0);
+    @include button-background($Purple, $PurpleGradient, 0.5, $outline);
   }
 }
 
-.round-button {
-  @extend .button;
+.button {
+  @include base-button($outline: 0);
+}
+
+.button_big {
+  @include base-button($outline: 0);  
+  position: relative;
+  width: $big-button-size;
+}
+
+.button_outline {
+  @include base-button($outline: 1);
+}
+
+.button_round {
+  @include base-button($outline: 0);
+  width: $round-button-size;
+  height: $round-button-size;  
+}
+
+.button_round_outline {
+  @include base-button($outline: 1);
   width: $round-button-size;
   height: $round-button-size;
 }
 
-.button-outline {
-  @include base-button();
+.arrow {    
+  top: $button-height / 2 - $arrow-height / 2;
+  right: $arrow-height / 2;
 
-  border: solid $outline-border transparent;
-  background-origin: border-box;
-  box-shadow: $outline-border $button-height $outline-border #fff inset;
-
-  &_green {
-    @include button-background($Green, $GreenGradient, 0, 1);
-    color: $Green;
+  &_end {
+    position: absolute;
+    right: $arrow-height / 2;
   }
 
-  &_hazy-green {
-    @include button-background($Green, $GreenGradient, 0.5, 1);
-    color: $Green;
-  }
-
-  &_purple {
-    @include button-background($Purple, $PurpleGradient, 0, 1);
-    color: $Purple;
-  }
-
-  &_hazy-purple {
-    @include button-background($Purple, $PurpleGradient, 0.5, 1);
-    color: $Purple;
+  &_start {
+    position: absolute;
+    left: $arrow-height / 2;
   }
 }

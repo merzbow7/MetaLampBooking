@@ -1,9 +1,22 @@
-mixin button(options)
-  unless options.background
-    - options.background = "";  
-  if options.outline == true
-    - buttonClass = "button-outline";
+mixin arrow(direction, position)
+  if position
+    - position = "arrow" + "_" + position;
   else
-    - buttonClass = "button";
+    - position = "";
+  img(
+    class="arrow" +  " " + position,
+    src="/assets/icons/" + direction + ".svg"
+  )
+
+mixin button(options)
+  - buttonClass = "button";
+  unless options.background
+    - options.background = "green";
+  if options.big == true
+    - buttonClass += "_big";
+  if options.round == true
+    - buttonClass += "_round";
+  if options.outline == true
+    - buttonClass += "_outline";
   button(class=buttonClass + " " + buttonClass + "_" + options.background)
     block
