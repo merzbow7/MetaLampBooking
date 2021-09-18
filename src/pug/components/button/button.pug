@@ -1,22 +1,30 @@
 mixin arrow(direction, position)
   if position
-    - position = "arrow" + "_" + position;
+    - position = " arrow" + "_" + position;
   else
     - position = "";
   img(
-    class="arrow" +  " " + position,
+    class="arrow" + position,
     src="/assets/icons/" + direction + ".svg"
   )
 
-mixin button(options)
-  - buttonClass = "button";
-  unless options.background
-    - options.background = "green";
+mixin button(options)  
+  - buttonClass = "button"
+  if options.outline == true    
+    - buttonType = "button-outline"  
+  else 
+    - buttonType = "button-solid"
+  - buttonClass += " " + buttonType
+  if options.background    
+    - buttonClass +=  " " +  buttonType + "_"  + options.background;    
+  else
+    - buttonClass += " button_green"  
   if options.big == true
-    - buttonClass += "_big";
+    - buttonClass += " " + "button_big";
   if options.round == true
-    - buttonClass += "_round";
-  if options.outline == true
-    - buttonClass += "_outline";
-  button(class=buttonClass + " " + buttonClass + "_" + options.background)
+    - buttonClass += " " + "button_round";  
+  if options.inline == true
+    - buttonType = "button-inline"  
+    - buttonClass = "button " + buttonType + " " +  buttonType + "_"  + options.background;
+  button(class=buttonClass)
     block

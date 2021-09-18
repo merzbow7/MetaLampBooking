@@ -84,6 +84,10 @@ module.exports = {
           from: 'assets',
           to: 'assets',
         },
+        {
+          from: 'fonts',
+          to: 'fonts',
+        },
       ],
     }),
     new webpack.HotModuleReplacementPlugin(),

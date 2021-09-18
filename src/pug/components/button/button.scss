@@ -4,99 +4,108 @@ $round-button-size: 40px;
 $arrow-height: 24px;
 $big-button-size: 320px;
 $outline-border: 2px;
+$button-text-or-bg: white;
+@use "sass:math";
 
-@mixin button-background($from, $to, $opacity, $outline) {
+@mixin button-background($from, $to, $opacity: 0, $outline: 0) {
+  $state: transparent;
   @if $outline != 0 {
-    border: solid $outline-border transparent;
-    background-origin: border-box;
-    box-shadow: $outline-border $button-height $outline-border #fff inset;
     color: $from;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0)
-      ),
-      linear-gradient(
-        180deg,
-        fade-out($from, $opacity),
-        fade-out($to, $opacity)
-      );
-  } @else {
-    background-image: linear-gradient(
-      180deg,
-      fade-out($from, $opacity),
-      fade-out($to, $opacity)
-    );
+    $state: $button-text-or-bg;
+  }
+  @if $outline == 2 {
+    $from: transparent;
+    $to: transparent;
+  }
+  background-image: linear-gradient($state, $state),
+    linear-gradient(180deg, fade-out($from, $opacity), fade-out($to, $opacity));
+}
+
+@mixin abstact_button($outline: 0) {
+  width: $button-width;
+  height: $button-height;
+
+  border: solid $outline-border transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+
+  &_green {
+    $from: $Green;
+    $to: $GreenGradient;
+    @include button-background($from, $to, $outline: $outline);
+  }
+
+  &_hazy-green {
+    $from: $Green;
+    $to: $GreenGradient;
+    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
+  }
+
+  &_purple {
+    $from: $Purple;
+    $to: $PurpleGradient;
+    @include button-background($from, $to, $outline: $outline);
+  }
+
+  &_hazy-purple {
+    $from: $Purple;
+    $to: $PurpleGradient;
+    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
   }
 }
 
-@mixin base-button($outline) {  
-  width: $button-width;
-  height: $button-height;
+.button {  
+  color: $Dark-Shade-50;
   border-radius: 1000rem;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: 0em;
-  color: white;
-
-  & img {
-    vertical-align: middle;
-  }
-
-  &_green {
-    @include button-background($Green, $GreenGradient, 0, $outline);
-  }
-
-  &_hazy-green {
-    @include button-background($Green, $GreenGradient, 0.5, $outline);
-  }
-
-  &_purple {
-    @include button-background($Purple, $PurpleGradient, 0, $outline);
-  }
-
-  &_hazy-purple {
-    @include button-background($Purple, $PurpleGradient, 0.5, $outline);
-  }
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.button {
-  @include base-button($outline: 0);
+.button-solid {
+  @include abstact_button();
+  color: $button-text-or-bg;
 }
 
-.button_big {
-  @include base-button($outline: 0);  
-  position: relative;
-  width: $big-button-size;
+.button-outline {
+  @include abstact_button(1);
 }
 
-.button_outline {
-  @include base-button($outline: 1);
+.button-inline {
+  @include abstact_button(2);
+  border: none;
+  width: auto;
+  height: auto;
 }
 
 .button_round {
-  @include base-button($outline: 0);
-  width: $round-button-size;
-  height: $round-button-size;  
-}
-
-.button_round_outline {
-  @include base-button($outline: 1);
   width: $round-button-size;
   height: $round-button-size;
 }
 
-.arrow {    
-  top: $button-height / 2 - $arrow-height / 2;
-  right: $arrow-height / 2;
+.button_big {
+  position: relative;
+  align-items: center;
+  width: $big-button-size;
+  
+  .arrow {    
+    vertical-align: middle;
+    top: math.div($button-height, 2) - math.div($arrow-height, 2);
+    right: math.div($arrow-height, 2);
 
-  &_end {
-    position: absolute;
-    right: $arrow-height / 2;
-  }
+    &_end {
+      position: absolute;
+      grid-area: arrow-end;
+      right: math.div($arrow-height, 2);
+    }
 
-  &_start {
-    position: absolute;
-    left: $arrow-height / 2;
+    &_start {
+      position: absolute;
+      grid-area: arrow-start;
+      left: $arrow-height / 2;
+    }
   }
 }

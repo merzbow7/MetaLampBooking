@@ -1,20 +1,17 @@
 $Dark-Shade-100: #1f2041;
-$Dark-Shade-75: #1f2041;
-$Dark-Shade-50: #1f2041;
-$Dark-Shade-25: #1f2041;
-$Dark-Shade-5: #1f2041;
+$Dark-Shade-75: rgba($Dark-Shade-100, 0.75);
+$Dark-Shade-50: rgba($Dark-Shade-100, 0.5);
+$Dark-Shade-25: rgba($Dark-Shade-100, 0.25);
+$Dark-Shade-5: rgba($Dark-Shade-100, 0.05);
 
 $Purple: #bc9cff;
-$PurpleGradient: #8BA4F9;
+$PurpleGradient: #8ba4f9;
 
 $Green: #6fcf97;
-$GreenGradient: #66D2EA;
-
-$Opaque-03: rgba(0, 0, 0, 0.03);
-
+$GreenGradient: #66d2ea;
 
 body {
-  font-family: 'Montserrat', sans-serif;  
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -43,7 +40,7 @@ h3 {
 }
 
 .purple {
- color: $Purple; 
+  color: $Purple;
 }
 
 .green {

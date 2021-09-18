@@ -4,36 +4,40 @@ extends base
 include components/button/button
   
 block content
-  main
-    .container_test
+  main    
+    .container_test    
       .green-btn
         +button({background: "green"})
-          | Click me        
+          | greek       
         +button({background: "green", outline: true})
-          | Advanced
+          | green out
         +button({background: "hazy-green"})
-          | Green
+          | hazy-green
         +button({background: "hazy-green", outline: true})
-          | Hazy green        
+          | Hazy green out
         +button({background: "green", round: true})
-          | 1
+          | gr
         +button({background: "purple", round: true, outline: true})
-          | 3
+          | pro
         +button({background: "green", round: true})
           +arrow("arrow_forward")        
         +button({background: "purple", round: true})
           +arrow("arrow_back")        
         +button({background: "green", big: true})
-          | Click me
+          | green big
         +button({background: "green", big: true, outline: true})
-          | Click me
+          | green big outline
         +button({background: "purple", big: true})
-          | Click me
+          | bit purple
           +arrow("arrow_forward", "end")
+        +button({inline: true})
+          | click me          
+        +button({background: "purple", inline: true})
+          | click me          
         
       .purple-btn      
-        +button({background: "purple"})= "Press me"
-        +button({background: "purple", outline: true})= "Press me"
-        +button({background: "hazy-purple"})= "Hazy"      
-        +button({background: "hazy-purple", outline: true})= "Hazy"
+        +button({background: "purple"})= "purple"
+        +button({background: "purple", outline: true})= "purple out"
+        +button({background: "hazy-purple"})= "Hazy purple"      
+        +button({background: "hazy-purple", outline: true})= "Hazy purple out"
       
