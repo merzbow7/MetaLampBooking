@@ -9,11 +9,11 @@ mixin colors
           div= code.color
 
 mixin type
-  - type = { h1: "This one is the sub-section or widget title", h2: "Next one is the item title inside widgets", h3: "This is a label or CTA text", body: "This is the body text which is used for most of the design, like paragraphs, lists, etc." };
+  - type = { H1: "This one is the sub-section or widget title", H2: "Next one is the item title inside widgets", H3: "This is a label or CTA text", Body: "This is the body text which is used for most of the design, like paragraphs, lists, etc." };
   .colors-and-type__list.type
     each code, desc in type
       .type__item.tag
-        if desc != "body"
+        if desc != "Body"
           #{desc}.tag__name= desc
           #{desc}.tag__description_bold= code
         else

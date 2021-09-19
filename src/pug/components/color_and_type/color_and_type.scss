@@ -88,11 +88,7 @@
   &__name {
     grid-column: 1;
     text-align: end;
-    color: $Dark-Shade-50;
-    
-    &::first-letter {
-      text-transform: capitalize;
-    }
+    color: $Dark-Shade-50;   
   }
 
   &__description {
