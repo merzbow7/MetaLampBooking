@@ -1,0 +1,26 @@
+mixin colors
+  - colors = { "Dark-Shade-100": { color: "#1F2041", name: "Dark Shade 100%" }, "Dark-Shade-75": { color: "#1F2041", name: "Dark Shade 75%" }, "Dark-Shade-50": { color: "#1F2041", name: "Dark Shade 50%" }, "Dark-Shade-25": { color: "#1F2041", name: "Dark Shade 25%" }, "Dark-Shade-5": { color: "#1F2041", name: "Dark Shade 5%" }, Purple: { color: "#BC9CFF", name: "Purple" }, Green: { color: "#6FCF97", name: "Green" } };
+  .colors-and-type__list.colors
+    each code, desc in colors
+      .colors__item
+        div(class="color_" + desc)
+        .color__description
+          .color__description_bold= code.name
+          div= code.color
+
+mixin type
+  - type = { h1: "This one is the sub-section or widget title", h2: "Next one is the item title inside widgets", h3: "This is a label or CTA text", body: "This is the body text which is used for most of the design, like paragraphs, lists, etc." };
+  .colors-and-type__list.type
+    each code, desc in type
+      .type__item.tag
+        if desc != "body"
+          #{desc}.tag__name= desc
+          #{desc}.tag__description= code
+        else
+          p.tag__name= desc
+          p.tag__description= code
+
+mixin colors-and-type
+  .colors-and-type.colors-and-type_detached
+    +colors
+    +type

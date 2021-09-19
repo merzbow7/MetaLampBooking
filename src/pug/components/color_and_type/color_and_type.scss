@@ -1,0 +1,97 @@
+@mixin color($name) {
+  background: $name;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  flex: 0 0 70px;
+}
+
+.colors-and-type {
+  display: grid;  
+  grid-template: 145px 1fr 145px / 140px 1fr 415px 1fr 140px;
+}
+
+.colors {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__item {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.color {
+  display: flex;
+  gap: 40px;
+
+  &__description {
+    &_bold {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &_Dark-Shade-100 {
+    @include color($Dark-Shade-100);
+  }
+
+  &_Dark-Shade-75 {
+    @include color($Dark-Shade-75);
+  }
+
+  &_Dark-Shade-50 {
+    @include color($Dark-Shade-50);
+  }
+
+  &_Dark-Shade-25 {
+    @include color($Dark-Shade-25);
+  }
+
+  &_Dark-Shade-5 {
+    @include color($Dark-Shade-5);
+  }
+
+  &_Purple {
+    @include color($Purple);
+  }
+
+  &_Green {
+    @include color($Green);
+  }
+}
+
+.type {
+  grid-column: 4;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  .type__item {
+    display: grid;    
+    grid-template-columns: 37px 40px 1fr;
+    gap: auto 40px;
+  }
+}
+
+
+.tag {
+  &__name {
+    grid-column: 1;
+    text-align: end;
+  }
+
+  &__description {
+    grid-column: 3;
+    text-align: start;
+  }
+}
