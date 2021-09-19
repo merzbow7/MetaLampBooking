@@ -14,7 +14,7 @@ const filename = (ext) => (isDev ? `[name].${ext}` : `[name]-[hash].${ext}`);
 
 const pug = {
   test: /\.pug$/,
-  loader: 'pug-loader',
+  loader: 'pug3-loader',
 };
 
 const babel = {

@@ -21,6 +21,7 @@ package-lock.json
 /dist
 /src/assets
 /src/fonts
+/pug/temp
 babel.config.json
 .eslintre.old
 .eslintrc
