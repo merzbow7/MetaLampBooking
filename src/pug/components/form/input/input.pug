@@ -1,12 +1,18 @@
 mixin form__input(options)
   -
-    const size = options.size ? "form__input_" + options.size : ""
-    //- const ph = options.placeholder ? options.placeholder : ""    
-    const type = options.type ? options.type : "text"
-  input.form__input(
+    options.size = options.size ? "form__input_" + options.size : "form__input_md"
+    options.type = options.type ? options.type : "text"    
+    options.class = options.class ? options.class + " " + options.size : options.size
+    options.pattern = options.type == "masked data" ? "{1-31}[2]/{1-12}[2]/{2}[1]{0}[1]{2}[1]{1-9}[1]" : null
+    options.datatype = options.datatype ? options.datatype : null
+    options.required = options.required ? options.required : null
+  input.form__input(    
     id=options.id,
     placeholder=options.placeholder,
     type=options.type,
+    pattern = pattern,
     name=options.name,
-    class=size
+    class=options.class,
+    data-form-type=options.datatype,
+    required=options.required
   )
