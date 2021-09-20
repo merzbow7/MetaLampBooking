@@ -1,0 +1,25 @@
+@import '../form_variables.scss';
+
+
+.form__input {
+  display: block;
+  height: $input-height;
+  border: 1px solid $Dark-Shade-25;
+  border-radius: 5px;
+  transition: border 250ms;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 12px 15px;
+
+  @each $name, $width in $form-widths {
+    &_#{$name} {
+      width: $width;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $Dark-Shade-50;
+    transition: border 250ms;
+  }
+}

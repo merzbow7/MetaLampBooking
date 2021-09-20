@@ -15,12 +15,10 @@ mixin type
       .type__item.tag
         if desc != "Body"
           #{desc}.tag__name= desc
-          #{desc}.tag__description_bold= code
+          if desc == "h3"
+            #{desc}.tag__description.description_cta= code
+          else
+            #{desc}.tag__description.description_bold= code
         else
           p.tag__name= desc
           p.tag__description= code
-
-mixin colors-and-type
-  .colors-and-type.colors-and-type_detached
-    +colors
-    +type

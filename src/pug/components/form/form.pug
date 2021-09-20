@@ -1,0 +1,25 @@
+include input/input
+include label/label
+include select/select
+
+
+mixin form__select(options)
+  -
+    const size = options.size ? "form__select_" + options.size : "form__select_lg"    
+    const id = options.id ? options.id : ""
+  select.form__input.form__select(id=id, class=size, data-type='dropdown')
+    if options.placeholder
+      option(value='', disabled, selected)= options.placeholder
+    each val, text in options.options
+      option.select__option(value=val)= text
+
+mixin form__input-group(options)
+  .input-group
+    +form__label(options) 
+    +form__input(options)
+
+mixin form__select-group(options)
+  .input-group
+    +form__label(options) 
+    +form__select(options)
+

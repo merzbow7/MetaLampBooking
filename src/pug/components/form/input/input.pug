@@ -1,0 +1,12 @@
+mixin form__input(options)
+  -
+    const size = options.size ? "form__input_" + options.size : ""
+    //- const ph = options.placeholder ? options.placeholder : ""    
+    const type = options.type ? options.type : "text"
+  input.form__input(
+    id=options.id,
+    placeholder=options.placeholder,
+    type=options.type,
+    name=options.name,
+    class=size
+  )

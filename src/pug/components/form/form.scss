@@ -1,0 +1,18 @@
+@use 'sass:math';
+@import './form_variables.scss';
+
+// components
+@import './input/input';
+@import './label/label';
+@import './select/select';
+
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group__label {
+  margin-bottom: 5px;
+}
+
+
