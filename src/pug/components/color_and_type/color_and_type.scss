@@ -6,9 +6,19 @@
   flex: 0 0 70px;
 }
 
+$btnColors: (
+  'Dark-Shade-100': $Dark-Shade-100,
+  'Dark-Shade-75': $Dark-Shade-75,
+  'Dark-Shade-50': $Dark-Shade-50,
+  'Dark-Shade-25': $Dark-Shade-25,
+  'Dark-Shade-5': $Dark-Shade-5,
+  'Purple': $Purple,
+  'Green': $Green,
+);
+
 .colors-and-type {
-  display: grid;  
-  grid-template: 145px 1fr 145px / 140px 1fr 415px 1fr 140px;
+  display: grid;
+  grid-template: 145px 1fr 145px / 140px 1fr auto 0.75fr 140px;
 }
 
 .colors {
@@ -30,8 +40,11 @@
   gap: 40px;
 
   &__description {
+    font-size: 19px;
+    line-height: 28px;
+
     &_bold {
-      font-weight: bold;
+      font-weight: 700;
       white-space: nowrap;
     }
 
@@ -40,32 +53,10 @@
     justify-content: center;
   }
 
-  &_Dark-Shade-100 {
-    @include color($Dark-Shade-100);
-  }
-
-  &_Dark-Shade-75 {
-    @include color($Dark-Shade-75);
-  }
-
-  &_Dark-Shade-50 {
-    @include color($Dark-Shade-50);
-  }
-
-  &_Dark-Shade-25 {
-    @include color($Dark-Shade-25);
-  }
-
-  &_Dark-Shade-5 {
-    @include color($Dark-Shade-5);
-  }
-
-  &_Purple {
-    @include color($Purple);
-  }
-
-  &_Green {
-    @include color($Green);
+  @each $color, $var in $btnColors {
+    &_#{$color} {
+      @include color($var);
+    }
   }
 }
 
@@ -74,24 +65,36 @@
   grid-row: 2;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 51px;
 
   .type__item {
-    display: grid;    
-    grid-template-columns: 37px 40px 1fr;
+    display: grid;
+    grid-template-columns: 37px 40px auto;
     gap: auto 40px;
   }
 }
-
 
 .tag {
   &__name {
     grid-column: 1;
     text-align: end;
+    text-transform: uppercase;
+    color: $Dark-Shade-25;
   }
 
   &__description {
     grid-column: 3;
     text-align: start;
+  }
+}
+
+.description {  
+  &_bold {    
+    font-weight: 700;
+  }
+
+  &_cta {
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }

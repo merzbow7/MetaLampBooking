@@ -1,0 +1,26 @@
+@import '../form_variables.scss';
+@import '../mixins.scss';
+
+.form__select {
+  // reset arrow
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  $icon-position: math.div($base-height - $icon-size, 2);
+  background: top $icon-position right $icon-position no-repeat
+    url('/assets/icons/expand_more.svg');
+  transition: all 250ms;
+  padding-right: 44px;
+
+  @include sizing($form-widths);
+
+  &:active {
+    background: top $icon-position right $icon-position no-repeat
+      url('/assets/icons/expand_less.svg');
+    transition: all 250ms;
+  }  
+}

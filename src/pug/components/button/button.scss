@@ -1,11 +1,11 @@
 $button-width: 99px;
-$button-height: 44px;
+$button-height: $base-height;
 $round-button-size: 40px;
-$arrow-height: 24px;
+$arrow-height: $icon-size;
 $big-button-size: 320px;
 $outline-border: 2px;
 $button-text-or-bg: white;
-@use "sass:math";
+@use 'sass:math';
 
 @mixin button-background($from, $to, $opacity: 0, $outline: 0) {
   $state: transparent;
@@ -54,7 +54,7 @@ $button-text-or-bg: white;
   }
 }
 
-.button {  
+.button {
   color: $Dark-Shade-50;
   border-radius: 1000rem;
   font-size: 12px;
@@ -90,8 +90,8 @@ $button-text-or-bg: white;
   position: relative;
   align-items: center;
   width: $big-button-size;
-  
-  .arrow {    
+
+  .arrow {
     vertical-align: middle;
     top: math.div($button-height, 2) - math.div($arrow-height, 2);
     right: math.div($arrow-height, 2);
@@ -105,7 +105,7 @@ $button-text-or-bg: white;
     &_start {
       position: absolute;
       grid-area: arrow-start;
-      left: $arrow-height / 2;
+      left: math.div($arrow-height, 2);
     }
   }
 }

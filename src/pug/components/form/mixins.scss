@@ -1,0 +1,7 @@
+@mixin sizing($map-width) {
+  @each $name, $width in $map-width {
+    &_#{$name} {
+      width: $width;
+    }
+  }
+}
