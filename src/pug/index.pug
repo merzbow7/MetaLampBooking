@@ -2,10 +2,16 @@ extends base
 
 block content
   include components/form/form
+  include components/button/button
 
   main.page-control-form-elements
     .column-1
-      +form__input-group({type:"text", id: "test-input", label: "text field", size: "lg"})
-      +form__input-group({type:"tel", id: "tel-input", label: "phone number", size: "md", placeholder: "Enter your phone"})
-      +form__select-group({id: "dropdown", label: "dropdown", size: "lg",placeholder: "How meny gursts will be",options: {1: 1, 2:2, 3:3}})      
-      +form__input-group({type:"date", id: "date-input", label: "masked text field", size: "lg", placeholder: "enter your name"})
+      form
+        +form__input-group({required: true, type:"text", id: "test-input", label: "text field", size: "lg"})
+        +form__input-group({type:"tel", id: "tel-input", label: "phone number", size: "md", placeholder: "Enter your phone"})
+        +form__select-group({id: "dropdown", label: "dropdown", size: "lg",placeholder: "How meny gursts will be",options: {1: 1, 2:2, 3:3}}) 
+        +form__input-group({type:"date", id: "date-input", label: "masked text field", size: "lg"}) 
+        +form__input-group({datatype:"date", id: "test-input", label: "text field", size: "lg"})
+        +button({background: "green", outline: true, big: true})
+          | Submit
+          +arrow("arrow_forward", "end")

@@ -1,10 +1,10 @@
 @use 'sass:math';
-@import './form_variables.scss';
+@import 'form_variables.scss';
 
 // components
-@import './input/input';
-@import './label/label';
-@import './select/select';
+@import 'input/input';
+@import 'label/label';
+@import 'select/select';
 
 
 .input-group {

@@ -1,6 +1,5 @@
 @import '../form_variables.scss';
 
-
 .form__input {
   display: block;
   height: $input-height;
@@ -21,5 +20,9 @@
   &:focus {
     border: 1px solid $Dark-Shade-50;
     transition: border 250ms;
+  }
+
+  &:invalid {
+    border: 1px solid red;
   }
 }
