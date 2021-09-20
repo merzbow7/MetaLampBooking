@@ -7,14 +7,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
 const sassPlugin = require('sass');
-// const svgToMiniDataURI = require('mini-svg-data-uri');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name]-[hash].${ext}`);
 const copyAssetsPath = (copyPath) => ({
-  from: `pug/**/assets/${copyPath}/*`,
-  to: `assets/${copyPath}/[name][ext]`,
+  from: `pug/**/asset/${copyPath}/*`,
+  to: `asset/${copyPath}/[name][ext]`,
 });
 
 const pug = {
@@ -31,19 +31,6 @@ const babel = {
       presets: ['@babel/preset-env'],
     },
   },
-};
-
-const urlLoader = {
-  test: /\.svg$/i,
-  use: [
-    {
-      loader: 'url-loader',
-      options: {
-        limit: 8048,
-        // generator: (content) => svgToMiniDataURI(content.toString()),
-      },
-    },
-  ],
 };
 
 const sass = {
@@ -83,31 +70,48 @@ module.exports = {
     hot: isDev,
   },
   module: {
-    rules: [pug, sass, babel],
+    rules: [
+      pug,
+      sass,
+      babel,
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[hash][ext][query]',
+        },
+      },
+      {
+        test: /\.svg/,
+        type: 'asset/inline',
+        generator: {
+          dataUrl: (content) => {
+            const contentStr = content.toString();
+            return svgToMiniDataURI(contentStr);
+          },
+        },
+      },
+    ],
   },
   devtool: isDev ? 'source-map' : 'eval-source-map',
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: '/pug/index.pug',
     }),
-    new MiniCssExtractPlugin({
-      filename: filename('css'),
-    }),
-    new CleanWebpackPlugin(),
     new ESLintPlugin(),
     new CopyPlugin({
       patterns: [
         {
-          from: 'assets',
-          to: 'assets',
-        },
-        {
-          from: 'fonts',
-          to: 'fonts',
+          from: 'asset',
+          to: 'asset',
         },
         copyAssetsPath('icons'),
       ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: filename('css'),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
