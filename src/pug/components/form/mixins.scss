@@ -5,3 +5,18 @@
     }
   }
 }
+
+@mixin form-control() {
+  border-radius: 4px;
+  @include sizing($form-widths);
+
+  &:hover,
+  &:focus {
+    border: 1px solid $Dark-Shade-50;
+    transition: border 250ms;
+  }
+}
+
+
+
+

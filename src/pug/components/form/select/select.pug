@@ -2,7 +2,7 @@ mixin form__select(options)
   -
     const size = options.size ? "form__select_" + options.size : "form__select_lg"    
     const id = options.id ? options.id : ""
-  select.form__input.form__select(id=id, class=size, data-type='dropdown')
+  select.form__select(id=id, class=size, data-form-type='dropdown')
     if options.placeholder
       option(value='', disabled, selected)= options.placeholder
     each val, text in options.options

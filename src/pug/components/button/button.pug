@@ -1,10 +1,6 @@
-mixin arrow(direction, position)
-  if position
-    - position = " arrow" + "_" + position;
-  else
-    - position = "";
+mixin arrow(direction, position)    
   img(
-    class="arrow" + position,
+    class="arrow" + (position ? " arrow_" + position : ""),
     src="/assets/icons/" + direction + ".svg"
   )
 

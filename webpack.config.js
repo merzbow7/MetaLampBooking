@@ -7,10 +7,15 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
 const sassPlugin = require('sass');
+// const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name]-[hash].${ext}`);
+const copyAssetsPath = (copyPath) => ({
+  from: `pug/**/assets/${copyPath}/*`,
+  to: `assets/${copyPath}/[name][ext]`,
+});
 
 const pug = {
   test: /\.pug$/,
@@ -26,6 +31,19 @@ const babel = {
       presets: ['@babel/preset-env'],
     },
   },
+};
+
+const urlLoader = {
+  test: /\.svg$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 8048,
+        // generator: (content) => svgToMiniDataURI(content.toString()),
+      },
+    },
+  ],
 };
 
 const sass = {
@@ -88,6 +106,7 @@ module.exports = {
           from: 'fonts',
           to: 'fonts',
         },
+        copyAssetsPath('icons'),
       ],
     }),
     new webpack.HotModuleReplacementPlugin(),

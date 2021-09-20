@@ -1,7 +1,7 @@
 $button-width: 99px;
-$button-height: $base-height;
+$button-height: 44px;
 $round-button-size: 40px;
-$arrow-height: $icon-size;
+$arrow-height: 24px;
 $big-button-size: 320px;
 $outline-border: 2px;
 $button-text-or-bg: white;
@@ -87,24 +87,21 @@ $button-text-or-bg: white;
 }
 
 .button_big {
-  position: relative;
-  align-items: center;
+  position: relative;  
   width: $big-button-size;
 
   .arrow {
-    vertical-align: middle;
-    top: math.div($button-height, 2) - math.div($arrow-height, 2);
+    vertical-align: top;
+    top: math.div($button-height - $arrow-height, 2);
     right: math.div($arrow-height, 2);
 
     &_end {
-      position: absolute;
-      grid-area: arrow-end;
+      position: absolute;      
       right: math.div($arrow-height, 2);
     }
 
     &_start {
-      position: absolute;
-      grid-area: arrow-start;
+      position: absolute;      
       left: math.div($arrow-height, 2);
     }
   }

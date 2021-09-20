@@ -7,7 +7,7 @@
 }
 
 $btnColors: (
-  'Dark-Shade-100': $Dark-Shade-100,
+  'Dark-Shade-100': $dark-shade-100,
   'Dark-Shade-75': $Dark-Shade-75,
   'Dark-Shade-50': $Dark-Shade-50,
   'Dark-Shade-25': $Dark-Shade-25,
@@ -85,7 +85,7 @@ $btnColors: (
   &__description {
     grid-column: 3;
     text-align: start;
-    color: $Dark-Shade-100;
+    color: $dark-shade-100;
     &_bold {
       grid-column: 3;
       font-weight: 700;
@@ -93,8 +93,8 @@ $btnColors: (
   }
 }
 
-.description {  
-  &_bold {    
+.description {
+  &_bold {
     font-weight: 700;
   }
 

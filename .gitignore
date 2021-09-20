@@ -24,8 +24,14 @@ package-lock.json
 /src/perfect
 /pug/temp
 
+*.jpg
+*.svg
+
+
 babel.config.json
 .eslintre.old
 .eslintrc
 .prettierrc
 .husky/
+
+
