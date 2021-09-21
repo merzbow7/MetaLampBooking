@@ -45,13 +45,20 @@ function dateEdit(event) {
   const incorrectBcsp = code === 'Backspace' && afterPoint;
   const overflow = target.value.length >= 10 && allowedCode;
   const firstPoint = target.value.indexOf('.');
-  const secondPoint = target.value.indexOf('.', firstPoint + 1) - firstPoint;
+  const secondPointIndex = target.value.indexOf('.', firstPoint + 1);
+  const secondPoint = secondPointIndex - firstPoint;
   const incorrectFirst =
     firstPoint >= 2 && position <= firstPoint && allowedCode;
   const incorrectSecond =
     secondPoint >= 3 &&
-    position <= secondPoint + firstPoint &&
+    position <= secondPointIndex &&
     position > firstPoint &&
+    allowedCode;
+  // const yearLen = target.value.length - secondPoint + firstPoint;
+  const incorrectThird =
+    position > secondPointIndex &&
+    secondPointIndex > 0 &&
+    target.value.slice(secondPointIndex + 1).length - secondPointIndex >= 3 &&
     allowedCode;
   if (incorrectBcsp) {
     target.selectionStart -= 1;
@@ -60,7 +67,7 @@ function dateEdit(event) {
   if (((incorrectFirst || incorrectSecond) && allowedCode) || incorrectDlt) {
     target.selectionStart += 1;
   }
-  if (overflow) {
+  if (overflow || incorrectThird) {
     event.preventDefault();
   }
 }
