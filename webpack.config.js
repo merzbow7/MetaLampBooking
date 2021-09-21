@@ -91,6 +91,16 @@ module.exports = {
           },
         },
       },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader',
+        options: {
+          exposes: {
+            globalName: '$',
+            override: true,
+          },
+        },
+      },
     ],
   },
   devtool: isDev ? 'source-map' : 'eval-source-map',
@@ -112,6 +122,12 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

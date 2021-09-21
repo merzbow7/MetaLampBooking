@@ -11,8 +11,15 @@ block content
           guest = {"1 гость": 1, "2 гостя":2, "3 гостя":3, "4 гостя":4}
         +form__input-group({required: true, type:"text", id: "test-input", label: "text field", size: "lg"})
         +form__input-group({type:"tel", id: "tel-input", label: "phone number", size: "md", placeholder: "Enter your phone"})
-        +form__select-group({id: "dropdown", label: "dropdown", size: "lg",placeholder: "Сколько гостей",options: guest})         
-        +form__input-group({datatype:"date", id: "test-input", label: "masked text field", size: "lg"})
+        +form__select-group({id: "dropdown", label: "dropdown", size: "lg",placeholder: "Сколько гостей",options: guest}) 
+        +form__input-group({datatype:"date", id: "test-input", label: "masked text field", size: "lg", placeholder: "ДД.ММ.ГГГГ"})        
+        +form__input-group({type:"text", label: "picker", size: "md", placeholder: "ДД.ММ.ГГГГ"})                
+        .datepicker__container
+          label(for="datepicker")
+            | Архив новостей за
+          input(type='text' class="js-datepicker" id='datepicker' placeholder="Выбрать дату")
+  
+        
         +button({background: "green", big: true})
           | Submit
-          +arrow("arrow_forward", "end")
+          +arrow("arrow_forward", "end")        

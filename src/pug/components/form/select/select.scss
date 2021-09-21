@@ -2,6 +2,8 @@ $input-height: $base-height or 44px;
 
 
 .form__select {
+  color: $Dark-Shade-75;
+  font-family: 'Montserrat';
   appearance: none;
   border-radius: 4px;
   height: $input-height;
