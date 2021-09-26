@@ -76,6 +76,3 @@ maskedData.forEach((item) => {
   item.addEventListener('input', (event) => dateInput(event));
   item.addEventListener('keydown', (event) => dateEdit(event));
 });
-
-const dateControl = document.querySelector('input[type="date"]');
-console.log(dateControl);

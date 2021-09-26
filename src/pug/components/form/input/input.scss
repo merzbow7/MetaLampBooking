@@ -1,11 +1,14 @@
+$icon-position: math.div($base-height - $icon-size, 2);
+
 .form__input {
+  font: inherit;
   height: $input-height;
   border-radius: 4px;
-  border: 1px solid $Dark-Shade-25;
-  transition: border 250ms;
+  border: 1px solid $Dark-Shade-25;  
   font-size: 14px;
   line-height: 24px;
   padding: 12px 15px;
+  transition: all 250ms;
 
   @each $name, $width in $form-widths {
     &_#{$name} {
@@ -13,10 +16,17 @@
     }
   }
 
+  &_expand {    
+    padding-right: $base-height;
+    background: top $icon-position right $icon-position no-repeat
+      url('/asset/icons/expand_more.svg');    
+  }
+
   &:hover,
   &:focus {
+    padding: 12.5px 15.5px;
+    background-position: top $icon-position + 0.5 right $icon-position + 0.5;
     border: 1px solid $Dark-Shade-50;
-    transition: border 250ms;
+    transition: all 250ms;
   }
 }
-

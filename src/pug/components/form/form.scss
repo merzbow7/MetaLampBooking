@@ -5,8 +5,20 @@
 @import 'input/input';
 @import 'label/label';
 @import 'select/select';
+@import 'dropdown/dropdown';
 
-.input-group {
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  &__label {
+    margin-bottom: 5px;
+  }
+}
+
+
+.dropdown-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;

@@ -1,14 +1,21 @@
 include input/input
 include label/label
 include select/select
+include dropdown/dropdown
 
 mixin form__input-group(options)
-  .input-group
+  .form-group
     +form__label(options) 
     +form__input(options)
 
 mixin form__select-group(options)
-  .input-group
+  .form-group
     +form__label(options) 
     +form__select(options)
+
+mixin form__dropdown-group(options)
+  .form-group
+    +form__label(options) 
+    +form__dropdown(options)
+
 

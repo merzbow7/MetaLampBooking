@@ -1,0 +1,97 @@
+$input-height: $base-height;
+
+.form__dropdown {
+  position: relative;
+  color: $Dark-Shade-75;
+  font: inherit;
+  appearance: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border: 1px solid $Dark-Shade-25;
+  height: $input-height;
+  text-align: left;
+  padding: 12px $base-height 12px 15px;
+  line-height: normal;
+
+  & option {
+    display: none;
+  }
+
+  $icon-position: math.div($base-height - $icon-size, 2);
+  background: top $icon-position right $icon-position no-repeat
+    url('/asset/icons/expand_more.svg');
+
+  @each $name, $width in $form-widths {
+    &_#{$name} {
+      width: $width;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid $Dark-Shade-50;
+    transition: border 250ms;
+  }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: $input-height;
+  left: 0;
+  background-color: #fff;
+  cursor: default;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: 1px solid $Dark-Shade-25;
+
+  &_expand {
+    display: block;
+  }
+  &__option {
+    line-height: normal;
+    height: 40px;
+    vertical-align: middle;
+  }
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 15px 1fr 92px 7px;
+  align-items: center;
+
+  &__description,
+  &__count {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: $dark-shade-100;
+    width: 100%;
+  }
+
+  &__description {
+    grid-column-start: 2;
+  }
+
+  &__count {
+    grid-column-start: 3;
+    display: flex;
+    flex: 0 0 92px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dec,
+  &__inc {
+    font: normal normal 400 normal 18px 21.94px;
+    color: $Dark-Shade-50;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $Dark-Shade-50;
+    border-radius: 100rem;
+    cursor: pointer;
+  }
+}

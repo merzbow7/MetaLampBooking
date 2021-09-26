@@ -1,9 +1,10 @@
 import './style/style.scss';
-import 'air-datepicker';
-// eslint-disable-next-line no-unused-vars
-// import $ from 'jquery';
 
-function requireAll(r) {
-  r.keys().forEach(r);
+import 'jquery';
+import 'air-datepicker';
+
+function requireAll(requireContext) {
+  requireContext.keys().forEach(requireContext);
 }
+
 requireAll(require.context('./pug/', true, /\.js$/));

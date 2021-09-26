@@ -4,8 +4,7 @@ mixin form__input(options)
     options.type = options.type ? options.type : "text"    
     options.class = options.class ? options.class + " " + options.size : options.size    
     options.datatype = options.datatype ? options.datatype : null
-    options.required = options.required ? options.required : null
-    options.class = options.type == "date" ? options.class + " form__input_date" : options.class
+    options.required = options.required ? options.required : null    
     options.placeholder = options.datatype=="date" ? "ДД.ММ.ГГГГ" : options.placeholder
   input.form__input(
     id=options.id,

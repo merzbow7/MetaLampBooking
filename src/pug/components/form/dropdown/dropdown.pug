@@ -1,0 +1,20 @@
+mixin form__dropdown(options)
+  -
+    const size = options.size ? "form__dropdown_" + options.size : "form__dropdown_md"    
+    const id = options.id ? options.id : ""
+    const _class = (options.class ?  options.class : "") + " " +  size
+  button.form__dropdown(
+    id=id,
+    class=_class,
+    data-form-type='dropdown',
+    aria-expanded='false',
+    aria-label=options.label,    
+  )= options.placeholder
+    ul.dropdown(class=size, aria-hidden='true')
+      each val, text in options.options
+        li.dropdown__option.option
+          .option__description= text
+          .option__count
+            .option__dec= "-"
+            .option__value= val
+            .option__inc= "+"
