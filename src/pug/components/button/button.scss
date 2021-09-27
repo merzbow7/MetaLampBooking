@@ -5,6 +5,12 @@ $arrow-height: 24px;
 $big-button-size: 320px;
 $outline-border: 2px;
 $button-text-or-bg: white;
+$buttons-width: (
+  'sm': 150px,
+  'md': 266px,
+  'lg': 320px,
+);
+
 @use 'sass:math';
 
 @mixin button-background($from, $to, $opacity: 0, $outline: 0) {
@@ -87,7 +93,7 @@ $button-text-or-bg: white;
 }
 
 .button_big {
-  position: relative;  
+  position: relative;
   width: $big-button-size;
 
   .arrow {
@@ -96,12 +102,12 @@ $button-text-or-bg: white;
     right: math.div($arrow-height, 2);
 
     &_end {
-      position: absolute;      
+      position: absolute;
       right: math.div($arrow-height, 2);
     }
 
     &_start {
-      position: absolute;      
+      position: absolute;
       left: math.div($arrow-height, 2);
     }
   }

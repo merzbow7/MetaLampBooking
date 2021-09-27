@@ -1,25 +1,25 @@
 mixin form__dropdown(options)
   -
     const size = options.size ? "form__dropdown_" + options.size : "form__dropdown_md"    
-    const id = options.id ? options.id : ""
-    const _class = (options.class ?  options.class : "") + " " +  size
-  button.form__dropdown(
-    id=id,
-    class=_class,
-    data-form-type='dropdown-guest',
-    aria-expanded='false',
-    aria-label=options.label,
-    type='menu'
-  )= options.placeholder
+    const id = options.id ? options.id : null
+    const _class = (options.class ?  options.class : "") + " " +  size  
+  div(style='position: relative')
+    button.form__dropdown(
+      id=id,
+      class=_class,
+      data-form-type='dropdown-guest',
+      aria-expanded='false',
+      aria-label=options.label,
+      role='combobox'
+    )= options.placeholder
     ul.dropdown(class=size, aria-hidden='true')
       each val, text in options.options
         li.dropdown__option.option
           .option__description= text
           .option__count
-            .option__dec(role='button', aria-label='decrement')= "-"
+            button.option__dec(role='button', aria-label='decrement')= "-"
             .option__value= val
-            .option__inc(role='button', aria-label='increment')= "+"
+            button.option__inc(role='button', aria-label='increment')= "+"
       li.dropdown__option.option
-        .option__reset.option__reset_disabled= "очистить"
-        .option__apply= "применить"
-        
+        button.option__reset.option__reset_disabled= "очистить"
+        button.option__apply= "применить"

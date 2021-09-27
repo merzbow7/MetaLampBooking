@@ -3,15 +3,15 @@ const dropdowns = document.querySelectorAll(
 );
 
 function closeDropdown(target) {
-  target.firstElementChild.classList.remove('dropdown_expand');
+  target.nextSibling.classList.remove('dropdown_expand');
   target.setAttribute('aria-expanded', 'false');
-  target.firstElementChild.setAttribute('aria-hidden', 'true');
+  target.nextSibling.setAttribute('aria-hidden', 'true');
 }
 
 function expandDropdown(target) {
-  target.firstElementChild.classList.add('dropdown_expand');
+  target.nextSibling.classList.add('dropdown_expand');
   target.setAttribute('aria-expanded', 'true');
-  target.firstElementChild.setAttribute('aria-hidden', 'false');
+  target.nextSibling.setAttribute('aria-hidden', 'false');
 }
 
 function closeAllDropdowns() {
@@ -19,7 +19,7 @@ function closeAllDropdowns() {
 }
 
 function toggleDropdown(target) {
-  if (getComputedStyle(target.firstElementChild).display === 'block') {
+  if (getComputedStyle(target.nextSibling).display === 'block') {
     closeDropdown(target);
   } else {
     dropdowns.forEach((drop) => closeDropdown(drop));
@@ -39,12 +39,12 @@ dropdowns.forEach((item) => {
     toggleDropdown(target);
   });
 
-  item.firstElementChild.addEventListener('click', (e) => {
+  item.nextSibling.addEventListener('click', (e) => {
     e.stopPropagation();
     e.preventDefault();
   });
 
-  item.firstElementChild.childNodes.forEach((elem) => {
+  item.nextSibling.childNodes.forEach((elem) => {
     let node = elem.querySelector('.option__value');
     if (node) {
       node = new Proxy(node, {
@@ -52,7 +52,7 @@ dropdowns.forEach((item) => {
           const obj = target;
 
           const value = parseInt(target.innerText, 10);
-          const parent = target.closest('.form__dropdown');
+          const parent = target.closest('.dropdown').previousSibling;
           window.btn = parent;
           const parentValue = parseInt(parent.innerText, 10);
           if (prop === 'dec') {

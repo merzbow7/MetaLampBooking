@@ -5,4 +5,10 @@
   letter-spacing: 0em;
   text-align: left;
   text-transform: uppercase;
+
+  &_inline {
+    &:first-child {
+      margin-top: 5px;
+    }
+  }
 }
