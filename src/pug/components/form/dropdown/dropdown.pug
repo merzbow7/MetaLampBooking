@@ -6,15 +6,20 @@ mixin form__dropdown(options)
   button.form__dropdown(
     id=id,
     class=_class,
-    data-form-type='dropdown',
+    data-form-type='dropdown-guest',
     aria-expanded='false',
-    aria-label=options.label,    
+    aria-label=options.label,
+    type='menu'
   )= options.placeholder
     ul.dropdown(class=size, aria-hidden='true')
       each val, text in options.options
         li.dropdown__option.option
           .option__description= text
           .option__count
-            .option__dec= "-"
+            .option__dec(role='button', aria-label='decrement')= "-"
             .option__value= val
-            .option__inc= "+"
+            .option__inc(role='button', aria-label='increment')= "+"
+      li.dropdown__option.option
+        .option__reset.option__reset_disabled= "очистить"
+        .option__apply= "применить"
+        
