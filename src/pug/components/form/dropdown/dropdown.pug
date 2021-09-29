@@ -2,24 +2,29 @@ mixin form__dropdown(options)
   -
     const size = options.size ? "form__dropdown_" + options.size : "form__dropdown_md"    
     const id = options.id ? options.id : null
-    const _class = (options.class ?  options.class : "") + " " +  size  
-  div(style='position: relative')
+    const _class = (options.class ?  options.class : "") + " " +  size    
+    options.dropdowntype = options.dropdowntype ? options.dropdowntype : "guests"
+  .wrapper_relative
     button.form__dropdown(
       id=id,
       class=_class,
-      data-form-type='dropdown-guest',
-      aria-expanded='false',
+      data-form-type="dropdown",
+      data-dropdown-type=options.dropdowntype,     
+      aria-expanded="false",
       aria-label=options.label,
-      role='combobox'
+      role="combobox"
     )= options.placeholder
-    ul.dropdown(class=size, aria-hidden='true')
+    ul.dropdown(class=size, aria-hidden="true")
       each val, text in options.options
         li.dropdown__option.option
           .option__description= text
           .option__count
-            button.option__dec(role='button', aria-label='decrement')= "-"
-            .option__value= val
-            button.option__inc(role='button', aria-label='increment')= "+"
-      li.dropdown__option.option
-        button.option__reset.option__reset_disabled= "очистить"
-        button.option__apply= "применить"
+            button.option__dec(aria-label="Уменьшить", data-min-count=val.min)= "-"
+            .option__value= val.default
+            button.option__inc(aria-label="Уведичить", data-max-count=val.max)= "+"
+      if options.controls
+        li.dropdown__option.option.option__controls
+          button.option__reset.option__reset_hidden(aria-label="Очистить")
+            |Очистить
+          button.option__apply(aria-label="Применить")
+            |Применить

@@ -8,21 +8,59 @@ block content
     .column-1
       form
         -
-          guest = {"Взрослые": 0, "Дети": 0, "Мдаденцы": 0}
-          input1 = {required: true, id: "test-input", label: "text field", size: "lg"}
+          const guest = {
+            "Взрослые": {default: 0, min:0, max:4},
+            "Дети": {default: 0, min:0, max:4},
+            "Младенцы": {default: 0, min:0, max:4},
+            }
+          const rooms = {
+            "Спальни": {default: 2, min:2, max:3},
+            "Кровати": {default: 2, min:1, max:4},
+            "Ванные комнаты": {default: 0, min:0, max:2},
+            }
+          const input1 = {required: true, id: "test-input", label: "text field", size: "lg"}
         +form__input-group(input1)
-        +form__input-group({type:"tel", id: "tel-input", label: "phone number", size: "md", placeholder: "Enter your phone"})
-        +form__select-group({id: "select12312312", label: "select", size: "md", placeholder: "Сколько гостей", options: guest})                 
-        +form__dropdown-group({id: "dropdown232342312", label: "dropdown", size: "lg", placeholder: "Сколько гостей", options: guest})                         
-        +form__dropdown-group({label: "dropdown 2", size: "lg", placeholder: "Сколько гостей", options: guest})                         
-        +form__input-group({datatype:"date", id: "test-input5", label: "masked text field", size: "lg", placeholder: "ДД.ММ.ГГГГ"})                
+
+        +form__input-group({
+          type:"tel",
+          id: "tel-input",
+          label: "phone number",
+          size: "md",
+          placeholder: "Enter your phone"
+        })
+
+        +form__dropdown-group({
+          id: "drpd22312",
+          label: "dropdown",
+          size: "lg",
+          placeholder: "Сколько гостей",
+          options: guest,
+          dropdowntype: "guests",
+          controls: true,
+        })
+
+        +form__dropdown-group({                                 
+          label: "dropdown",
+          size: "lg",
+          placeholder: "Сколько комнат",
+          options: rooms,
+          dropdowntype: "rooms"           
+        })
+
+
+        +form__input-group({
+          datatype:"date",
+          id: "test-input5",
+          label: "masked text field",
+          size: "lg",
+          placeholder: "ДД.ММ.ГГГГ"
+        })                
 
         .flex-row
           +form__input-group({id: "md12",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                 
-          +form__input-group({id: "md22",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                 
+          +form__input-group({id: "md22",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                       
         
-  
-        
+
         +button({background: "green", big: true})
           | Submit
           +arrow("arrow_forward", "end")        

@@ -1,42 +1,75 @@
-const dropdowns = document.querySelectorAll(
-  '[data-form-type="dropdown-guest"]'
-);
+import { roomsTranslate, guestsTranslate } from './translate';
 
-function closeDropdown(target) {
+const dropdowns = document.querySelectorAll('[data-form-type="dropdown"]');
+
+const closeDropdown = (target) => {
   target.nextSibling.classList.remove('dropdown_expand');
   target.setAttribute('aria-expanded', 'false');
   target.nextSibling.setAttribute('aria-hidden', 'true');
-}
+};
 
-function expandDropdown(target) {
+const expandDropdown = (target) => {
   target.nextSibling.classList.add('dropdown_expand');
   target.setAttribute('aria-expanded', 'true');
   target.nextSibling.setAttribute('aria-hidden', 'false');
-}
+};
 
-function closeAllDropdowns() {
+const closeAllDropdowns = () => {
   dropdowns.forEach((drp) => closeDropdown(drp));
-}
+};
 
-function toggleDropdown(target) {
+const toggleDropdown = (target) => {
   if (getComputedStyle(target.nextSibling).display === 'block') {
     closeDropdown(target);
   } else {
-    dropdowns.forEach((drop) => closeDropdown(drop));
+    closeAllDropdowns();
     expandDropdown(target);
   }
-}
+};
 
 window.addEventListener('click', () => {
   closeAllDropdowns();
 });
 
+const caseGuestMap = new Map(Object.entries(guestsTranslate));
+const caseRoomsMap = new Map(Object.entries(roomsTranslate));
+
+const caseGuests = (target) => {
+  const countInstance = String(
+    Object.values(target).reduce((prev, curr) => prev + curr)
+  );
+  if (caseGuestMap.has(countInstance)) {
+    return caseGuestMap.get(countInstance);
+  }
+  return `${countInstance} гостей`;
+};
+
+const caseRooms = (target) =>
+  Object.entries(target)
+    .filter((entry) => entry[1] !== 0)
+    .map((entry) => {
+      const preResult = `${entry[1]} ${entry[0].toLowerCase()}`;
+      if (caseRoomsMap.has(preResult)) {
+        return caseRoomsMap.get(preResult);
+      }
+      return preResult;
+    })
+    .join(', ');
+
+const fillPlaceholder = (target) => {
+  if (target.getAttribute('data-dropdown-type') === 'guests') {
+    target.innerText = caseGuests(target);
+  }
+  if (target.getAttribute('data-dropdown-type') === 'rooms') {
+    target.innerText = caseRooms(target);
+  }
+};
+
 dropdowns.forEach((item) => {
   item.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const { target } = event;
-    toggleDropdown(target);
+    toggleDropdown(event.target);
   });
 
   item.nextSibling.addEventListener('click', (e) => {
@@ -44,38 +77,53 @@ dropdowns.forEach((item) => {
     e.preventDefault();
   });
 
-  item.nextSibling.childNodes.forEach((elem) => {
-    let node = elem.querySelector('.option__value');
-    if (node) {
-      node = new Proxy(node, {
-        get(target, prop) {
-          const obj = target;
+  const countNodeValue = (node) => parseInt(node.innerText, 10);
 
-          const value = parseInt(target.innerText, 10);
-          const parent = target.closest('.dropdown').previousSibling;
-          window.btn = parent;
-          const parentValue = parseInt(parent.innerText, 10);
-          if (prop === 'dec') {
-            if (value > 0) {
-              obj.innerText = value - 1;
-              parent.value = `${parentValue - 1} гостей`;
-            }
-          } else if (prop === 'inc') {
-            if (value < 4) {
-              obj.innerText = value + 1;
-              parent.value = `${+parentValue + 1} гостей`;
-            }
-          }
-        },
+  item.nextSibling.childNodes.forEach((elem) => {
+    const countNode = elem.querySelector('.option__value');
+    if (countNode) {
+      const description = elem.querySelector('.option__description');
+
+      const decBtn = elem.querySelector('.option__dec');
+      const minCount = parseInt(decBtn.getAttribute('data-min-count'), 10);
+      if (countNodeValue(countNode) === minCount) {
+        decBtn.disabled = true;
+      }
+
+      const incBtn = elem.querySelector('.option__inc');
+      const maxCount = parseInt(incBtn.getAttribute('data-max-count'), 10);
+      if (countNodeValue(countNode) === maxCount) {
+        incBtn.disabled = true;
+      }
+
+      const changeCountNode = (sign) => {
+        const countNodeNewValue = countNodeValue(countNode) + sign;
+        countNode.innerText = countNodeNewValue;
+        item[description.innerText.toLowerCase()] = countNodeNewValue;
+        fillPlaceholder(item);
+
+        if (countNodeNewValue <= minCount) {
+          decBtn.disabled = true;
+        } else {
+          decBtn.disabled = false;
+        }
+        if (countNodeNewValue >= maxCount) {
+          incBtn.disabled = true;
+        } else {
+          incBtn.disabled = false;
+        }
+      };
+
+      changeCountNode(0);
+
+      decBtn.addEventListener('click', () => {
+        changeCountNode(-1);
       });
 
-      elem
-        .querySelector('.option__dec')
-        .addEventListener('click', () => node.dec);
-
-      elem
-        .querySelector('.option__inc')
-        .addEventListener('click', () => node.inc);
+      incBtn.addEventListener('click', () => {
+        changeCountNode(1);
+      });
     }
+    fillPlaceholder(item);
   });
 });
