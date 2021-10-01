@@ -56,74 +56,135 @@ const caseRooms = (target) =>
     })
     .join(', ');
 
-const fillPlaceholder = (target) => {
-  if (target.getAttribute('data-dropdown-type') === 'guests') {
+const fillPlaceholder = (target, apply) => {
+  if (
+    target.getAttribute('data-dropdown-type') === 'guests' &&
+    apply === true
+  ) {
     target.innerText = caseGuests(target);
   }
   if (target.getAttribute('data-dropdown-type') === 'rooms') {
     target.innerText = caseRooms(target);
   }
+  target.value = target.innerText;
 };
 
-dropdowns.forEach((item) => {
-  item.addEventListener('click', (event) => {
+const nodeToInteger = (node) => parseInt(node.innerText, 10);
+
+const initButtons = (baseNode) => {
+  const decBtn = baseNode.previousSibling;
+  decBtn.minCount = +decBtn.getAttribute('data-min-count');
+  decBtn.disabled = nodeToInteger(baseNode) <= decBtn.minCount;
+
+  const incBtn = baseNode.nextSibling;
+  incBtn.maxCount = +incBtn.getAttribute('data-max-count');
+  incBtn.disabled = nodeToInteger(baseNode) >= incBtn.maxCount;
+
+  return { decBtn, incBtn };
+};
+
+dropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
     toggleDropdown(event.target);
   });
 
-  item.nextSibling.addEventListener('click', (e) => {
+  dropdown.nextSibling.addEventListener('click', (e) => {
     e.stopPropagation();
     e.preventDefault();
   });
 
-  const countNodeValue = (node) => parseInt(node.innerText, 10);
+  const resetToDeafault = (node) => {
+    const countNode = node.querySelector('.option__value');
+    const description = node.querySelector('.option__description');
+    if (countNode && description) {
+      dropdown[description.innerText.toLowerCase()] = nodeToInteger(countNode);
+    }
+  };
 
-  item.nextSibling.childNodes.forEach((elem) => {
+  const dropdownOptionsList = dropdown.nextSibling;
+  const dropdownOptions = dropdownOptionsList.childNodes;
+  const controls = dropdownOptionsList.querySelector('.option__controls');
+
+  const isAllValuesDefault = () => {
+    let result = true;
+    dropdownOptions.forEach((node) => {
+      const value = node.querySelector('.option__value');
+      if (value) {
+        if (value.innerText !== value.getAttribute('data-default-count')) {
+          result = false;
+        }
+      }
+    });
+    return result;
+  };
+
+  if (controls) {
+    dropdown.reset = controls.querySelector('.option__reset');
+    Object.defineProperty(dropdown, 'reset', {
+      enumerable: false,
+    });
+    dropdown.reset.addEventListener('click', () => {
+      dropdownOptions.forEach((node) => {
+        const value = node.querySelector('.option__value');
+        if (value) {
+          value.innerText = value.getAttribute('data-default-count');
+          resetToDeafault(node);
+          initButtons(value);
+        }
+      });
+      fillPlaceholder(dropdown, true);
+    });
+
+    dropdown.apply = controls.querySelector('.option__apply');
+    Object.defineProperty(dropdown, 'apply', {
+      enumerable: false,
+    });
+    dropdown.apply.addEventListener('click', () => {
+      fillPlaceholder(dropdown, true);
+    });
+  }
+
+  const toggleReset = () => {
+    if (dropdown.reset) {
+      dropdown.reset.style.display = isAllValuesDefault() ? 'none' : 'block';
+    }
+  };
+
+  dropdownOptions.forEach((elem) => {
     const countNode = elem.querySelector('.option__value');
     if (countNode) {
       const description = elem.querySelector('.option__description');
 
-      const decBtn = elem.querySelector('.option__dec');
-      const minCount = parseInt(decBtn.getAttribute('data-min-count'), 10);
-      if (countNodeValue(countNode) === minCount) {
-        decBtn.disabled = true;
-      }
-
-      const incBtn = elem.querySelector('.option__inc');
-      const maxCount = parseInt(incBtn.getAttribute('data-max-count'), 10);
-      if (countNodeValue(countNode) === maxCount) {
-        incBtn.disabled = true;
-      }
+      const { decBtn, incBtn } = initButtons(countNode);
 
       const changeCountNode = (sign) => {
-        const countNodeNewValue = countNodeValue(countNode) + sign;
+        const countNodeNewValue = nodeToInteger(countNode) + sign;
         countNode.innerText = countNodeNewValue;
-        item[description.innerText.toLowerCase()] = countNodeNewValue;
-        fillPlaceholder(item);
+        dropdown[description.innerText.toLowerCase()] = countNodeNewValue;
 
-        if (countNodeNewValue <= minCount) {
-          decBtn.disabled = true;
-        } else {
-          decBtn.disabled = false;
-        }
-        if (countNodeNewValue >= maxCount) {
-          incBtn.disabled = true;
-        } else {
-          incBtn.disabled = false;
-        }
+        decBtn.disabled = countNodeNewValue <= decBtn.minCount;
+        incBtn.disabled = countNodeNewValue >= incBtn.maxCount;
       };
 
-      changeCountNode(0);
+      const mathHanfler = (sign) => {
+        changeCountNode(sign);
+        fillPlaceholder(dropdown);
+        toggleReset();
+      };
+
+      mathHanfler(0);
 
       decBtn.addEventListener('click', () => {
-        changeCountNode(-1);
+        mathHanfler(-1);
       });
 
       incBtn.addEventListener('click', () => {
-        changeCountNode(1);
+        mathHanfler(1);
       });
     }
-    fillPlaceholder(item);
+
+    fillPlaceholder(dropdown);
   });
 });
