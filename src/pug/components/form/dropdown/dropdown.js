@@ -95,7 +95,7 @@ dropdowns.forEach((dropdown) => {
     e.preventDefault();
   });
 
-  const resetToDeafault = (node) => {
+  const resetOptionValue = (node) => {
     const countNode = node.querySelector('.option__value');
     const description = node.querySelector('.option__description');
     if (countNode && description) {
@@ -130,7 +130,7 @@ dropdowns.forEach((dropdown) => {
         const value = node.querySelector('.option__value');
         if (value) {
           value.innerText = value.getAttribute('data-default-count');
-          resetToDeafault(node);
+          resetOptionValue(node);
           initButtons(value);
         }
       });
@@ -146,42 +146,40 @@ dropdowns.forEach((dropdown) => {
     });
   }
 
-  const toggleReset = () => {
+  const toggleResetButton = () => {
     if (dropdown.reset) {
       dropdown.reset.style.display = isAllValuesDefault() ? 'none' : 'block';
     }
   };
 
-  dropdownOptions.forEach((elem) => {
-    const countNode = elem.querySelector('.option__value');
-    if (countNode) {
-      const description = elem.querySelector('.option__description');
+  const changeOptionValue = (node, sign) => {
+    const optionDescription = node.querySelector('.option__description');
+    const optionValue = node.querySelector('.option__value');
+    const newOptionValue = nodeToInteger(optionValue) + sign;
+    optionValue.innerText = newOptionValue;
+    dropdown[optionDescription.innerText.toLowerCase()] = newOptionValue;
+    initButtons(optionValue);
+  };
 
-      const { decBtn, incBtn } = initButtons(countNode);
+  dropdownOptions.forEach((option) => {
+    if (!option.classList.contains('option__controls')) {
+      const optionValue = option.querySelector('.option__value');
+      const { decBtn, incBtn } = initButtons(optionValue);
 
-      const changeCountNode = (sign) => {
-        const countNodeNewValue = nodeToInteger(countNode) + sign;
-        countNode.innerText = countNodeNewValue;
-        dropdown[description.innerText.toLowerCase()] = countNodeNewValue;
-
-        decBtn.disabled = countNodeNewValue <= decBtn.minCount;
-        incBtn.disabled = countNodeNewValue >= incBtn.maxCount;
-      };
-
-      const mathHanfler = (sign) => {
-        changeCountNode(sign);
+      const controllerOfSign = (sign) => {
+        changeOptionValue(option, sign);
         fillPlaceholder(dropdown);
-        toggleReset();
+        toggleResetButton();
       };
 
-      mathHanfler(0);
+      controllerOfSign(0);
 
       decBtn.addEventListener('click', () => {
-        mathHanfler(-1);
+        controllerOfSign(-1);
       });
 
       incBtn.addEventListener('click', () => {
-        mathHanfler(1);
+        controllerOfSign(1);
       });
     }
 

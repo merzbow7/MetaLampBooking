@@ -152,8 +152,7 @@ $input-height: $base-height;
       box-shadow: 0 0 3px;
     }
     &:disabled, &[disabled] {
-      color: lighten($Dark-Shade-25, 40%);
-      border: 1px solid lighten($Dark-Shade-25, 40%);
+      opacity: 38%;    
     }
   }
 
