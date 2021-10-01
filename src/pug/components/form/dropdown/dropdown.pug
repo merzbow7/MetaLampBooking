@@ -20,11 +20,11 @@ mixin form__dropdown(options)
           .option__description= text
           .option__count
             button.option__dec(aria-label="Уменьшить", data-min-count=val.min)= "-"
-            .option__value= val.default
+            .option__value(data-default-count=val.default)= val.default
             button.option__inc(aria-label="Уведичить", data-max-count=val.max)= "+"
       if options.controls
         li.dropdown__option.option.option__controls
-          button.option__reset.option__reset_hidden(aria-label="Очистить")
+          button.option__reset(aria-label="Очистить")
             |Очистить
           button.option__apply(aria-label="Применить")
             |Применить
