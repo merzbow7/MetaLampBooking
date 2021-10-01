@@ -12,7 +12,7 @@ $input-height: $base-height or 44px;
 
   $icon-position: math.div($base-height - $icon-size, 2);
   background: transparent top $icon-position right $icon-position no-repeat
-    url('/asset/icons/expand_more.svg');
+    url('/assets/icons/expand_more.svg');         
 
   @each $name, $width in $form-widths {
     &_#{$name} {

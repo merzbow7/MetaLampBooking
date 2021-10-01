@@ -64,3 +64,15 @@ block content
         +button({background: "green", big: true})
           | Submit
           +arrow("arrow_forward", "end")        
+
+    .column-2
+      +checkbox-group({
+        label: "Checkbox Buttons",
+        content:[
+          {"Можно курить" : {disabled: true}},
+          {"Можно с питомцами":{checked: true}},
+          {"Можно пригласить гостей (до 10 человек)": {checked: true}}
+          ]
+        })
+      
+

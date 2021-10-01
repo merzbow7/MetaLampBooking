@@ -1,0 +1,14 @@
+mixin checkbox(options)  
+  label.checkbox__label
+    input.checkbox__input(type="checkbox")&attributes(options.state)
+    span.checkbox__text
+      |#{options.content}
+    
+mixin checkbox-group(options)
+  .checkbox
+    .checkbox__title=options.label
+    each row in options.content
+      .checkbox__row
+        each state, check in row          
+          .checkbox__col
+            +checkbox({content: check, state: state})      

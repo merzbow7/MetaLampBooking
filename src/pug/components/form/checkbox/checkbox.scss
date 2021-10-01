@@ -1,0 +1,68 @@
+.checkbox {
+  display: flex;  
+  flex-direction: column;
+  gap: 10px 0;
+
+  &__title {
+    text-transform: uppercase;    
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+    margin-bottom: 5px;
+  }  
+
+  &__row {
+    display: flex;    
+  }
+
+  &__col {
+    flex: 0 0 320px;  
+  }
+
+  &_text {
+    width: 192px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+
+  &__label {
+    display: flex;
+    gap: 0 10px;
+    align-items: center;    
+  }
+
+  &__input {
+    appearance: none;
+    flex: 0 0 20px;
+    align-self: first baseline;    
+    margin-top: 2px;
+    height: 20px;    
+    border: 1px solid $Purple;
+    border-radius: 4px;
+    background-color: #FFF;
+
+    &:checked {
+      background: center center url('/assets/icons/check.svg') no-repeat;      
+    }
+
+    &:disabled {
+      border: 1px solid $Dark-Shade-25;
+    }
+    
+    &:focus{
+      box-shadow: 0 0 3px $Purple;
+    }
+  }
+
+}

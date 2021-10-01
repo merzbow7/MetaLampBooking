@@ -7,14 +7,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
 const sassPlugin = require('sass');
-const svgToMiniDataURI = require('mini-svg-data-uri');
+// const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name]-[hash].${ext}`);
 const copyAssetsPath = (copyPath) => ({
-  from: `pug/**/asset/${copyPath}/*`,
-  to: `asset/${copyPath}/[name][ext]`,
+  from: `pug/**/assets/${copyPath}/*`,
+  to: `assets/${copyPath}/[name][ext]`,
 });
 
 const pug = {
@@ -83,13 +83,7 @@ module.exports = {
       },
       {
         test: /\.svg/,
-        type: 'asset/inline',
-        generator: {
-          dataUrl: (content) => {
-            const contentStr = content.toString();
-            return svgToMiniDataURI(contentStr);
-          },
-        },
+        type: 'asset/resource',
       },
     ],
   },
@@ -104,8 +98,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: 'asset',
-          to: 'asset',
+          from: 'assets',
+          to: 'assets',
         },
         copyAssetsPath('icons'),
       ],

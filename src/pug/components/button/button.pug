@@ -1,8 +1,6 @@
-mixin arrow(direction, position)    
-  img(
-    class="arrow" + (position ? " arrow_" + position : ""),
-    src="/asset/icons/" + direction + ".svg"
-  )
+mixin arrow(direction, position)      
+  div(class="arrow" + (position ? " arrow_" + position : ""))
+  
 
 mixin button(options)  
   - buttonClass = "button"

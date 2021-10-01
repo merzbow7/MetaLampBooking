@@ -94,7 +94,7 @@ $buttons-width: (
 
 .button_big {
   position: relative;
-  width: $big-button-size;
+  width: $big-button-size;  
 
   .arrow {
     vertical-align: top;
@@ -106,9 +106,13 @@ $buttons-width: (
       right: math.div($arrow-height, 2);
     }
 
-    &_start {
-      position: absolute;
+    &_start {      
+      z-index: 5;
       left: math.div($arrow-height, 2);
+      width: $icon-size;
+      height: $icon-size;
+      background-color: #fff;
+      background-image: url('/assets/icons/arrow_forward.svg');
     }
   }
 }

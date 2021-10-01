@@ -19,7 +19,7 @@ $icon-position: math.div($base-height - $icon-size, 2);
   &_expand {    
     padding-right: $base-height;
     background: top $icon-position right $icon-position no-repeat
-      url('/asset/icons/expand_more.svg');    
+      url('/assets/icons/expand_more.svg');    
   }
 
   &:hover,
