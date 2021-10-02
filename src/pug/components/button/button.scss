@@ -36,32 +36,32 @@ $buttons-width: (
   background-origin: border-box;
 
   &_green {
-    $from: $Green;
-    $to: $GreenGradient;
+    $from: $green;
+    $to: $greenGradient;
     @include button-background($from, $to, $outline: $outline);
   }
 
   &_hazy-green {
-    $from: $Green;
-    $to: $GreenGradient;
+    $from: $green;
+    $to: $greenGradient;
     @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
   }
 
   &_purple {
-    $from: $Purple;
-    $to: $PurpleGradient;
+    $from: $purple;
+    $to: $purpleGradient;
     @include button-background($from, $to, $outline: $outline);
   }
 
   &_hazy-purple {
-    $from: $Purple;
-    $to: $PurpleGradient;
+    $from: $purple;
+    $to: $purpleGradient;
     @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
   }
 }
 
 .button {
-  color: $Dark-Shade-50;
+  color: $dark-shade-50;
   border-radius: 1000rem;
   font-size: 12px;
   font-weight: 700;
@@ -94,7 +94,7 @@ $buttons-width: (
 
 .button_big {
   position: relative;
-  width: $big-button-size;  
+  width: $big-button-size;
 
   .arrow {
     vertical-align: top;
@@ -106,7 +106,7 @@ $buttons-width: (
       right: math.div($arrow-height, 2);
     }
 
-    &_start {      
+    &_start {
       z-index: 5;
       left: math.div($arrow-height, 2);
       width: $icon-size;

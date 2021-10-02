@@ -5,10 +5,10 @@ mixin checkbox(options)
       |#{options.content}
     
 mixin checkbox-group(options)
-  .checkbox
-    .checkbox__title=options.label
+  fieldset.checkbox-group
+    legend.checkbox-group__title=options.label
     each row in options.content
-      .checkbox__row
+      .checkbox-group__row
         each state, check in row          
-          .checkbox__col
+          .checkbox-group__col.checkbox
             +checkbox({content: check, state: state})      

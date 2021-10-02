@@ -4,7 +4,7 @@ $icon-position: math.div($base-height - $icon-size, 2);
   font: inherit;
   height: $input-height;
   border-radius: 4px;
-  border: 1px solid $Dark-Shade-25;  
+  border: 1px solid $dark-shade-25;
   font-size: 14px;
   line-height: 24px;
   padding: 12px 15px;
@@ -16,17 +16,17 @@ $icon-position: math.div($base-height - $icon-size, 2);
     }
   }
 
-  &_expand {    
+  &_expand {
     padding-right: $base-height;
     background: top $icon-position right $icon-position no-repeat
-      url('/assets/icons/expand_more.svg');    
+      url('/assets/icons/expand_more.svg');
   }
 
   &:hover,
   &:focus {
     padding: 12.5px 15.5px;
     background-position: top $icon-position + 0.5 right $icon-position + 0.5;
-    border: 1px solid $Dark-Shade-50;
+    border: 1px solid $dark-shade-50;
     transition: all 250ms;
   }
 }

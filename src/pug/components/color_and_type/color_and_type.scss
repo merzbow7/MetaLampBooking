@@ -8,12 +8,12 @@
 
 $btnColors: (
   'Dark-Shade-100': $dark-shade-100,
-  'Dark-Shade-75': $Dark-Shade-75,
-  'Dark-Shade-50': $Dark-Shade-50,
-  'Dark-Shade-25': $Dark-Shade-25,
-  'Dark-Shade-5': $Dark-Shade-5,
-  'Purple': $Purple,
-  'Green': $Green,
+  'Dark-Shade-75': $dark-shade-75,
+  'Dark-Shade-50': $dark-shade-50,
+  'Dark-Shade-25': $dark-shade-25,
+  'Dark-Shade-5': $dark-shade-5,
+  'Purple': $purple,
+  'Green': $green,
 );
 
 .colors-and-type {
@@ -79,7 +79,7 @@ $btnColors: (
     grid-column: 1;
     text-align: end;
     text-transform: uppercase;
-    color: $Dark-Shade-25;
+    color: $dark-shade-25;
   }
 
   &__description {

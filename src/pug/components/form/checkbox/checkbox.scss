@@ -1,67 +1,99 @@
-.checkbox {
-  display: flex;  
+.checkbox-group {
+  display: flex;
   flex-direction: column;
+  width: 220px;
   gap: 10px 0;
 
+  margin-bottom: 40px;
+
   &__title {
-    text-transform: uppercase;    
+    text-transform: uppercase;
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
     line-height: 15px;
-    letter-spacing: 0em;
-    text-align: left;
-    
-    margin-bottom: 5px;
-  }  
+    letter-spacing: 0em;    
+
+    margin-bottom: 15px;
+  }
 
   &__row {
-    display: flex;    
+    display: flex;
   }
 
   &__col {
-    flex: 0 0 320px;  
+    flex: 0 0 220px;
   }
+}
 
-  &_text {
-    width: 192px;
 
-    font-family: inherit;
+.checkbox{
+
+  &__text {        
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0em;
-    text-align: left;
-    overflow-wrap: break-word;
+    text-align: left;    
   }
 
   &__label {
     display: flex;
     gap: 0 10px;
-    align-items: center;    
+    align-items: center;
   }
 
   &__input {
+    cursor: pointer;
     appearance: none;
     flex: 0 0 20px;
-    align-self: first baseline;    
+    align-self: first baseline;
     margin-top: 2px;
-    height: 20px;    
-    border: 1px solid $Purple;
+    height: 20px;
+    border: 1px solid $purple;
     border-radius: 4px;
     background-color: #FFF;
 
+    position: relative;    
+
     &:checked {
-      background: center center url('/assets/icons/check.svg') no-repeat;      
+
+      &:before {
+        content: "";
+        width: 2px;
+        height: 8px;
+
+        position: absolute;        
+        left: 6.5px;
+        top: 5px;        
+        
+        transform-origin: bottom right;
+        transform: rotate(45deg);             
+        background: linear-gradient(180deg, $purple, $purpleGradient);
+      }
+
+      &::after{        
+        content: "";
+        width: 2px;
+        height: 6px;
+
+        position: absolute;        
+        left: 8.4px;
+        bottom: 5.1px;        
+        
+        transform-origin: bottom left;
+        transform: rotate(-45deg);        
+        background: linear-gradient(180deg, $purple, $purpleGradient);
+      }
     }
 
     &:disabled {
-      border: 1px solid $Dark-Shade-25;
+      border: 1px solid $dark-shade-25;
     }
-    
+
     &:focus{
-      box-shadow: 0 0 3px $Purple;
+      box-shadow: 0 0 3px $purple;
     }
   }
 

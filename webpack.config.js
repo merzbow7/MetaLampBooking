@@ -75,7 +75,7 @@ module.exports = {
       sass,
       babel,
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[hash][ext][query]',

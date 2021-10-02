@@ -74,5 +74,17 @@ block content
           {"Можно пригласить гостей (до 10 человек)": {checked: true}}
           ]
         })
-      
+      +radio-group({
+        label: "Radio Buttons",
+        content:[
+          {"Мужчина" : {checked: true, name: "sex"}, "Женщина":{checked: false, name: "sex"}},          
+          ]
+        })
 
+      +toggle-group({
+        label: "Toggle",
+        content:[
+          {"Получать спецпредложения" : {checked: true, name: "send"}},
+          {"Получать спецпредложения" : {checked: false, name: "nosend"}},
+          ]
+        })
