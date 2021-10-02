@@ -1,0 +1,8 @@
+mixin like(options)  
+  -
+    _class = options.state.checked ? "like__input_active" : ""
+  button.like__input(class=_class)&attributes({"data-type-button":"like"})
+    picture.like__favorite
+      include ./assets/icons/favorite.svg      
+      //- source(src="/assets/icons/favorite.svg")      
+    span.like__text=options.value    

@@ -1,0 +1,51 @@
+.like {
+  &__label{
+    color: $dark-shade-25;
+  }
+
+  &__favorite {    
+    pointer-events: none;
+      & svg {
+        pointer-events: none;
+        fill: inherit;
+      }
+  }
+
+  &__input {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    border: 1px solid $dark-shade-25;
+    border-radius: 10px;
+    background-color: #FFF;
+    cursor: pointer;
+    fill: $dark-shade-25;
+    color: $dark-shade-25;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    &_active {
+      border: 1px solid $purple;
+      color: $purple;
+      fill: $purple;      
+    }
+
+    &:focus {
+      box-shadow: 0 0 2px;
+    }
+  }
+
+  &__text {
+    font-family: inherit;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: inherit;
+    align-self: center;
+    pointer-events: none;
+  }
+}
