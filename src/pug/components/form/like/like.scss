@@ -1,9 +1,12 @@
 .like {
+  margin-bottom: 40px;
+
+
   &__label{
     color: $dark-shade-25;
   }
 
-  &__favorite {    
+  &__favorite {        
     font-family: "Material Icons";
     font-size: 10px;
     font-style: normal;

@@ -1,0 +1,77 @@
+@mixin checked($number){
+  width: $number * 1em;        
+  z-index: 6 - $number;
+  &::after{          
+    content: "star_border";
+    font-family: "Material Icons";      
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em; 
+
+    background-image: linear-gradient( $purple, $purpleGradient);               
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    position: absolute;
+    left: ($number - 1) * 1em;
+    top: 2px;
+
+  }
+  &:checked {            
+    &::after{ 
+      content: "star";      
+    }    
+  }
+  
+}
+
+
+.rate {
+    
+    &__legend {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 15px;
+      letter-spacing: 0em;    
+
+      margin-bottom: 15px;
+    }
+
+    &__group {
+      display: flex;
+      align-items: center;      
+      width: 120px;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    &__star {
+      appearance: none;            
+      font-size: 24px;
+      height: 24px;                    
+      position: absolute;                               
+      
+
+      &:nth-of-type(1) {        
+        @include checked(1);        
+      }
+
+      &:nth-of-type(2) {                   
+        @include checked(2);
+      }
+      &:nth-of-type(3) {           
+        @include checked(3);
+      }
+      &:nth-of-type(4) {           
+        @include checked(4);
+      }
+      &:nth-of-type(5) {                 
+        @include checked(5);
+      }
+    }   
+}

@@ -72,6 +72,7 @@ module.exports = {
   module: {
     rules: [
       pug,
+      { test: /\.svg/, type: 'asset/resource' },
       sass,
       babel,
       {
@@ -80,10 +81,6 @@ module.exports = {
         generator: {
           filename: 'fonts/[hash][ext][query]',
         },
-      },
-      {
-        test: /\.svg/,
-        type: 'asset/resource',
       },
     ],
   },
@@ -95,15 +92,15 @@ module.exports = {
       template: '/pug/index.pug',
     }),
     new ESLintPlugin(),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: 'assets',
-          to: 'assets',
-        },
-        copyAssetsPath('icons'),
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: 'assets',
+    //       to: 'assets',
+    //     },
+    //     copyAssetsPath('icons'),
+    //   ],
+    // }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),

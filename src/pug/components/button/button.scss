@@ -62,16 +62,16 @@ $buttons-width: (
 
 .button {
   color: $dark-shade-50;
-  border-radius: 1000rem;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 0em;
-  overflow: hidden;
-  white-space: nowrap;
+  border-radius: 1000rem;  
 
   &__text {
-    align-self: center
+    align-self: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
 }

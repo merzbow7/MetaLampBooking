@@ -1,0 +1,7 @@
+mixin rate(options)
+  fieldset.rate
+    legend.rate__legend= options.legend
+    .rate__group
+      each star in options.items        
+        input.rate__star(type="radio")&attributes(star)
+        
