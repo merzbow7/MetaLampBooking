@@ -1,0 +1,44 @@
+.bullet {
+  width: 292px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+
+  &__label {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  
+
+  &__item {    
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    gap: 0 10.5px;
+
+    &::before {
+      margin-top: 0.5em;      
+      content: "";     
+      width: 10px;
+      height: 10px;
+      background-color: $dark-shade-25;           
+      border-radius: 5px;      
+    }
+
+    
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
+    

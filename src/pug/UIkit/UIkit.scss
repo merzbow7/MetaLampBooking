@@ -30,6 +30,9 @@ $col-3: 320px;
 .column-2 {
   grid-column: 4;
   grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 40px 0;
 }
 
 .column-3 {
