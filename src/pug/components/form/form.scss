@@ -12,12 +12,12 @@
 @import 'like/like';
 @import 'rate/rate';
 @import 'bullet/bullet';
+@import 'input-group/input-group';
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px 0;
-  margin-bottom: 20px;
+  gap: 5px 0;  
 
   &__label {    
     display: flex;    

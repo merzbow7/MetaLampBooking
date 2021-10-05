@@ -17,9 +17,16 @@ $col-3: 320px;
   grid-template: 145px 1fr 145px / 145px $col-1 $gap $col-2 $gap $col-3 145px;  
 }
 
-.column-1 {
+.column-1  {
+
   grid-column: 2;
   grid-row: 2;
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
+  }
+  
 }
 
 .flex-row {

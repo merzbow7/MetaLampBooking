@@ -18,16 +18,27 @@ block content
             "Кровати": {default: 2, min:1, max:4},
             "Ванные комнаты": {default: 0, min:0, max:2},
             }
-          const input1 = {required: true, id: "test-input", label: "text field", size: "lg"}
+          const input1 = {                       
+            label: "text field",
+            size: "lg",            
+            attr: {
+              id: "test-input",
+              placeholder: "Email",
+              required: true,
+              }
+            }
         +form__input-group(input1)
 
-        +form__input-group({
-          type:"tel",
-          id: "tel-input",
-          label: "phone number",
-          size: "md",
-          placeholder: "Enter your phone"
-        })
+        +form__input-group({                
+          label: "Text Field",
+          size: "lg",          
+          attr: {
+            id: "tel-input",
+            type:"tel",    
+            focused: true,            
+            placeholder: "This is pretty awesome",
+            }
+          })
 
         +form__dropdown-group({
           id: "drpd22312",
@@ -58,7 +69,28 @@ block content
 
         .flex-row
           +form__input-group({id: "md12",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                 
-          +form__input-group({id: "md22",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                       
+          +form__input-group({        
+            size: "sm",
+            class:"form__input_expand",
+            label: "picker",            
+            attrs: {
+              placeholder: "ДД.ММ.ГГГГ",
+              id: "md22",
+            }
+            })                                       
+         
+        
+        +form__input-group_append({                    
+          label: "subscription text field",
+          size: "lg",
+          attr: {
+            id: "test-group",
+            type: "email",            
+            name: "test",
+            placeholder:"Email"
+          }
+        })
+
         
 
         +button({background: "green", big: true, end: "arrow_forward"})

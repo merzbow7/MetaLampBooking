@@ -1,18 +1,32 @@
 mixin form__input(options)
   -
+    options.attr = options.attr ? options.attr : {}
+    options.attr.autocomplete="off"
     options.size = options.size ? "form__input_" + options.size : "form__input_md"
-    options.type = options.type ? options.type : "text"    
-    options.class = options.class ? options.class + " " + options.size : options.size    
+    options.attr.type = options.attr.type ? options.attr.type : "text"    
+    options.class = options.class ? `${options.size} ${options.class}`: options.size    
     options.datatype = options.datatype ? options.datatype : null
     options.required = options.required ? options.required : null    
-    options.placeholder = options.datatype=="date" ? "ДД.ММ.ГГГГ" : options.placeholder
-  input.form__input(
-    id=options.id,
-    placeholder=options.placeholder,
-    type=options.type,
-    name=options.name,
+    placeholder = options.datatype=="date" ? "ДД.ММ.ГГГГ" : options.placeholder
+  input.form__input(             
     class=options.class,
-    data-form-type=options.datatype,
-    required=options.required,
-    autocomplete="off"
-  )
+    data-form-type=options.datatype, 
+  )&attributes(options.attr)
+
+mixin form__input-group(options)
+  .form-group
+    +form__label(options) 
+    +form__input(options)
+
+mixin form__input-group_append(options)  
+  .input-group
+    if options.id
+      +form__label(options)
+      .input
+        +form__input(options)
+        button.input__btn="arrow_forward"
+    else
+      label.form-group__label= options.label
+        .input
+          +form__input(options)        
+          button.input__btn="arrow_forward"

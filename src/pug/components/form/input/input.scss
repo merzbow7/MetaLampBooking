@@ -1,14 +1,28 @@
 $icon-position: math.div($base-height - $icon-size, 2);
 
 .form__input {
-  font: inherit;
+  font-family: Montserrat;
+  font-size: 14px;  
+  font-weight: 400;
+  line-height: 24px;  
+
   height: $input-height;
   border-radius: 4px;
   border: 1px solid $dark-shade-25;
+  color: $dark-shade-75;
   font-size: 14px;
   line-height: 24px;
   padding: 12px 15px;
   transition: all 250ms;
+
+  &::placeholder {    
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    color: $dark-shade-25;
+  }
 
   @each $name, $width in $form-widths {
     &_#{$name} {
@@ -24,9 +38,37 @@ $icon-position: math.div($base-height - $icon-size, 2);
 
   &:hover,
   &:focus {
+    &::placeholder {
+      color: $dark-shade-75;
+    }
+    font-size: 14px;
+    font-style: normal;    
+    line-height: 24px;    
+    text-align: left;    
+
     padding: 12.5px 15.5px;
     background-position: top $icon-position + 0.5 right $icon-position + 0.5;
     border: 1px solid $dark-shade-50;
     transition: all 250ms;
+  }
+}
+
+
+.input {  
+  position: relative;  
+
+  &__btn {
+    position: absolute;
+    $icon-position: math.div($base-height - $icon-size, 2);      
+    right: $icon-position;
+    top: $icon-position;            
+
+    font-family: "Material Icons";
+    background-color: #fff;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;    
+    color: $purple; 
   }
 }
