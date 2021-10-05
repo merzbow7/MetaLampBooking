@@ -15,8 +15,13 @@ mixin form__input(options)
 
 mixin form__input-group(options)
   .form-group
-    +form__label(options) 
-    +form__input(options)
+    if options.id
+      +form__label(options)
+      +form__input(options)
+    else
+      +form__label(options)
+        +form__input(options)
+
 
 mixin form__input-group_append(options)  
   .input-group
