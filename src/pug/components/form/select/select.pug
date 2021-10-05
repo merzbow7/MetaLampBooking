@@ -9,4 +9,7 @@ mixin form__select(options)
     each val, text in options.options
       option.select__option(value=val)= text
 
-  
+mixin form__select-group(options)
+  .form-group
+    +form__label(options) 
+    +form__select(options)

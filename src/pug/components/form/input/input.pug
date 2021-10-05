@@ -7,15 +7,17 @@ mixin form__input(options)
     options.class = options.class ? `${options.size} ${options.class}`: options.size    
     options.datatype = options.datatype ? options.datatype : null
     options.required = options.required ? options.required : null    
-    placeholder = options.datatype=="date" ? "ДД.ММ.ГГГГ" : options.placeholder
+    options.attr.placeholder = options.datatype==="date" ? "ДД.ММ.ГГГГ" : options.attr.placeholder
   input.form__input(             
     class=options.class,
     data-form-type=options.datatype, 
   )&attributes(options.attr)
 
 mixin form__input-group(options)
+  - options.attr = options.attr ? options.attr  : {}
+  - options.attr.id = options.attr.id ? options.attr.id : options.id
   .form-group
-    if options.id
+    if options.attr.id
       +form__label(options)
       +form__input(options)
     else
@@ -24,8 +26,10 @@ mixin form__input-group(options)
 
 
 mixin form__input-group_append(options)  
+  - options.attr = options.attr ? options.attr  : {}
+  - options.attr.id = options.attr.id ? options.attr.id : options.id
   .input-group
-    if options.id
+    if options.attr.id
       +form__label(options)
       .input
         +form__input(options)

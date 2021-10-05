@@ -68,14 +68,23 @@ block content
         })                
 
         .flex-row
-          +form__input-group({id: "md12",type:"text", size: "sm", class:"form__input_expand",  label: "picker", placeholder: "ДД.ММ.ГГГГ"})                                 
+          +form__input-group({            
+            size: "sm",
+            class:"form__input_expand",
+            label: "picker",            
+            attr: {
+              id: "md12",
+              type:"text",
+              placeholder: "ДД.ММ.ГГГГ",
+            }
+            })                                 
           +form__input-group({        
             size: "sm",
             class:"form__input_expand",
             label: "picker",            
-            attrs: {
-              placeholder: "ДД.ММ.ГГГГ",
+            attr: {
               id: "md22",
+              placeholder: "ДД.ММ.ГГГГ",              
             }
             })                                       
          
