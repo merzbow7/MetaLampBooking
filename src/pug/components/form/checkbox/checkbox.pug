@@ -1,14 +1,19 @@
 mixin checkbox(options)  
   label.checkbox__label
     input.checkbox__input(type="checkbox")&attributes(options.state)
-    span.checkbox__text
-      |#{options.content}
+    if options.content !== 'richCheckbox'
+      .checkbox__text=options.content
+    else
+      .checkbox__rich
+        .checkbox__header_rich=options.state.header
+        .checkbox__text_rich=options.state.text
     
 mixin checkbox-group(options)
   fieldset.checkbox-group
     legend.checkbox-group__title=options.label
     each row in options.content
       .checkbox-group__row
-        each state, check in row          
+        each state, content in row          
           .checkbox-group__col.checkbox
-            +checkbox({content: check, state: state})      
+            +checkbox({content: content, state: state})
+          
