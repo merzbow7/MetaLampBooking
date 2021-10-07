@@ -108,9 +108,9 @@ block content
       +checkbox-group({
         label: "Checkbox Buttons",
         content:[
-          {"Можно курить" : {disabled: true}},
-          {"Можно с питомцами":{checked: true}},
-          {"Можно пригласить гостей (до 10 человек)": {checked: true}}
+          {text: "Можно курить", attrs: {disabled: true}},
+          {text: "Можно с питомцами", attrs: {checked: true}},
+          {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
           ]
         })
       +radio-group({
@@ -152,13 +152,14 @@ block content
         "Без вечеринок и мероприятий",
         "Время прибытия — после 13:00, а выезд до 12:00"
         ]})     
-      
+           
       +checkbox-group({
         label: "rich Checkbox Buttons",        
         content:[
           {richCheckbox: {
             header: "Широкий коридор",
-            text: "Ширина коридоров в номере не менее 91 см."
+            text: "Ширина коридоров в номере не менее 91 см.",
+            attrs: {checked: true}
           }},          
           {richCheckbox: {
             header: "Помощник для инвалидов",
