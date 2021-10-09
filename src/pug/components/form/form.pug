@@ -9,11 +9,4 @@ include like/like
 include rate/rate
 include bullet/bullet
 
-mixin form__dropdown-group(options)
-  .form-group
-    if options.id
-      +form__label(options)
-      +form__dropdown(options)
-    else
-      label.form-group__label= options.label
-        +form__dropdown(options)
+

@@ -9,14 +9,24 @@ block content
       form
         -
           const guest = {
-            "Взрослые": {default: 0, min:0, max:4},
-            "Дети": {default: 0, min:0, max:4},
-            "Младенцы": {default: 0, min:0, max:4},
+            dropdown: {                       
+              "Взрослые": {default: 0, min:0, max:4},
+              "Дети": {default: 0, min:0, max:4},
+              "Младенцы": {default: 0, min:0, max:4},}
             }
           const rooms = {
-            "Спальни": {default: 2, min:2, max:3},
-            "Кровати": {default: 2, min:1, max:4},
-            "Ванные комнаты": {default: 0, min:0, max:2},
+            dropdown : {
+              "Спальни": {default: 2, min:2, max:3},
+              "Кровати": {default: 2, min:1, max:4},
+              "Ванные комнаты": {default: 0, min:0, max:2},}
+            }
+
+          const check = {
+            content:[
+              {text: "Можно курить", attrs: {disabled: true}},
+              {text: "Можно с питомцами", attrs: {checked: true}},
+              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
+              ]
             }
           const input1 = {                       
             label: "text field",
@@ -50,14 +60,33 @@ block content
           controls: true,
         })
 
-        +form__dropdown-group({                                 
+        +form__dropdown-group({                
           label: "dropdown",
           size: "lg",
           placeholder: "Сколько комнат",
           options: rooms,
-          dropdowntype: "rooms"           
+          dropdowntype: "rooms",                          
         })
 
+        
+
+        +form__dropdown-check({                                 
+          label: "dropdown-check",
+          size: "lg",
+          placeholder: "dropdown-check",
+          options: {
+            content:[
+              {text: "Можно курить", attrs: {disabled: true}},
+              {text: "Можно с питомцами", attrs: {checked: true}},
+              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}},
+              {richCheckbox: {
+                header: "Широкий коридор",
+                text: "Ширина коридоров в номере не менее 91 см.",
+                attrs: {checked: true}
+              }},     
+          ]},
+          dropdowntype: "check"
+        })
 
         +form__input-group({
           datatype:"date",

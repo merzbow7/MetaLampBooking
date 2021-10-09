@@ -3,13 +3,13 @@ import { roomsTranslate, guestsTranslate } from './translate';
 const dropdowns = document.querySelectorAll('[data-form-type="dropdown"]');
 
 const closeDropdown = (target) => {
-  target.nextSibling.classList.remove('dropdown_expand');
+  target.nextSibling.classList.remove('dropdown__body_expand');
   target.setAttribute('aria-expanded', 'false');
   target.nextSibling.setAttribute('aria-hidden', 'true');
 };
 
 const expandDropdown = (target) => {
-  target.nextSibling.classList.add('dropdown_expand');
+  target.nextSibling.classList.add('dropdown__body_expand');
   target.setAttribute('aria-expanded', 'true');
   target.nextSibling.setAttribute('aria-hidden', 'false');
 };
@@ -19,7 +19,7 @@ const closeAllDropdowns = () => {
 };
 
 const toggleDropdown = (target) => {
-  if (getComputedStyle(target.nextSibling).display === 'block') {
+  if (target.nextSibling.classList.contains('dropdown__body_expand')) {
     closeDropdown(target);
   } else {
     closeAllDropdowns();
@@ -27,8 +27,11 @@ const toggleDropdown = (target) => {
   }
 };
 
-window.addEventListener('click', () => {
-  closeAllDropdowns();
+window.addEventListener('click', (event) => {
+  if (event.target.closest('.dropdown__body') === null) {
+    event.stopPropagation();
+    closeAllDropdowns();
+  }
 });
 
 const caseGuestMap = new Map(Object.entries(guestsTranslate));
@@ -85,14 +88,8 @@ const initButtons = (baseNode) => {
 
 dropdowns.forEach((dropdown) => {
   dropdown.addEventListener('click', (event) => {
-    event.preventDefault();
     event.stopPropagation();
     toggleDropdown(event.target);
-  });
-
-  dropdown.nextSibling.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
   });
 
   const resetOptionValue = (node) => {
@@ -103,7 +100,9 @@ dropdowns.forEach((dropdown) => {
     }
   };
 
-  const dropdownOptionsList = dropdown.nextSibling;
+  window.dropdown = dropdown;
+  const dropdownOptionsList =
+    dropdown.nextSibling.querySelector('.dropdown__options');
   const dropdownOptions = dropdownOptionsList.childNodes;
   const controls = dropdownOptionsList.querySelector('.option__controls');
 
@@ -162,8 +161,8 @@ dropdowns.forEach((dropdown) => {
   };
 
   dropdownOptions.forEach((option) => {
-    if (!option.classList.contains('option__controls')) {
-      const optionValue = option.querySelector('.option__value');
+    const optionValue = option.querySelector('.option__value');
+    if (optionValue) {
       const { decBtn, incBtn } = initButtons(optionValue);
 
       const controllerOfSign = (sign) => {

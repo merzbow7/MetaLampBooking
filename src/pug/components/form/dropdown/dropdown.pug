@@ -1,30 +1,58 @@
 mixin form__dropdown(options)
   -
-    const size = options.size ? "form__dropdown_" + options.size : "form__dropdown_md"    
-    const id = options.id ? options.id : null
-    const _class = (options.class ?  options.class : "") + " " +  size    
-    options.dropdowntype = options.dropdowntype ? options.dropdowntype : "guests"
-  .wrapper_relative
-    button.form__dropdown(
-      id=id,
+    const size = options.size ? "dropdown__select_" + options.size : "dropdown__select_"        
+    let _class = (options.class || "") + " " +  size
+    options.dropdowntype = options.dropdowntype || "guests"    
+  .dropdown
+    button.dropdown__select(      
       class=_class,
+      type="button",
       data-form-type="dropdown",
       data-dropdown-type=options.dropdowntype,     
       aria-expanded="false",
       aria-label=options.label,
       role="combobox"
     )= options.placeholder
-    ul.dropdown(class=size, aria-hidden="true")
-      each val, text in options.options
-        li.dropdown__option.option
-          .option__description= text
-          .option__count
-            button.option__dec(aria-label="Уменьшить", data-min-count=val.min)= "-"
-            .option__value(data-default-count=val.default)= val.default
-            button.option__inc(aria-label="Уведичить", data-max-count=val.max)= "+"
-      if options.controls
-        li.dropdown__option.option.option__controls
-          button.option__reset(aria-label="Очистить")
-            |Очистить
-          button.option__apply(aria-label="Применить")
-            |Применить
+    .dropdown__body
+      if options.options.dropdown
+        ul.dropdown__options(aria-hidden="true")
+          each val, text in options.options.dropdown
+            li.option
+              .option__description= text
+              .option__count
+                button.option__dec(type="button", aria-label="Уменьшить", data-min-count=val.min)= "-"
+                .option__value(data-default-count=val.default)= val.default
+                button.option__inc(type="button", aria-label="Уведичить", data-max-count=val.max)= "+"
+          if options.controls
+            li.option.option__controls
+              button.option__reset(type="button", aria-label="Очистить")
+                |Очистить
+              button.option__apply(type="button", aria-label="Применить")
+                |Применить      
+
+mixin form__dropdown-check(options)
+  -
+    const size = options.size ? "dropdown__select_" + options.size : "dropdown__select_"        
+    const _class = (options.class || "") + " " +  size
+    options.dropdowntype = "check"
+  .dropdown
+    button.dropdown__select.dropdown__select_unborder(      
+      class=_class,
+      type="button",
+      data-form-type="dropdown",
+      data-dropdown-type=options.dropdowntype,     
+      aria-expanded="false",
+      aria-label=options.label,
+      role="combobox"
+    )= options.placeholder
+    .dropdown__body.dropdown__body_unborder
+      .dropdown__options(aria-hidden="true")
+            +checkbox-group(options.options)
+
+mixin form__dropdown-group(options)
+  .form-group
+    if !options.id
+      -options.id = `dropdown${Math.round((Math.random() * 16769023))}`
+    if options.label
+      +form__label(options)
+    +form__dropdown(options)    

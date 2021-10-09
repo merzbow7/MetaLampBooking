@@ -10,7 +10,8 @@ mixin checkbox(options)
     
 mixin checkbox-group(options)
   fieldset.checkbox-group
-    legend.checkbox-group__title=options.label
+    if options.label
+      legend.checkbox-group__title=options.label
     each row in options.content      
       .checkbox-group__row
         if Array.isArray(row) 
