@@ -1,5 +1,6 @@
 mixin form__label(options)
   - options.attr = options.attr ? options.attr : {}
   - const id = options.attr.id ? options.attr.id : options.id
-  label.form__label.input-group__label(for=id)= options.label
+  - _class =  options.inline && "form__label_row" 
+  label.form__label.input-group__label(for=id, class=_class)= options.label
     block

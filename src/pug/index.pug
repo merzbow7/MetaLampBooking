@@ -66,27 +66,9 @@ block content
           placeholder: "Сколько комнат",
           options: rooms,
           dropdowntype: "rooms",                          
-        })
+        })       
 
         
-
-        +form__dropdown-check({                                 
-          label: "dropdown-check",
-          size: "lg",
-          placeholder: "dropdown-check",
-          options: {
-            content:[
-              {text: "Можно курить", attrs: {disabled: true}},
-              {text: "Можно с питомцами", attrs: {checked: true}},
-              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}},
-              {richCheckbox: {
-                header: "Широкий коридор",
-                text: "Ширина коридоров в номере не менее 91 см.",
-                attrs: {checked: true}
-              }},     
-          ]},
-          dropdowntype: "check"
-        })
 
         +form__input-group({
           datatype:"date",
@@ -126,6 +108,24 @@ block content
             name: "test",
             placeholder:"Email"
           }
+        })
+
+        +form__dropdown-check({                                 
+          label: "dropdown-check",
+          size: "lg",
+          placeholder: "dropdown-check",
+          options: {
+            content:[
+              {text: "Можно курить", attrs: {disabled: true}},
+              {text: "Можно с питомцами", attrs: {checked: true}},
+              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}},
+              {richCheckbox: {
+                header: "Широкий коридор",
+                text: "Ширина коридоров в номере не менее 91 см.",
+                attrs: {checked: true}
+              }},     
+          ]},
+          dropdowntype: "check"
         })
 
         
@@ -195,4 +195,13 @@ block content
             text: "На 1 этаже вас встретит специалист  и проводит до номера."
           }}
           ]
+        })
+
+    .column-3
+      +form__range-slider-group({
+        label: "Range Slider",
+        min: 5000,
+        max: 10000,
+        currency: "RUB",
+        width: 266
         })

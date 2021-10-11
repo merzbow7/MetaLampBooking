@@ -1,0 +1,36 @@
+mixin form__range-slider(options)      
+  .range-slider(
+      data-form-type="range-slider",
+      data-range-min=options.min,
+      data-range-max=options.max
+      data-range-currency=options.currency)
+    input(
+      type="range",
+      data-range-slider="min",
+      min="0", max="100",
+      value="25").range-slider__input
+    input(type="range",
+      data-range-slider="max",
+      min="0", max="100",
+      value="75").range-slider__input
+
+    .slider
+      .slider__track
+      .slider__range
+      .slider__thumb.thumb.thumb__left
+      .slider__thumb.thumb.thumb__right
+
+
+
+
+mixin form__range-slider-group(options)
+  .slider-group
+    if !options.id
+      -options.id = `range-slider${Math.round((Math.random() * 16769023))}`    
+      -labelOptions = options
+      -labelOptions.inline= true      
+    +form__label(labelOptions)
+      span.slider-group__text="5 000₽ - 10 000₽"
+    +form__range-slider(options)    
+
+        
