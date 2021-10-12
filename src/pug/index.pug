@@ -1,8 +1,7 @@
 extends base
 
 block content
-  include components/form/form
-  include components/button/button
+  include components/form/form  
 
   main.page-control-form-elements
     .column-1
@@ -205,3 +204,9 @@ block content
         currency: "RUB",
         width: 266
         })
+
+      .form-group.form-group_md.form-group_rarefied
+        +form__label({id: null, label:"BUTTONS"})
+        .buttons-group
+          +button({background: "green"})="click me"
+          +button({background: "green"})="click me"

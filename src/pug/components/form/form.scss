@@ -13,11 +13,25 @@
 @import 'rate/rate';
 @import 'bullet/bullet';
 @import 'rangeslider/rangeslider';
+@import 'button/button';
+
+
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 5px 0;  
+
+
+  &_rarefied {
+    gap: 15px 0;  
+  }
+
+  @each $name, $width in $form-widths {
+    &_#{$name} {
+      width: $width;
+    }
+  }
 
   &__label {    
     display: flex;    
