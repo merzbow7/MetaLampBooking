@@ -205,8 +205,39 @@ block content
         width: 266
         })
 
-      .form-group.form-group_md.form-group_rarefied
+      .form-group.form-group_lg.form-group_rarefied
         +form__label({id: null, label:"BUTTONS"})
         .buttons-group
-          +button({background: "green"})="click me"
-          +button({background: "green"})="click me"
+          .buttons-group__row
+            +button({background: "green"})="click me"
+            +button({background: "purple"})="click me"
+
+          .buttons-group__row
+            +button({background: "green", outline: true, background: "purple"})="click me"
+            +button({background: "purple", outline: true})="click me"
+          
+          .buttons-group__row
+            +button({inline: true, background: "purple"})="click me"          
+            +button({inline: true, background: "green"})="click me"
+          
+          .buttons-group__row
+            +button({
+              background: "purple",
+              size: "lg",
+               arrow: {
+                 icon: "arrow_forward",
+                 position: "end",                 
+               }
+            })="click me"
+
+          .buttons-group__row
+            +button({
+              background: "purple",
+              size: "round",
+               arrow: {
+                 icon: "arrow_forward",
+                 position: "center",                 
+               }
+            })
+        
+        

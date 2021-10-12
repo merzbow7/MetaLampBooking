@@ -5,9 +5,9 @@ $arrow-height: 24px;
 $big-button-size: 320px;
 $outline-border: 2px;
 $button-text-or-bg: white;
-$buttons-width: (
-  'sm': 150px,
-  'md': 266px,
+$buttons-width: (  
+  'sm': 44px,
+  'md': 99px,
   'lg': 320px,
 );
 
@@ -18,61 +18,63 @@ $buttons-width: (
   @if $outline != 0 {
     color: $from;
     $state: $button-text-or-bg;
-  }
-  @if $outline == 2 {
-    $from: transparent;
-    $to: transparent;
-  }
+  }  
   background-image: linear-gradient($state, $state),
     linear-gradient(180deg, fade-out($from, $opacity), fade-out($to, $opacity));
 }
 
-@mixin abstact_button($outline: 0) {
-  width: $button-width;
+@mixin button_color($from, $to, $outline) {
+  @include button-background($from, $to, $outline: $outline);
+
+  &:hover {
+    @include button-background($from, $to,$opacity: 0.5, $outline: $outline);
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px $from;
+  }
+}
+
+@mixin abstact_button($outline: 0) {  
   height: $button-height;
+  align-content: center;
 
   border: solid $outline-border transparent;
   background-clip: padding-box, border-box;
   background-origin: border-box;
 
-  &_green {
-    $from: $green;
-    $to: $greenGradient;
-    @include button-background($from, $to, $outline: $outline);
-  }
-
-  &_hazy-green {
-    $from: $green;
-    $to: $greenGradient;
-    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
-  }
+  &_green {    
+    @include button_color($green, $greenGradient, $outline);
+  }  
 
   &_purple {
-    $from: $purple;
-    $to: $purpleGradient;
-    @include button-background($from, $to, $outline: $outline);
-  }
-
-  &_hazy-purple {
-    $from: $purple;
-    $to: $purpleGradient;
-    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
+    @include button_color($purple, $purpleGradient, $outline);    
   }
 }
 
 .button {
   color: $dark-shade-50;
-  border-radius: 1000rem;  
+  border-radius: 1000rem;
+  display: flex;  
+  align-items: center;
+  justify-content: space-between;
 
-  &__text {
-    align-self: center;
+  @each $name, $width in $buttons-width {
+    &_#{$name} {
+      width: $width;
+    }
+  }
+
+  &__text {              
+    order: 2;    
+    
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
     letter-spacing: 0em;
     overflow: hidden;
     white-space: nowrap;
-    text-transform: uppercase;
+    text-transform: uppercase;   
 
     &_initial {
       text-transform: initial;
@@ -87,14 +89,21 @@ $buttons-width: (
 }
 
 .button-outline {
-  @include abstact_button(1);
+  @include abstact_button(1);  
 }
 
 .button-inline {
-  @include abstact_button(2);
-  border: none;
-  width: auto;
+  @include abstact_button(1);
+  border: none;  
   height: auto;
+  width: fit-content;
+
+  background-color: #fff;  
+
+  &:hover {
+    color: $dark-shade-50;
+  }
+
 }
 
 .button_round {
@@ -102,30 +111,27 @@ $buttons-width: (
   height: $round-button-size;
 }
 
-.button_big {  
-  width: 320px;
-  display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  align-content: center;  
-}
-
 .arrow {
-
-  &_start {
-    grid-column-start: 1;
-  }
-  
-  &_end {
-    grid-column-start: 3;
-  }
-
-  width: fit-content;    
   font-family: "Material Icons";
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  letter-spacing: 0em;
-  justify-self: center;
+  letter-spacing: 0em;  
 
+  &_center {       
+    width: fit-content;        
+    order: 2;
+  }  
+
+  &_start {        
+    width: $button-height;    
+    order: 1;
+  }
+  
+  &_end {            
+    width: $button-height;
+    order: 3;
+  }  
+  
 }
