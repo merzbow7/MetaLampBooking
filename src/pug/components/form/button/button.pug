@@ -2,18 +2,11 @@ mixin button(options)
   - buttonClass = "button"  
   - buttonType = options.outline ? "button-outline" : "button-solid"   
   - buttonClass += ` ${buttonType}`
-<<<<<<< HEAD
   - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"    
-=======
-  - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"  
-  - arrowStart = options.start
-  - arrowEnd = options.end
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
   - buttonWidth = options.size || "md"
   if options.round == true
     - buttonWidth = "round"
   - buttonClass += ` button_${buttonWidth}`;
-<<<<<<< HEAD
   if options.inline == true    
     - buttonClass = "button " + "button-inline button-inline_"  + options.background;  
   - arrow = options?.arrow
@@ -24,16 +17,6 @@ mixin button(options)
       .arrow.arrow_start()= position == "start" ? arrow.icon : ""
       if position === "center"
         .arrow.arrow_center= arrow.icon
-=======
-  if options.inline == true
-    - buttonType = "button-inline"  
-    - buttonClass = "button " + buttonType + " " +  buttonType + "_"  + options.background;  
-  - arrow = options?.arrow
-  button(class=buttonClass)
-    if arrow
-      - position = arrow.position
-      .arrow.arrow_start()= position == "start" ? arrow.icon : ""
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
       .arrow.arrow_end()= position == "end" ? arrow.icon : ""
     else
       if !options.inline

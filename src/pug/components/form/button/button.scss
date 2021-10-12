@@ -35,12 +35,7 @@ $buttons-width: (
   }
 }
 
-<<<<<<< HEAD
 @mixin abstact_button($outline: 0) {  
-=======
-@mixin abstact_button($outline: 0) {
-  // width: $button-width;
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
   height: $button-height;
   align-content: center;
 
@@ -95,10 +90,6 @@ $buttons-width: (
 
 .button-outline {
   @include abstact_button(1);  
-<<<<<<< HEAD
-=======
-  
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
 }
 
 .button-inline {
@@ -128,32 +119,17 @@ $buttons-width: (
   line-height: 24px;
   letter-spacing: 0em;  
 
-<<<<<<< HEAD
   &_center {       
-=======
-  &_center {
-    // grid-area: center;    
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
     width: fit-content;        
     order: 2;
   }  
 
-<<<<<<< HEAD
   &_start {        
-=======
-  &_start {    
-    // grid-area: start;
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
     width: $button-height;    
     order: 1;
   }
   
-<<<<<<< HEAD
   &_end {            
-=======
-  &_end {        
-    // grid-area: end;
->>>>>>> 62791acf148f6b66cfe2d60625fbbc58adccd0a3
     width: $button-height;
     order: 3;
   }  
