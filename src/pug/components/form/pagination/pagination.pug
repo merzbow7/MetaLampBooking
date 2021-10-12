@@ -1,0 +1,11 @@
+mixin pagination(options)            
+  .pagination
+    each page in options
+      .pagination__item
+        if page.button
+          if page.text
+            +button(page.button)= page.text
+          else 
+            +button(page.button)
+        else
+          |#{page.text}

@@ -65,6 +65,11 @@ $buttons-width: (
     }
   }
 
+  &_center {
+    justify-content: center;
+  }
+
+
   &__text {              
     order: 2;    
     

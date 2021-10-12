@@ -36,6 +36,8 @@ block content
               required: true,
               }
             }
+
+          
         +form__input-group(input1)
 
         +form__input-group({                
@@ -206,7 +208,7 @@ block content
         })
 
       .form-group.form-group_lg.form-group_rarefied
-        +form__label({id: null, label:"BUTTONS"})
+        +form__label({label:"BUTTONS"})
         .buttons-group
           .buttons-group__row
             +button({background: "green"})="click me"
@@ -230,14 +232,25 @@ block content
                }
             })="click me"
 
-          .buttons-group__row
-            +button({
-              background: "purple",
-              size: "round",
-               arrow: {
-                 icon: "arrow_forward",
-                 position: "center",                 
-               }
-            })
+
+      -
+        const pagination = [          
+            {text: "1", button: {background: "purple", size: "round"}},
+            {text: "2"},
+            {text: "3"},
+            {text: "..."},
+            {text: "15"},
+            {button:{background: "green", size: "round", arrow: {
+                icon: "arrow_forward",
+                position: "center",                 
+              }}}
+          ]
+      
+      .form-group.form-group_rarefied
+        +form__label({label:"pagination"})
+        +pagination(pagination)
+              
+            
+  
         
         

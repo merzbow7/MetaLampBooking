@@ -3,25 +3,20 @@ mixin button(options)
   - buttonType = options.outline ? "button-outline" : "button-solid"   
   - buttonClass += ` ${buttonType}`
   - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"    
-  - buttonWidth = options.size || "md"
-  if options.round == true
-    - buttonWidth = "round"
+  - buttonWidth = options.size || "md"  
   - buttonClass += ` button_${buttonWidth}`;
   if options.inline == true    
     - buttonClass = "button " + "button-inline button-inline_"  + options.background;  
-  - arrow = options?.arrow
-  button(class=buttonClass)
+  - arrow = options.arrow
+  button(class=[buttonClass, arrow ? "" : "button_center"])
     if arrow
       - position = arrow.position      
       -icon = arrow.icon
-      .arrow.arrow_start()= position == "start" ? arrow.icon : ""
-      if position === "center"
-        .arrow.arrow_center= arrow.icon
-      .arrow.arrow_end()= position == "end" ? arrow.icon : ""
-    else
-      if !options.inline
-        .arrow.arrow_start= ""
-        .arrow.arrow_end= ""
+      .arrow.arrow_start()= position == "start" ? arrow.icon : ""      
+      .arrow.arrow_end()= position == "end" ? arrow.icon : ""    
     if block
       .button__text
-        block    
+        block
+    else   
+      if arrow
+        .arrow.arrow_center= arrow.icon
