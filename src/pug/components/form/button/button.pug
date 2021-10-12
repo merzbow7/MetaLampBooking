@@ -5,15 +5,23 @@ mixin button(options)
   - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"  
   - arrowStart = options.start
   - arrowEnd = options.end
-  if options.big == true
-    - buttonClass += " " + "button_big";
+  - buttonWidth = options.size || "md"
   if options.round == true
-    - buttonClass += " " + "button_round";  
+    - buttonWidth = "round"
+  - buttonClass += ` button_${buttonWidth}`;
   if options.inline == true
     - buttonType = "button-inline"  
     - buttonClass = "button " + buttonType + " " +  buttonType + "_"  + options.background;  
+  - arrow = options?.arrow
   button(class=buttonClass)
-    span.arrow.arrow_start= arrowStart
-    span.button__text
-      block
-    span.arrow.arrow_end= arrowEnd
+    if arrow
+      - position = arrow.position
+      .arrow.arrow_start()= position == "start" ? arrow.icon : ""
+      .arrow.arrow_end()= position == "end" ? arrow.icon : ""
+    else
+      if !options.inline
+        .arrow.arrow_start= ""
+        .arrow.arrow_end= ""
+    if block
+      .button__text
+        block    
