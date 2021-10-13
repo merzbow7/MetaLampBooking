@@ -2,133 +2,262 @@ extends base
 
 block content
   include components/form/form  
-
-  main.page-control-form-elements
-    .column-1
-      form
-        -
-          const guest = {
-            dropdown: {                       
-              "Взрослые": {default: 0, min:0, max:4},
-              "Дети": {default: 0, min:0, max:4},
-              "Младенцы": {default: 0, min:0, max:4},}
-            }
-          const rooms = {
-            dropdown : {
-              "Спальни": {default: 2, min:2, max:3},
-              "Кровати": {default: 2, min:1, max:4},
-              "Ванные комнаты": {default: 0, min:0, max:2},}
-            }
-
-          const check = {
-            content:[
-              {text: "Можно курить", attrs: {disabled: true}},
-              {text: "Можно с питомцами", attrs: {checked: true}},
-              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
-              ]
-            }
-          const input1 = {                       
-            label: "text field",
-            size: "lg",            
-            attr: {
-              id: "test-input",
-              placeholder: "Email",
-              required: true,
+  .container-145
+    .page-control
+      .column-1
+        form
+          -
+            const guest = {
+              dropdown: {                       
+                "Взрослые": {default: 0, min:0, max:4},
+                "Дети": {default: 0, min:0, max:4},
+                "Младенцы": {default: 0, min:0, max:4},}
               }
-            }
+            const rooms = {
+              dropdown : {
+                "Спальни": {default: 2, min:2, max:3},
+                "Кровати": {default: 2, min:1, max:4},
+                "Ванные комнаты": {default: 0, min:0, max:2},}
+              }
+
+            const check = {
+              content:[
+                {text: "Можно курить", attrs: {disabled: true}},
+                {text: "Можно с питомцами", attrs: {checked: true}},
+                {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
+                ]
+              }
+            const input1 = {                       
+              label: "text field",
+              size: "lg",            
+              attr: {
+                id: "test-input",
+                placeholder: "Email",
+                required: true,
+                }
+              }
+
+            
+          +form__input-group(input1)
+
+          +form__input-group({                
+            label: "Text Field",
+            size: "lg",          
+            attr: {
+              id: "tel-input",
+              type:"tel",    
+              focused: true,            
+              placeholder: "This is pretty awesome",
+              }
+            })
+
+          +form__dropdown-group({
+            id: "drpd22312",
+            label: "dropdown",
+            size: "lg",
+            placeholder: "Сколько гостей",
+            options: guest,
+            dropdowntype: "guests",
+            controls: true,
+          })
+
+          +form__dropdown-group({                
+            label: "dropdown",
+            size: "lg",
+            placeholder: "Сколько комнат",
+            options: rooms,
+            dropdowntype: "rooms",                          
+          })       
 
           
-        +form__input-group(input1)
 
-        +form__input-group({                
-          label: "Text Field",
-          size: "lg",          
-          attr: {
-            id: "tel-input",
-            type:"tel",    
-            focused: true,            
-            placeholder: "This is pretty awesome",
+          +form__input-group({
+            datatype:"date",
+            id: "test-input5",
+            label: "masked text field",
+            size: "lg",
+            placeholder: "ДД.ММ.ГГГГ"
+          })                
+
+          .flex-row
+            +form__input-group({            
+              size: "sm",
+              class:"form__input_expand",
+              label: "picker",            
+              attr: {
+                id: "md12",
+                type:"text",
+                placeholder: "ДД.ММ.ГГГГ",
+              }
+              })                                 
+            +form__input-group({        
+              size: "sm",
+              class:"form__input_expand",
+              label: "picker",            
+              attr: {
+                id: "md22",
+                placeholder: "ДД.ММ.ГГГГ",              
+              }
+              })                                       
+          
+          
+          +form__input-group_append({                    
+            label: "subscription text field",
+            size: "lg",
+            attr: {            
+              type: "email",            
+              name: "test",
+              placeholder:"Email"
             }
           })
 
-        +form__dropdown-group({
-          id: "drpd22312",
-          label: "dropdown",
-          size: "lg",
-          placeholder: "Сколько гостей",
-          options: guest,
-          dropdowntype: "guests",
-          controls: true,
+          +form__dropdown-check({                                 
+            label: "dropdown-check",
+            size: "lg",
+            placeholder: "dropdown-check",
+            options: {
+              content:[
+                {text: "Можно курить", attrs: {disabled: true}},
+                {text: "Можно с питомцами", attrs: {checked: true}},
+                {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}},
+                {richCheckbox: {
+                  header: "Широкий коридор",
+                  text: "Ширина коридоров в номере не менее 91 см.",
+                  attrs: {checked: true}
+                }},     
+            ]},
+            dropdowntype: "check"
+          })
+
+          
+          +button({background: "green", big: true, end: "arrow_forward"})
+            | Submit          
+
+      .column-2
+        +checkbox-group({
+          label: "Checkbox Buttons",
+          content:[
+            {text: "Можно курить", attrs: {disabled: true}},
+            {text: "Можно с питомцами", attrs: {checked: true}},
+            {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
+            ]
+          })
+        +radio-group({
+          label: "Radio Buttons",
+          content:[
+            {"Мужчина" : {checked: true, name: "sex"}, "Женщина":{checked: false, name: "sex"}},          
+            ]
+          })
+
+        +toggle-group({
+          label: "Toggle",
+          content:[
+            {"Получать спецпредложения" : {checked: true, name: "send"}},
+            {"Получать спецпредложения" : {checked: false, name: "nosend"}},
+            ]
+          })
+
+        +like({
+          label: "Toggle",
+          value: "12",
+          state: {checked: true, name: "like"},          
         })
 
-        +form__dropdown-group({                
-          label: "dropdown",
-          size: "lg",
-          placeholder: "Сколько комнат",
-          options: rooms,
-          dropdowntype: "rooms",                          
-        })       
+        +rate({
+          legend: "rate button",
+          items: [
+            {name:"star", value:"1", checked: true},
+            {name:"star", value:"2"},
+            {name:"star", value:"3"},
+            {name:"star", value:"4"},
+            {name:"star", value:"5"},
+            ]                  
+          })
 
+        +bullet({
+          label: "bullet list",
+          list: [
+          "Нельзя с питомцами",
+          "Без вечеринок и мероприятий",
+          "Время прибытия — после 13:00, а выезд до 12:00"
+          ]})     
+            
+        +checkbox-group({
+          label: "rich Checkbox Buttons",        
+          content:[
+            {richCheckbox: {
+              header: "Широкий коридор",
+              text: "Ширина коридоров в номере не менее 91 см.",
+              attrs: {checked: true}
+            }},          
+            {richCheckbox: {
+              header: "Помощник для инвалидов",
+              text: "На 1 этаже вас встретит специалист  и проводит до номера."
+            }}
+            ]
+          })
+
+      .column-3
+        +form__range-slider-group({
+          label: "Range Slider",
+          min: 5000,
+          max: 10000,
+          currency: "RUB",
+          width: 266
+          })
+
+        .form-group.form-group_lg.form-group_rarefied
+          +form__label({label:"BUTTONS"})
+          .buttons-group
+            .buttons-group__row
+              +button({background: "green"})="click me"
+              +button({background: "purple"})="click me"
+
+            .buttons-group__row
+              +button({background: "green", outline: true, background: "purple"})="click me"
+              +button({background: "purple", outline: true})="click me"
+            
+            .buttons-group__row
+              +button({inline: true, background: "purple"})="click me"          
+              +button({inline: true, background: "green"})="click me"
+            
+            .buttons-group__row
+              +button({
+                background: "purple",
+                size: "lg",
+                arrow: {
+                  icon: "arrow_forward",
+                  position: "end",                 
+                }
+              })="click me"
+
+
+        -
+          const pagination = [          
+              {text: "1",
+                button: {background: "purple", size: "round"}},
+              {text: "2",
+                button: {background: "white", size: "round"}},
+              {text: "3",
+                button: {background: "white", size: "round"}},
+              {text: "...",
+                button: {background: "white", size: "round",
+                  attributes: {disabled:true}}
+                },
+              {text: "15",
+                button: {background: "white", size: "round"}},
+              {button:{background: "green", size: "round", arrow: {
+                  icon: "arrow_forward",
+                  position: "center",                 
+                }}}
+            ]
         
-
-        +form__input-group({
-          datatype:"date",
-          id: "test-input5",
-          label: "masked text field",
-          size: "lg",
-          placeholder: "ДД.ММ.ГГГГ"
-        })                
-
-        .flex-row
-          +form__input-group({            
-            size: "sm",
-            class:"form__input_expand",
-            label: "picker",            
-            attr: {
-              id: "md12",
-              type:"text",
-              placeholder: "ДД.ММ.ГГГГ",
-            }
-            })                                 
-          +form__input-group({        
-            size: "sm",
-            class:"form__input_expand",
-            label: "picker",            
-            attr: {
-              id: "md22",
-              placeholder: "ДД.ММ.ГГГГ",              
-            }
-            })                                       
-         
-        
-        +form__input-group_append({                    
-          label: "subscription text field",
-          size: "lg",
-          attr: {            
-            type: "email",            
-            name: "test",
-            placeholder:"Email"
-          }
-        })
-
-        +form__dropdown-check({                                 
-          label: "dropdown-check",
-          size: "lg",
-          placeholder: "dropdown-check",
-          options: {
-            content:[
-              {text: "Можно курить", attrs: {disabled: true}},
-              {text: "Можно с питомцами", attrs: {checked: true}},
-              {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}},
-              {richCheckbox: {
-                header: "Широкий коридор",
-                text: "Ширина коридоров в номере не менее 91 см.",
-                attrs: {checked: true}
-              }},     
-          ]},
-          dropdowntype: "check"
-        })
-
+        .form-group.form-group_rarefied
+          +form__label({label:"pagination"})
+          +pagination(pagination)
+                
+    .page-control
+      .column-1
         -
           const icons = {
             list:[
@@ -143,127 +272,4 @@ block content
 
         .form-group.form-group_mdx
           +icon-list-group(icons)
-
-        +button({background: "green", big: true, end: "arrow_forward"})
-          | Submit          
-
-    .column-2
-      +checkbox-group({
-        label: "Checkbox Buttons",
-        content:[
-          {text: "Можно курить", attrs: {disabled: true}},
-          {text: "Можно с питомцами", attrs: {checked: true}},
-          {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
-          ]
-        })
-      +radio-group({
-        label: "Radio Buttons",
-        content:[
-          {"Мужчина" : {checked: true, name: "sex"}, "Женщина":{checked: false, name: "sex"}},          
-          ]
-        })
-
-      +toggle-group({
-        label: "Toggle",
-        content:[
-          {"Получать спецпредложения" : {checked: true, name: "send"}},
-          {"Получать спецпредложения" : {checked: false, name: "nosend"}},
-          ]
-        })
-
-      +like({
-        label: "Toggle",
-        value: "12",
-        state: {checked: true, name: "like"},          
-      })
-
-      +rate({
-        legend: "rate button",
-        items: [
-          {name:"star", value:"1", checked: true},
-          {name:"star", value:"2"},
-          {name:"star", value:"3"},
-          {name:"star", value:"4"},
-          {name:"star", value:"5"},
-          ]                  
-        })
-
-      +bullet({
-        label: "bullet list",
-        list: [
-        "Нельзя с питомцами",
-        "Без вечеринок и мероприятий",
-        "Время прибытия — после 13:00, а выезд до 12:00"
-        ]})     
-           
-      +checkbox-group({
-        label: "rich Checkbox Buttons",        
-        content:[
-          {richCheckbox: {
-            header: "Широкий коридор",
-            text: "Ширина коридоров в номере не менее 91 см.",
-            attrs: {checked: true}
-          }},          
-          {richCheckbox: {
-            header: "Помощник для инвалидов",
-            text: "На 1 этаже вас встретит специалист  и проводит до номера."
-          }}
-          ]
-        })
-
-    .column-3
-      +form__range-slider-group({
-        label: "Range Slider",
-        min: 5000,
-        max: 10000,
-        currency: "RUB",
-        width: 266
-        })
-
-      .form-group.form-group_lg.form-group_rarefied
-        +form__label({label:"BUTTONS"})
-        .buttons-group
-          .buttons-group__row
-            +button({background: "green"})="click me"
-            +button({background: "purple"})="click me"
-
-          .buttons-group__row
-            +button({background: "green", outline: true, background: "purple"})="click me"
-            +button({background: "purple", outline: true})="click me"
-          
-          .buttons-group__row
-            +button({inline: true, background: "purple"})="click me"          
-            +button({inline: true, background: "green"})="click me"
-          
-          .buttons-group__row
-            +button({
-              background: "purple",
-              size: "lg",
-               arrow: {
-                 icon: "arrow_forward",
-                 position: "end",                 
-               }
-            })="click me"
-
-
-      -
-        const pagination = [          
-            {text: "1", button: {background: "purple", size: "round"}},
-            {text: "2", button: {background: "white", size: "round"}},
-            {text: "3", button: {background: "white", size: "round"}},
-            {text: "...", button: {background: "white", size: "round"}},
-            {text: "15", button: {background: "white", size: "round"}},
-            {button:{background: "green", size: "round", arrow: {
-                icon: "arrow_forward",
-                position: "center",                 
-              }}}
-          ]
-      
-      .form-group.form-group_rarefied
-        +form__label({label:"pagination"})
-        +pagination(pagination)
-              
-            
-  
-        
         

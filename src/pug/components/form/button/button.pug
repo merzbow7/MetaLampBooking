@@ -8,7 +8,7 @@ mixin button(options)
   if options.inline == true    
     - buttonClass = "button " + "button-inline button-inline_"  + options.background;  
   - arrow = options.arrow
-  button(class=[buttonClass, arrow ? "" : "button_center"])
+  button(class=[buttonClass, arrow ? "" : "button_center"])&attributes(options.attributes)
     if arrow
       - position = arrow.position      
       -icon = arrow.icon
