@@ -44,6 +44,13 @@ $col-3: 320px;
   gap: 40px 0;
 }
 
+.column-2 {  
+  flex: 1 1 711px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px 0;
+}
+
 .column-3 {  
   flex: 1 1 $col-3;
   display: flex;

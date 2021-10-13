@@ -1,0 +1,18 @@
+mixin user-profile(options)
+  .user
+    img.user__avatar(src=options.url, alt=options.name)
+    .user__desctiption
+      .user__name= options.name
+      .uset__was= options.was
+  
+
+mixin comment-block(options)
+  .comment
+    .comment__user    
+      +user-profile(options.user)                
+    .comment__text
+      .comment__like
+        +like(options.likes)
+      p= options.comment
+
+
