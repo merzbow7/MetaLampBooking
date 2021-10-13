@@ -1,0 +1,58 @@
+.icon-list {
+
+  &__item{
+    display: flex;
+    gap: 0 10px;    
+    height: 51px;
+    margin: 0 0 32px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -16px;
+      width: 100%;
+      border-bottom: 1px solid $dark-shade-10;
+    }
+
+  }
+
+  &__icon {
+    font-family: "Material Icons";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 41px;
+    letter-spacing: 0em;
+    display: flex;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    background-image: $primary-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;    
+    color: $dark-shade-75;
+    font-size: 14px;
+    font-style: normal;    
+    line-height: 24px;
+
+    align-self: flex-end;
+    height: 48px;
+  }
+
+  &__header {    
+    font-weight: 700;    
+  }
+
+  &__text {    
+    font-weight: 400;    
+  }
+}

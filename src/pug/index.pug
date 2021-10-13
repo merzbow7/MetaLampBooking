@@ -129,7 +129,20 @@ block content
           dropdowntype: "check"
         })
 
-        
+        -
+          const icons = {
+            list:[
+              {icon: "insert_emoticon",
+              header: "Комфорт",
+              text: "Шумопоглощающие стены"},
+              {icon: "location_city",
+              header: "Удобство",
+              text: "Окно в каждой из спален"}
+              ]
+            }
+
+        .form-group.form-group_mdx
+          +icon-list-group(icons)
 
         +button({background: "green", big: true, end: "arrow_forward"})
           | Submit          
