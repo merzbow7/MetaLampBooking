@@ -58,7 +58,6 @@
     "*.{html,css,pug}": "prettier --write"
   },
   "dependencies": {
-    "air-datepicker": "^2.2.3",
     "jquery": "^3.6.0"
   }
 }

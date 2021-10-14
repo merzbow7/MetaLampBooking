@@ -1,8 +1,5 @@
 import './style/style.scss';
 
-import 'jquery';
-import 'air-datepicker';
-
 function requireAll(requireContext) {
   requireContext.keys().forEach(requireContext);
 }

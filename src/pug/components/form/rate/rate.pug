@@ -2,6 +2,6 @@ mixin rate(options)
   fieldset.rate
     legend.rate__header= options.legend
     .rate__group
-      each star in options.items.reverse()     
+      each star in options.items.reverse()
         input.rate__star(type="radio")&attributes(star)
         
