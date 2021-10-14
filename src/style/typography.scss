@@ -11,6 +11,11 @@ $primary-gradient: linear-gradient(180deg, $purple 0%, $purpleGradient 100%);
 
 $green: #6FCF97;
 $greenGradient: #66D2EA;
+$secondary-gradient: linear-gradient(180deg, $green 0%, $greenGradient 100%);
+
+
+$white-gradient: linear-gradient(180deg, #fff 0%, #fff 100%);
+
 
 
 @font-face {

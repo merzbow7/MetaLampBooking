@@ -22,6 +22,11 @@ $col-3: 320px;
   margin-bottom: 250px;
 }
 
+.page-control-2 {  
+  display: flex;
+  gap: 0 $gap;  
+}
+
 .column-1  {
   flex: 1 1 $col-1;  
   & form {

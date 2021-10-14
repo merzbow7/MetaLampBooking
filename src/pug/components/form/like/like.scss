@@ -1,6 +1,33 @@
 .like {
   font-size: 10px;
 
+  appearance: none;
+  width: 4em;
+  height: 2em;  
+  border: 1px solid $dark-shade-25;
+  border-radius: 1em;  
+  background-image: $white-gradient;  
+  background-origin: border-box;
+  cursor: pointer;
+  fill: $dark-shade-25;
+  color: $dark-shade-25;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  &_active {    
+    border: 1px solid $purple;
+    background-clip: border-box, padding-box;
+    background-image: $white-gradient, $primary-gradient;
+    background-origin: border-box;
+    color: $purple;
+    fill: $purple;      
+  }
+
+  &:focus {
+    box-shadow: 0 0 2px;
+  }
+
   &__label{
     color: $dark-shade-25;
   }
@@ -15,32 +42,7 @@
 
     align-self: center;
     pointer-events: none;
-  }
-
-  &__input {
-    appearance: none;
-    width: 4em;
-    height: 2em;
-    border: 1px solid $dark-shade-25;
-    border-radius: 1em;
-    background-color: #FFF;
-    cursor: pointer;
-    fill: $dark-shade-25;
-    color: $dark-shade-25;
-
-    display: grid;
-    grid-template-columns: 50% 50%;
-
-    &_active {
-      border: 1px solid $purple;
-      color: $purple;
-      fill: $purple;      
-    }
-
-    &:focus {
-      box-shadow: 0 0 2px;
-    }
-  }
+  }  
 
   &__text {
     font-family: inherit;
