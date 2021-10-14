@@ -87,6 +87,7 @@ block content
               attr: {
                 id: "md12",
                 type:"text",
+                'data-form-type':"datepicker",
                 placeholder: "ДД.ММ.ГГГГ",
               }
               })                                 
@@ -96,6 +97,7 @@ block content
               label: "picker",            
               attr: {
                 id: "md22",
+                'data-form-type':"datepicker",
                 placeholder: "ДД.ММ.ГГГГ",              
               }
               })                                       
@@ -137,7 +139,7 @@ block content
         +checkbox-group({
           label: "Checkbox Buttons",
           content:[
-            {text: "Можно курить", attrs: {disabled: true}},
+            {text: "Можно курить", attrs: {checked: true, disabled: true}},
             {text: "Можно с питомцами", attrs: {checked: true}},
             {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
             ]
@@ -256,7 +258,7 @@ block content
           +form__label({label:"pagination"})
           +pagination(pagination)
                 
-    .page-control
+    
       .column-1
         -
           const icons = {
