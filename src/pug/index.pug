@@ -2,10 +2,12 @@ extends base
 
 block content
   include components/form/form 
-  include components/cards/wishes/wishes
+  include components/cards/cards
+
   .cards
     .cards__column
       +wishes()
+      +registration()
     .cards__column
       |2 
     .cards__column

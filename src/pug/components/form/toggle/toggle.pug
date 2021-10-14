@@ -6,7 +6,8 @@ mixin toggle(options)
     
 mixin toggle-group(options)
   fieldset.toggle-group
-    legend.toggle-group__title=options.label
+    if options.label
+      legend.toggle-group__title=options.label
     each row in options.content
       .toggle-group__row
         each state, check in row          

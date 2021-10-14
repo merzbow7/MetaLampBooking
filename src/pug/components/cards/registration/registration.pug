@@ -1,0 +1,78 @@
+mixin registration()
+  .card
+    .card__block
+      .card__header= "Регистрация аккаунта"
+      .card__block.card__block_slim
+        +form__input-group({                            
+            size: "lg",          
+            attr: {
+              name: "firsname", 
+              focused: true,            
+              placeholder: "Имя",
+              }
+            })
+        +form__input-group({                            
+            size: "lg",          
+            attr: {                                   
+              name: "lastname",         
+              placeholder: "Фамилия",
+              }
+            })
+        +radio-group({          
+          content:[
+            {"Мужчина" : {checked: true, name: "sex", value:"man"}, "Женщина":{checked: false, name: "sex", value:"woman"}},          
+            ]
+          })
+      
+      +form__input-group({
+            datatype:"date",            
+            label: "дата рождения",
+            size: "lg",
+            placeholder: "ДД.ММ.ГГГГ"
+          })        
+
+      .card__block.card__block_slim
+        +form__input-group({                            
+            size: "lg",          
+            label: "данные для входа в сервис",
+            attr: {              
+              type:"email",
+              name: "email",               
+              placeholder: "Email",
+              }
+            })
+        +form__input-group({                            
+            size: "lg",          
+            attr: {
+              name: "password", 
+              type: "password",                     
+              placeholder: "Пароль",
+              }
+            })
+        +toggle-group({          
+          content:[            
+            {"Получать спецпредложения" : {checked: false, name: "nosend"}},
+            ]
+          })
+      
+      +button({
+        background: "purple",
+        size: "lg",
+        arrow: {
+          icon: "arrow_forward",
+          position: "end",                 
+        }
+      })="перейти к оплате"
+
+    .card__block
+      .card__flex
+        span= "Уже есть аккаунт на Toxin"
+        +button({
+          background: "purple",
+          size: "md",
+          outline: true                
+        })="войти"
+
+
+
+      

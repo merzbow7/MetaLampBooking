@@ -6,7 +6,8 @@ mixin radio(options)
     
 mixin radio-group(options)
   fieldset.radio-group
-    legend.radio-group__title=options.label
+    if options.label
+      legend.radio-group__title=options.label
     each row in options.content
       .radio-group__row
         each state, check in row          
