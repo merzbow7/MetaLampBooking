@@ -1,79 +1,10 @@
 // UI kit components
 @import '../components/color_and_type/color_and_type';
 @import '../components/form/form';
+@import 'uikit-form';
+@import 'uikit-cards';
 
 body {
   background: top 30px left 30px no-repeat url("/assets/logo.svg");
 }
 
-$gap: 140px;
-$col-1: 320px;
-$col-2: 320px;
-$col-3: 320px;
-
-
-.container-145 {
-  padding: 145px;
-}
-
-.page-control {  
-  display: flex;
-  gap: 0 $gap;
-  margin-bottom: 250px;
-}
-
-.page-control-2 {  
-  display: flex;
-  gap: 0 $gap;  
-}
-
-.column-1  {
-  flex: 1 1 $col-1;  
-  & form {
-    display: flex;
-    flex-direction: column;
-    gap: 40px 0;
-  }
-  
-}
-
-.flex-row {
-  display: flex;  
-  justify-content: space-between;
-}
-
-.column-2 {  
-  flex: 1 1 $col-2;
-  display: flex;
-  flex-direction: column;
-  gap: 40px 0;
-}
-
-.column-2 {  
-  flex: 1 1 711px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px 0;
-}
-
-.column-3 {  
-  flex: 1 1 $col-3;
-  display: flex;
-  flex-direction: column;
-  gap: 40px 0;
-
-  .buttons-group {
-    display: flex;
-    flex-direction: column;
-    gap: 30px 0;
-
-    &__row {
-      display: flex;
-      gap: 0 20px;
-    }  
-  }
-
-  
-
-  
-}

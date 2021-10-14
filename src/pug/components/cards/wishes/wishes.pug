@@ -1,0 +1,48 @@
+mixin wishes()
+  -
+    const guest = {
+      dropdown: {                       
+        "Взрослые": {default: 0, min:0, max:4},
+        "Дети": {default: 0, min:0, max:4},
+        "Младенцы": {default: 0, min:0, max:4},}
+      }
+
+  .card    
+    .card__block
+      .card__header
+        span="Найдём номера под ваши пожелания"
+      
+      .card__flex
+        +form__input-group({            
+          size: "sm",          
+          label: "прибытие",            
+          attr: {                
+            'data-form-type':"datepicker",
+            placeholder: "ДД.ММ.ГГГГ",
+          }
+        })                                 
+        +form__input-group({        
+          size: "sm",          
+          label: "выезд",            
+          attr: {        
+            'data-form-type':"datepicker",
+            placeholder: "ДД.ММ.ГГГГ",              
+          }
+        })                                       
+      +form__dropdown-group({        
+        label: "гости",
+        size: "lg",
+        placeholder: "Сколько гостей",
+        options: guest,
+        dropdowntype: "guests",
+        controls: true,
+      })
+    .card__block
+      +button({
+        background: "green",
+        size: "lg",
+        arrow: {
+          icon: "arrow_forward",
+          position: "end",                 
+        }
+      })="подобрать номер"
