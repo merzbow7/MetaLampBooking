@@ -7,11 +7,9 @@ mixin wishes()
         "Младенцы": {default: 0, min:0, max:4},}
       }
 
-  .card    
+  article.card    
     .card__block
-      .card__header
-        span="Найдём номера под ваши пожелания"
-      
+      header.card__header="Найдём номера под ваши пожелания"      
       .card__flex
         +form__input-group({            
           size: "sm",          

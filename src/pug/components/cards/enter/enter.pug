@@ -1,0 +1,44 @@
+mixin enter()
+  article.card
+    .card__block
+      header.card__header= "Войти"
+
+      .card__block.card__block_slim
+        +form__input-group({                            
+            size: "lg",                      
+            attr: {              
+              type:"email",
+              name: "email",               
+              placeholder: "Email",
+              }
+            })
+        +form__input-group({                            
+            size: "lg",          
+            attr: {
+              name: "password", 
+              type: "password",                     
+              placeholder: "Пароль",
+              }
+            })        
+      
+      +button({
+        background: "purple",
+        size: "lg",
+        arrow: {
+          icon: "arrow_forward",
+          position: "end",                 
+        }
+      })="войти"
+
+    .card__block
+      .card__flex
+        span= "Нет аккаунта на Toxin?"
+        +button({
+          background: "purple",
+          size: "md",
+          outline: true                
+        })="создать"
+
+
+
+      
