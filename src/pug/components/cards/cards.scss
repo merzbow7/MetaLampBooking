@@ -1,4 +1,6 @@
-.card {
+@import 'summary/summary.scss';
+
+.card {  
   width: 380px;
   padding: 40px 30px 30px;
 
@@ -8,14 +10,28 @@
   
   display: flex;
   flex-direction: column;
-  gap: 30px 0px; 
+  gap: 32px 0px;   
   
-  &__header {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+  &__header {    
+    color: $dark-shade-100;
+
+    &_gray {
+      font-size: 12px;
+      line-height: 18px;
+      color: $dark-shade-50;
+
+      & > b {
+        font-size: 14px;
+      }
+    }
+
+    small {      
+      font-size: 14px;            
+      line-height: 17px;            
+    }
   }
 
+  
   &__block {    
     display: flex;
     flex-direction: column;
@@ -24,12 +40,20 @@
     &_slim {
       gap: 10px 0px;
     }
+
+    &_inline {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+    }
+
+    
   }
 
-  &__flex {
+  &__row {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 }
-  
+

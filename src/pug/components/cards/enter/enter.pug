@@ -1,7 +1,7 @@
 mixin enter()
   article.card
     .card__block
-      header.card__header= "Войти"
+      header.card__header.h1= "Войти"
 
       .card__block.card__block_slim
         +form__input-group({                            
@@ -31,7 +31,7 @@ mixin enter()
       })="войти"
 
     .card__block
-      .card__flex
+      .card__row
         span= "Нет аккаунта на Toxin?"
         +button({
           background: "purple",

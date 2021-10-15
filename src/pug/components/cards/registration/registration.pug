@@ -1,7 +1,7 @@
 mixin registration()
   article.card
     .card__block
-      header.card__header= "Регистрация аккаунта"
+      header.card__header.h1= "Регистрация аккаунта"
       .card__block.card__block_slim
         +form__input-group({                            
             size: "lg",          
@@ -65,7 +65,7 @@ mixin registration()
       })="перейти к оплате"
 
     .card__block
-      .card__flex
+      .card__row
         span= "Уже есть аккаунт на Toxin"
         +button({
           background: "purple",

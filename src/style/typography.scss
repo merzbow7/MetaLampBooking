@@ -13,10 +13,24 @@ $green: #6FCF97;
 $greenGradient: #66D2EA;
 $secondary-gradient: linear-gradient(180deg, $green 0%, $greenGradient 100%);
 
+$primary: $purple;
+$secondary: $green;
+
 
 $white-gradient: linear-gradient(180deg, #fff 0%, #fff 100%);
 $dark-shade-25-gradient: linear-gradient(180deg, $dark-shade-25 0%, $dark-shade-25 100%);
 
+$font-colors: (
+  ds-100: $dark-shade-100,
+  ds-50: $dark-shade-50,
+  ds-25: $dark-shade-25,
+  ds-10: $dark-shade-10,
+  ds-5: $dark-shade-5,
+  purple: $purple,
+  primary: $purple,
+  green: $green,
+  secondary: $green
+  );
 
 
 @font-face {
@@ -47,31 +61,31 @@ body {
   font-family: 'Montserrat';
   font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
 }
 
-h1 {  
+h1, .h1 {  
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
 }
 
-h2 {
+h2, .h2 {
   font-weight: 700;
   font-size: 19px;
   line-height: 23px;
 }
 
-h3 {
+h3, .h3 {
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
 }
 
-.purple {
+.purple, .primary {
   color: $purple;
 }
 
@@ -79,3 +93,14 @@ h3 {
   color: $green;
 }
 
+.bold {
+  font-weight: 700;
+}
+
+.fc {
+  @each $suffix, $color in $font-colors {    
+    &_#{$suffix} {
+      color: $color;
+    }
+  }
+}
