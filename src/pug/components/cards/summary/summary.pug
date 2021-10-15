@@ -1,0 +1,8 @@
+mixin summary(options)
+  ul.summary
+    each option in options
+      li.summary__row
+        .summary__desctiption=option.description
+        if option.info 
+          .summary__info="i"
+        .summary__price=option.price

@@ -1,0 +1,64 @@
+mixin book-a-room(room)
+  -
+    const guest = {
+      dropdown: {                       
+        "Взрослые": {default: 0, min:0, max:4},
+        "Дети": {default: 0, min:0, max:4},
+        "Младенцы": {default: 0, min:0, max:4},}
+      }
+  
+    const summary = [
+      {description:"9 990₽ х 4 суток", price: "39 960₽"},
+      {description:"Сбор за услуги: скидка 2 179₽", info:true, price: "0₽"},
+      {description:"Сбор за дополнительные услуги", info:true, price: "300₽"},
+      ]
+
+  article.card
+    .card__block      
+      header.card__header
+        .card__row
+          span.
+            #[b="№"]          
+            #[span.h1 #{ room.number}]
+            #[span.h3.fc_primary #{ room.kind}]
+          span.card__header_gray.
+            #[b=room.price] #[ в сутки]
+
+      .card__row
+          +form__input-group({            
+            size: "sm",          
+            label: "прибытие",            
+            attr: {                
+              'data-form-type':"datepicker",
+              placeholder: "ДД.ММ.ГГГГ",
+            }
+          })                                 
+          +form__input-group({        
+            size: "sm",          
+            label: "выезд",            
+            attr: {        
+              'data-form-type':"datepicker",
+              placeholder: "ДД.ММ.ГГГГ",              
+            }
+          })                                       
+      +form__dropdown-group({        
+        label: "гости",
+        size: "lg",
+        placeholder: "Сколько гостей",
+        options: guest,
+        dropdowntype: "guests",
+        controls: true,
+      })      
+
+      +summary(summary)
+
+    .card__block
+      .card__row
+        .h2="Итого"
+        .h2="38 081₽"
+      +button({
+          background: "purple",
+          size: "lg"          
+        })="забронировать"
+
+    
