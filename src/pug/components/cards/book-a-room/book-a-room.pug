@@ -16,13 +16,7 @@ mixin book-a-room(room)
   article.card
     .card__block      
       header.card__header
-        .card__row
-          span.
-            #[b="№"]          
-            #[span.h1 #{ room.number}]
-            #[span.h3.fc_primary #{ room.kind}]
-          span.card__header_gray.
-            #[b=room.price] #[ в сутки]
+        +room-info(room)        
 
       .card__row
           +form__input-group({            

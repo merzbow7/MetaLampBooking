@@ -1,10 +1,10 @@
 mixin room-info(room)  
   .room-info
     .room-info__room
-      span(class=["room-info__number", room.slim && "room-info__number_slim"]).
-         #[span.h1_small="№"]
+      span(class=["room-info__number"]).
+         #[span.h1.h1_small="№"]
          #[span(class=["h1", room.slim && "h1_slim"])=room.number]
-      span.h3.fc_primary=room.kind.toUpperCase()
+      span.h3.fc_primary=room.kind
       
     .room-info__price.
       #[b=room.price] #[ в сутки]

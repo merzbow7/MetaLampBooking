@@ -65,12 +65,23 @@ body {
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;
+
 }
 
 h1, .h1 {  
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
+}
+
+.h1_slim {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+.h1_small, h1 > small {
+  font-size: 14px;
+  line-height: 17px;
 }
 
 h2, .h2 {
@@ -83,6 +94,8 @@ h3, .h3 {
   font-weight: 700;
   font-size: 12px;
   line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .purple, .primary {

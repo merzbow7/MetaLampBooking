@@ -1,8 +1,11 @@
-@import 'summary/summary.scss';
+@import './summary/summary.scss';
+@import './room-info/room-info.scss';
+@import './room-detail/room-detail.scss';
+@import './carousel/carousel.scss';
 
 .card {  
   width: 380px;
-  padding: 40px 30px 30px;
+  padding: 40px 10px 30px;
 
   border: 1px solid #0000001F;  
   border-radius: 4px;
@@ -11,24 +14,20 @@
   display: flex;
   flex-direction: column;
   gap: 32px 0px;   
+
+  & > * {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  &_sm {
+    width: 270px;
+    box-shadow: 0px 10px 20px 0px #1F20410D;
+    padding: 0 0 20px;
+  }
   
   &__header {    
     color: $dark-shade-100;
-
-    &_gray {
-      font-size: 12px;
-      line-height: 18px;
-      color: $dark-shade-50;
-
-      & > b {
-        font-size: 14px;
-      }
-    }
-
-    small {      
-      font-size: 14px;            
-      line-height: 17px;            
-    }
   }
 
   
@@ -46,8 +45,12 @@
       justify-content: space-between;
       align-items: end;
     }
+  }
 
-    
+  &__review {
+    font-size: 14px;        
+    line-height: 18px;
+    color: $dark-shade-50;
   }
 
   &__row {
