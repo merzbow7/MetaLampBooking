@@ -1,0 +1,25 @@
+mixin carousel(options)
+  .carousel(data-bs-ride="carousel")
+    .carousel__indicators
+      each img, index in options
+        button.carousel__indicator(                              
+          type="button",          
+          aria-current="true",
+          data-bs-slide-to=index,
+          aria-label="Слайд " + index,
+        )
+    
+    .carousel__inner
+      each img, index in options
+        .carousel__item(class=[index === 0 ? "carousel__item_active": null], data-bs-image=index)
+          img(
+            src=img.url,
+            class="carousel__img",
+            alt=img.alt            
+          )
+
+    button(class="carousel__prev" type="button" data-bs-slide="prev")
+      |expand_more    
+    button(class="carousel__next" type="button" data-bs-slide="next")
+      |expand_more
+  
