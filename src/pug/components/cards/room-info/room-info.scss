@@ -1,0 +1,21 @@
+.room-info {
+  display: flex;  
+  justify-content: space-between;
+  align-items: end;
+
+  &__room {        
+    font-weight: 700;
+  }
+
+  &__number {    
+    margin-right: 8px;
+    
+    &_slim {
+      margin-right: 1px;
+    }
+  }  
+
+  &__price {
+    color: $dark-shade-50;
+  }
+}
