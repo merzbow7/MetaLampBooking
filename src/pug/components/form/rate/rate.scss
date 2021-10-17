@@ -1,7 +1,7 @@
 @mixin stars($count) {
   @for $n from 1 through $count{
     &:nth-of-type(#{$n}) {      
-      width: $n * 1em;
+      width: $n * 2em;
       z-index: $count - $n + 1;            
     }  
   }
@@ -11,7 +11,7 @@
   @return str-slice(inspect($hexColor), 2);
 }
 
-@mixin bg-radio($from_, $to_) {
+@mixin bg-gradient($from_, $to_) {
   $from: hexToString($from_);
   $to: hexToString($to_);
                                                                                                                                                                                                           
@@ -23,9 +23,11 @@
 }
 
 .rate {
+    font-size: 12px;
+
     &__header {
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: inherit;
       font-style: normal;
       font-weight: 700;
       line-height: 15px;
@@ -35,8 +37,8 @@
     }
 
     &__group {      
-      width: 120px;
-      height: 24px;
+      width: 10em;
+      height: 2em;
       position: relative;
      
       &:focus-within{        
@@ -48,12 +50,12 @@
       appearance: none;        
       position: absolute;
       left: 0;
-      top: 0;          
-      font-size: 24px;
-      height: 1em;            
+      top: 0;            
+      font-size: inherit;    
+      height: 2em;            
       cursor: pointer;
       
-      @include bg-radio($purple, $purpleGradient);
+      @include bg-gradient($purple, $purpleGradient);
       @include stars(5);
     }   
 }

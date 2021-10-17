@@ -11,17 +11,7 @@ mixin room-detail(room)
       ])
       +room-info(room)
       .card__row
-        +rate({
-            
-            value: 4,
-            items: [
-              {name:"star", value:"1"},
-              {name:"star", value:"2"},
-              {name:"star", value:"3"},
-              {name:"star", value:"4", checked: true},
-              {name:"star", value:"5"},
-              ]                  
-            })
+        +rate({value: 2, disabled: true})
         .card__review.
           #[b 145] Отзывов
 

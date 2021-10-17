@@ -1,8 +1,17 @@
 mixin rate(options)
+  -
+    const stars = [
+              {name:"star", value:"1"},
+              {name:"star", value:"2"},
+              {name:"star", value:"3"},
+              {name:"star", value:"4"},
+              {name:"star", value:"5"},
+              ]
+    const selectedStars = stars.map((star, index) => star.checked = options.value === index + 1)
   fieldset.rate(disabled=options.disabled)
     if options.legend
       legend.rate__header= options.legend
     .rate__group
-      each star in options.items
+      each star in options.items || stars
         input.rate__star(type="radio")&attributes(star)
         
