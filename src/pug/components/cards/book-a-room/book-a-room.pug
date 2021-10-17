@@ -1,5 +1,6 @@
 mixin book-a-room(room)
   -
+    const parsePrice = require('./components/cards/locals.js').default
     const guest = {
       dropdown: {                       
         "Взрослые": {default: 0, min:0, max:4},
@@ -8,9 +9,9 @@ mixin book-a-room(room)
       }
   
     const summary = [
-      {description:"9 990₽ х 4 суток", price: "39 960₽"},
-      {description:"Сбор за услуги: скидка 2 179₽", info:true, price: "0₽"},
-      {description:"Сбор за дополнительные услуги", info:true, price: "300₽"},
+      {description:"9 990₽ х 4 суток", price: 39960},
+      {description:"Сбор за услуги: скидка 2 179₽", info:true, price: 0},
+      {description:"Сбор за дополнительные услуги", info:true, price: 300},
       ]
 
   article.card
@@ -49,7 +50,7 @@ mixin book-a-room(room)
     .card__block
       .card__row
         .h2="Итого"
-        .h2="38 081₽"
+        .h2=parsePrice(38081)
       +button({
           background: "purple",
           size: "lg"          

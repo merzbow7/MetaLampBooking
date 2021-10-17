@@ -1,10 +1,11 @@
-mixin room-info(room)  
+mixin room-info(room)        
+  -const parsePrice = require('./components/cards/locals.js').default;  
   .room-info
     .room-info__room
       span(class=["room-info__number"]).
          #[span.h1.h1_small="№"]
          #[span(class=["h1", room.slim && "h1_slim"])=room.number]
-      span.h3.fc_primary=room.kind
-      
+      span.h3.fc_primary=room.kind      
     .room-info__price.
-      #[b=room.price] #[ в сутки]
+      #[b=parsePrice(room.price)] #[ в сутки]
+      
