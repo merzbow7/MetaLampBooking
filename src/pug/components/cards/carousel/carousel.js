@@ -64,7 +64,6 @@ class Carousel {
   fillIndicator(fillingIndicator) {
     this.indicators.forEach((indicator) => {
       if (this.indicatorNumber(indicator) !== fillingIndicator) {
-        console.log(this.indicatorNumber(indicator));
         indicator.className = 'carousel__indicator';
       } else {
         indicator.classList.add('carousel__indicator_active');
