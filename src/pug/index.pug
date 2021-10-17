@@ -9,7 +9,15 @@ block content
       +wishes()
       +registration()
     setion.cards__column
-      +book-a-room({price: 0, number:"888", kind:"ЛЮКС"})
+      +book-a-room({
+        price: 9999,
+        number:"888",
+        kind:"ЛЮКС",
+        charges: {
+          serviceСharge : {description: 'Сбор за услуги: скидка 2 179₽', info: true, price: 0},
+          additionalСharge:  {description: 'Сбор за дополнительные услуги',info: true, price: 300}
+          }
+        })
       +enter()      
     section.cards__column
       +room-detail({price: 9990, number:"888", kind:"ЛЮКС"})      

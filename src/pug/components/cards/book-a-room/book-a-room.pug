@@ -1,6 +1,10 @@
 mixin book-a-room(room)
   -
     const parsePrice = require('./components/cards/locals.js').default
+    const pricePerDay = parsePrice(room.price)
+    const days = 4    
+    const priceForAllDays = room.price * days
+    
     const guest = {
       dropdown: {                       
         "Взрослые": {default: 0, min:0, max:4},
@@ -9,10 +13,11 @@ mixin book-a-room(room)
       }
   
     const summary = [
-      {description:"9 990₽ х 4 суток", price: 39960},
-      {description:"Сбор за услуги: скидка 2 179₽", info:true, price: 0},
-      {description:"Сбор за дополнительные услуги", info:true, price: 300},
+      {description: `${pricePerDay} х ${days} суток`, price: priceForAllDays},
+      ...Object.values(room.charges)      
       ]
+
+    const totalPrice = summary.map(item => item.price).reduce((a, b) => a + b)
 
   article.card
     .card__block      
@@ -50,7 +55,7 @@ mixin book-a-room(room)
     .card__block
       .card__row
         .h2="Итого"
-        .h2=parsePrice(38081)
+        .h2=parsePrice(totalPrice)
       +button({
           background: "purple",
           size: "lg"          

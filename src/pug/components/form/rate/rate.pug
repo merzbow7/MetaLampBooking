@@ -1,5 +1,5 @@
 mixin rate(options)
-  fieldset.rate
+  fieldset.rate(disabled=options.disabled)
     if options.legend
       legend.rate__header= options.legend
     .rate__group

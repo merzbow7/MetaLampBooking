@@ -12,11 +12,12 @@ mixin room-detail(room)
       +room-info(room)
       .card__row
         +rate({
+            disabled: true,
             items: [
               {name:"star", value:"1"},
               {name:"star", value:"2"},
               {name:"star", value:"3"},
-              {name:"star", value:"4"},
+              {name:"star", value:"4", checked: true},
               {name:"star", value:"5"},
               ]                  
             })
