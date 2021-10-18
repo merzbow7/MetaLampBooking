@@ -53,9 +53,9 @@ mixin book-a-room(room)
       +summary(summary)
 
     .card__block
-      .card__row
-        .h2="Итого"
-        .h2=parsePrice(totalPrice)
+      .card__row.card__row_dotline
+        .h2.bg-color_white="Итого"
+        .h2.bg-color_white=parsePrice(totalPrice)
       +button({
           background: "purple",
           size: "lg"          

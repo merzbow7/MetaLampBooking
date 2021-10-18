@@ -3,6 +3,19 @@
   justify-content: space-between;
   align-items: end;
 
+  &_afterline {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: -10px;
+      border-bottom: 1px solid $dark-shade-10;
+    }
+  }
+
   &__room {        
     font-weight: 700;
   }

@@ -3,9 +3,17 @@
 @import './room-detail/room-detail.scss';
 @import './carousel/carousel.scss';
 
-.card {  
-  width: 380px;
-  padding: 40px 30px 30px;
+$card-margin: 30px;
+$card-margin-sm: 20px;
+$card-md: 380px;
+$card-sm: 270px;
+
+
+.card {    
+  
+   
+  width: $card-md;
+  padding: 40px $card-margin 30px;
 
   border: 1px solid #0000001F;  
   border-radius: 4px;
@@ -16,10 +24,10 @@
   gap: 30px 0px;   
   
 
-  &_sm {
-    width: 270px;
+  &_sm {     
+    width: $card-sm;
     box-shadow: 0px 10px 20px 0px #1F20410D;
-    padding: 0 20px 20px;
+    padding: 0 $card-margin-sm 20px;
   }
   
   
@@ -33,12 +41,8 @@
     flex-direction: column;
     row-gap: 20px;
 
-    &_sm {
-      margin: 0 20px;
-    }
-
-    &_full {
-      margin: 0 -20px;
+    &_fullwide {
+      margin: 0 $card-margin-sm * -1;
     }
 
     &_slim {
@@ -62,6 +66,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &_dotline {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: 4px;
+        border-bottom: 1px dotted $dark-shade-50;
+        z-index: -1;
+      }
+    }
   }
 }
 

@@ -29,7 +29,8 @@ $font-colors: (
   'purple': $purple,
   'primary': $purple,
   'green': $green,
-  'secondary': $green
+  'secondary': $green,
+  'white': #fff
   );
 
 
@@ -114,6 +115,14 @@ h3, .h3 {
   @each $suffix, $color in $font-colors {    
     &_#{$suffix} {
       color: $color;
+    }
+  }
+}
+
+.bg-color {
+  @each $suffix, $color in $font-colors {    
+    &_#{$suffix} {
+      background-color: $color;
     }
   }
 }
