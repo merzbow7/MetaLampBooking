@@ -1,7 +1,7 @@
 extends base
 
 block content
-  include components/form/form 
+  include components/form/form
   include components/cards/cards
 
   .cards
@@ -27,4 +27,17 @@ block content
         comments: 145,
         star: 3
       })      
+
+      +form__input-group({        
+              size: "sm",
+              class:"form__input_expand",
+              label: "picker",            
+              attr: {
+                id: "md22",
+                'data-form-type':"datepicker",
+                placeholder: "ДД.ММ.ГГГГ",              
+              }
+              })    
+      +calendar()
+      
 

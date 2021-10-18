@@ -1,0 +1,38 @@
+mixin calendar() 
+  -
+    week = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+    const now = new Date();  
+    const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0);
+    const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+    const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+    
+    const monthOptions = { year: 'numeric', month: 'long'}
+    const monthString = now.toLocaleDateString('ru', monthOptions).replace(/\s+(Г.|г.)/,'')
+    const dayNow = now.getDate()    
+    
+    const monthDays = Array(lastDay.getDate()).fill(null).map((_, i) => i+1)
+
+    Array(firstDay.getDay() - 1).fill(null).
+      forEach((_, index) => monthDays.unshift(prevMonthLastDay.getDate() - index))
+    if (monthDays.length % 7 !== 0)
+      Array(7 - monthDays.length % 7).fill(null)
+        .forEach((_, index) => monthDays.push(index + 1))
+
+
+
+  .calendar    
+    .calendar__month.calendar_mb-10= monthString
+    .calendar__body
+      .calendar__weekday
+        each weekDay in week
+          span= weekDay
+      .calendar__days
+         each day  in monthDays
+          +button({background: dayNow == day+1 ? "green" : "white", size: "round"})= day
+        
+    .controls
+      .option.option__controls
+        button.option__reset(aria-label="Очистить")
+          |Очистить
+        button.option__apply(aria-label="Применить")
+          |Применить      
