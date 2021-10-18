@@ -21,15 +21,15 @@ $white-gradient: linear-gradient(180deg, #fff 0%, #fff 100%);
 $dark-shade-25-gradient: linear-gradient(180deg, $dark-shade-25 0%, $dark-shade-25 100%);
 
 $font-colors: (
-  ds-100: $dark-shade-100,
-  ds-50: $dark-shade-50,
-  ds-25: $dark-shade-25,
-  ds-10: $dark-shade-10,
-  ds-5: $dark-shade-5,
-  purple: $purple,
-  primary: $purple,
-  green: $green,
-  secondary: $green
+  'ds-100': $dark-shade-100,
+  'ds-50': $dark-shade-50,
+  'ds-25': $dark-shade-25,
+  'ds-10': $dark-shade-10,
+  'ds-5': $dark-shade-5,
+  'purple': $purple,
+  'primary': $purple,
+  'green': $green,
+  'secondary': $green
   );
 
 
