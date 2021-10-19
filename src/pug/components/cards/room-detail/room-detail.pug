@@ -1,15 +1,10 @@
 mixin room-detail(room)
   -
     room.slim = true
-  article.card.card_sm
+  section.card.card_sm
     .card__block
-      .card__block.card__block_fullwide
-        +carousel([
-          {url: "https://s3-alpha-sig.figma.com/img/0b06/4069/2510dccc3aab21597da711673f509391?Expires=1635120000&Signature=HNxClXcUpK3hBcEydC31qu8i~gldxR2suZcDbs9i0m2BWqDIBMizCthGg1sDWUvG8Lq7OvPTu444-Y9Euc7FQqxHgb0e5UlQN5Wsvl~vxj338TXuYz0oGgQdRZpb2cDnzcUp9wHfQjEk8fE3m7~wrO-IWZUxvZOnHZcInd9mXVGYT1gl~H9W9uoW~AYEyfudtibbO5pyzLE9cOzwJTt80CNc1qq5WmGDk5PtCQp0oI2L-uctCF2dE6Ri5ua5CznEn9AA5wypqj3WI0SJUDNyP92IeLc7urT1XTbuEMmyKaJhV20NO3SMB-Yy6zHrR~DBK6kPZBQUS3GKbATTkTsmoQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",        
-          alt: "room1"},
-          {url: "https://s3-alpha-sig.figma.com/img/bf47/b3d2/c196edfce8e208d3d142ceb4cd85380f?Expires=1635120000&Signature=cLy3WlC4BlXr4sATlAYjhNBtpg56M2FRTB~wqQJlwkrTHcThaYdhNFCbB8EO8Fv0QzRekG0HAL46KeUE1z3AjIRpuZyT8aMyXCa2RF3sBs3iGtQuZE9joaBD2gqXIYImqlE-WyTAqwQ~a7jC2npI2Ux6wFouQicu09fOaYdc4QMX60rVeedIBXIB5idLEt3iRgYrpfDtlejIBns5n0DqFMJVcrWPw5hAaEAoN1VNX-J9rYPPGlkUaFo0j6vRj6Qm~eofJQ7fHfCosxCZrMjguOfbMgL4azxw0xEik10Ph4YA5hsDcUOPWsLGFpbckUrLov0RCEne6iBBVUnK8aA~gg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-          alt: "room2"},
-        ])
+      .card__block.card__carousel
+        +carousel(room.images)
       - room.afterline = true
       +room-info(room)
       .card__row

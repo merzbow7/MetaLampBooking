@@ -1,6 +1,5 @@
 @import './summary/summary.scss';
 @import './room-info/room-info.scss';
-@import './room-detail/room-detail.scss';
 @import './carousel/carousel.scss';
 @import './calendar/calendar.scss';
 
@@ -36,16 +35,19 @@ $card-sm: 270px;
     color: $dark-shade-100;
   }
 
+  &__carousel {      
+    margin: 0 $card-margin-sm * -1;    
+    height: 151px;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+  }
   
   &__block {    
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-
-    &_fullwide {
-      margin: 0 $card-margin-sm * -1;
-    }
-
+    
     &_slim {
       gap: 10px 0px;
     }
