@@ -165,16 +165,7 @@ block content
           state: {checked: true, name: "like"},          
         })
 
-        +rate({
-          legend: "rate button",
-          items: [
-            {name:"star", value:"1", checked: true},
-            {name:"star", value:"2"},
-            {name:"star", value:"3"},
-            {name:"star", value:"4"},
-            {name:"star", value:"5"},
-            ]                  
-          })
+        +rate({legend: "rate button", value: 4})
 
         +bullet({
           label: "bullet list",
@@ -212,11 +203,11 @@ block content
           +form__label({label:"BUTTONS"})
           .buttons-group
             .buttons-group__row
-              +button({background: "green"})="click me"
-              +button({background: "purple"})="click me"
+              +button({background: "green"})= "click me"
+              +button({background: "purple"})= "click me"
 
             .buttons-group__row
-              +button({background: "green", outline: true)="click me"
+              +button({background: "green", outline: true})="click me"
               +button({background: "purple", outline: true})="click me"
             
             .buttons-group__row
