@@ -1,11 +1,11 @@
-mixin rate(options)
+mixin rate(options)  
   -
     const stars = [
-              {name:"star", value:"1", "aria-label": "1 звезда"},
-              {name:"star", value:"2", "aria-label": "2 звезды"},
-              {name:"star", value:"3", "aria-label": "3 звезды"},
-              {name:"star", value:"4", "aria-label": "4 звезды"},
-              {name:"star", value:"5", "aria-label": "5 звёзд"},
+              {name:`stars-room-${options.room}`, value:"1", "aria-label": "1 звезда"},
+              {name:`stars-room-${options.room}`, value:"2", "aria-label": "2 звезды"},
+              {name:`stars-room-${options.room}`, value:"3", "aria-label": "3 звезды"},
+              {name:`stars-room-${options.room}`, value:"4", "aria-label": "4 звезды"},
+              {name:`stars-room-${options.room}`, value:"5", "aria-label": "5 звёзд"},
               ]
     
     stars.forEach((star, index) => {star.checked = options.value === index + 1})

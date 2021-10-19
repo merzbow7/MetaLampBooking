@@ -8,7 +8,7 @@ mixin room-detail(room)
       - room.afterline = true
       +room-info(room)
       .card__row
-        +rate({value: room.star, disabled: true})
+        +rate({value: room.star, disabled: true, room: room.number})
         .card__review.
           #[b=room.comments] Отзывов
 
