@@ -3,17 +3,18 @@ mixin form__dropdown(options)
     const size = options.size ? "dropdown__select_" + options.size : "dropdown__select_"        
     let _class = (options.class || "") + " " +  size
     options.dropdowntype = options.dropdowntype || "guests"    
+    const _id = `dropdown${Math.round(Math.random() * 562448657)}`
   .dropdown
     button.dropdown__select(      
       class=_class,
       type="button",
       data-form-type="dropdown",
-      data-dropdown-type=options.dropdowntype,     
+      data-dropdown-type=options.dropdowntype,          
+      id=_id,
       aria-expanded="false",
-      aria-label=options.label,
-      role="combobox"
+      aria-label=options.label,      
     )= options.placeholder
-    .dropdown__body
+    .dropdown__body(aria-labelledby=_id)
       if options.options.dropdown
         ul.dropdown__options(aria-hidden="true")
           each val, text in options.options.dropdown
@@ -34,18 +35,19 @@ mixin form__dropdown-check(options)
   -
     const size = options.size ? "dropdown__select_" + options.size : "dropdown__select_"        
     const _class = (options.class || "") + " " +  size
+    const _id = `dropdownCheck${Math.round(Math.random() * 562448657)}`
     options.dropdowntype = "check"
   .dropdown
     button.dropdown__select.dropdown__select_unborder(      
+      id=_id,
       class=_class,
       type="button",
       data-form-type="dropdown",
       data-dropdown-type=options.dropdowntype,     
       aria-expanded="false",
-      aria-label=options.label,
-      role="combobox"
+      aria-label=options.label,      
     )= options.placeholder
-    .dropdown__body.dropdown__body_unborder
+    .dropdown__body.dropdown__body_unborder(aria-labelledby=_id)
       .dropdown__options(aria-hidden="true")
             +checkbox-group(options.options)
 
