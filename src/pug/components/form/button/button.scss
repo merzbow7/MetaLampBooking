@@ -29,10 +29,6 @@ $buttons-width: (
   &:hover {
     @include button-background($from, $to,$opacity: 0.5, $outline: $outline);
   }
-
-  &:focus {
-    box-shadow: 0 0 5px $from;
-  }
 }
 
 @mixin abstact_button($outline: 0) {  
@@ -52,7 +48,7 @@ $buttons-width: (
   }
 
   &_white {
-    @include button_color(#fff, #fff, $outline);            
+    @include button_color(#fff, #fff, $outline);
 
     div {
       color: $dark-shade-50;

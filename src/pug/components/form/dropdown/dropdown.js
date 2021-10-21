@@ -100,7 +100,6 @@ dropdowns.forEach((dropdown) => {
     }
   };
 
-  window.dropdown = dropdown;
   const dropdownOptionsList =
     dropdown.nextSibling.querySelector('.dropdown__options');
   const dropdownOptions = dropdownOptionsList.childNodes;

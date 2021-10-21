@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "air-datepicker": "^3.0.1",
-    "jquery": "^3.6.0"
+    "jquery": "^3.6.0",
+    "nanoevents": "^6.0.2"
   }
 }

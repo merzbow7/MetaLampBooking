@@ -5,10 +5,10 @@ mixin button(options)
   - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"    
   - buttonWidth = options.size || "md"  
   - buttonClass += ` button_${buttonWidth}`;
-  if options.inline == true    
+  if options.inline == true
     - buttonClass = "button " + "button-inline button-inline_"  + options.background;  
   - arrow = options.arrow
-  button(class=[buttonClass, arrow ? "" : "button_center"])&attributes(options.attributes)
+  button(class=[buttonClass, arrow ? "" : "button_center", options.class ])&attributes(options.attributes)
     if arrow
       - position = arrow.position      
       -icon = arrow.icon
