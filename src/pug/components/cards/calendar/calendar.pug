@@ -21,14 +21,18 @@ mixin calendar()
 
 
   .calendar    
-    .calendar__month.calendar_mb-10= monthString
+    .calendar__month.calendar_mb-10
+      .card__row
+        button.calendar__arrow="arrow_back"
+        span.calendar__month-name=monthString
+        button.calendar__arrow="arrow_forward"
     .calendar__body
       .calendar__weekday
         each weekDay in week
           span= weekDay
       .calendar__days
          each day  in monthDays
-          +button({background: dayNow == day+1 ? "green" : "white", size: "round"})= day
+          +button({class: "calendar__button",background: dayNow == day+1 ? "green" : "white", size: "round"})= day
         
     .controls
       .option.option__controls

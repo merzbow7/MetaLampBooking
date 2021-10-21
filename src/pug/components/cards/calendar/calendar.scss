@@ -1,3 +1,5 @@
+@import '../../form/button/button.scss';
+
 .calendar{
   width: map-get($form-widths, 'lg');  
   box-shadow: 0px 10px 20px 0px #1F20410D;
@@ -8,17 +10,29 @@
   row-gap: 20px;
   border-radius: 4px;
 
+  &__arrow {    
+    font-family: "Material Icons";    
+    text-transform: initial;
+    font-size: 24px;    
+    font-weight: 400;
+    line-height: 20px;    
+
+    background-color: #fff;
+    color: $primary;
+  }
+
   &_mb-10 {
     margin-bottom: 10px;
   }
 
   &__month {
+    font-family: "Montserrat";
     font-size: 19px;      
     font-weight: 700; 
     line-height: 23px;            
     color: $dark-shade-100;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   &__weekday {
     color: $primary;
@@ -31,4 +45,4 @@
     display: grid;
     grid-template-columns: repeat(7, 40px);
   }
-  }
+}
