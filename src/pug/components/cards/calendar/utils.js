@@ -6,7 +6,9 @@ function createNode({
 }) {
   const resultNode = document.createElement(tag);
   if (className) {
-    resultNode.classList.add(...className.split(' '));
+    resultNode.classList.add(
+      ...className.split(' ').filter((el) => Boolean(el))
+    );
   }
   if (attrs) {
     Object.keys(attrs).forEach((attr) =>

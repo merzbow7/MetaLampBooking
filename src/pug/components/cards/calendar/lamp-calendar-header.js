@@ -28,11 +28,13 @@ class LampCalendarHeader {
       tag: 'button',
       className: 'calendar__arrow',
       innerHTML: 'arrow_back',
+      attrs: { 'aria-label': 'Предыдущий месяц' },
     });
     this.arrowForward = this.createNode({
       tag: 'button',
       className: 'calendar__arrow',
       innerHTML: 'arrow_forward',
+      attrs: { 'aria-label': 'Следующий месяц' },
     });
     this.monthString = this.createNode({
       className: 'calendar__month-name',

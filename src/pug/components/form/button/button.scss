@@ -27,7 +27,7 @@ $buttons-width: (
   @include button-background($from, $to, $outline: $outline);
 
   &:hover {
-    @include button-background($from, $to,$opacity: 0.5, $outline: $outline);
+    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
   }
 }
 
@@ -50,19 +50,20 @@ $buttons-width: (
   &_white {
     @include button_color(#fff, #fff, $outline);
 
-    div {
+    & div {
       color: $dark-shade-50;
       font-weight: 400;
     }
   }
 }
 
-.button {
-  color: $dark-shade-50;
+.button {  
   border-radius: 1000rem;
   display: flex;  
   align-items: center;
   justify-content: space-between;
+  @include abstact_button();
+  color: $button-text-or-bg;
 
   @each $name, $width in $buttons-width {
     &_#{$name} {
@@ -93,10 +94,6 @@ $buttons-width: (
 
 }
 
-.button-solid {
-  @include abstact_button();
-  color: $button-text-or-bg;
-}
 
 .button-outline {
   @include abstact_button(1);  

@@ -1,6 +1,6 @@
 mixin button(options)  
   - buttonClass = "button"  
-  - buttonType = options.outline ? "button-outline" : "button-solid"   
+  - buttonType = options.outline ? "button-outline" : "button"   
   - buttonClass += ` ${buttonType}`
   - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"    
   - buttonWidth = options.size || "md"  

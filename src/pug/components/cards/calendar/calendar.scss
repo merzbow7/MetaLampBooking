@@ -39,10 +39,30 @@
     display: grid;
     grid-template-columns: repeat(7, 40px);
     text-align: center;
+    font-weight: 700;
   }
   &__days {
     color: $dark-shade-100;
     display: grid;
     grid-template-columns: repeat(7, 40px);
+
+    & > *:focus {      
+      border: 1px solid $primary;      
+    }
   }
+
+  &__day{
+    color: $dark-shade-50;    
+    font-size: 12px;    
+    font-weight: 400;
+    line-height: 15px;    
+    text-align: center;
+    
+
+    &_lighter{
+      color: $dark-shade-25;
+    }
+    
+  }
+
 }
