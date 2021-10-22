@@ -49,11 +49,13 @@ $buttons-width: (
 
   &_white {
     @include button_color(#fff, #fff, $outline);
+    color: $dark-shade-50;
+    font-weight: 400;
 
-    & div {
-      color: $dark-shade-50;
-      font-weight: 400;
-    }
+    // & > * {
+    //   color: $dark-shade-50;
+    //   font-weight: 400;
+    // }
   }
 }
 

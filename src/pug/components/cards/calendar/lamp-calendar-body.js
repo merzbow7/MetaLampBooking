@@ -7,44 +7,47 @@ class LampCalendarBody {
     this.createNode = createNode;
   }
 
-  makeButton({ n = 0, _class = '', month = '' } = {}) {
+  createButton({ n = 0, _class = '', month = '', date = null } = {}) {
     return this.createNode({
       tag: 'button',
-      className: 'button button_white button_round button_center',
-      innerHTML: this.createNode({
-        tag: 'span',
-        className: `calendar__day ${_class}`,
-        innerHTML: n,
-        attrs: { 'aria-label': `${n} ${month}` },
-      }).outerHTML,
+      className: `button button_white button_round button_center calendar__day ${_class}`,
+      innerHTML: n,
+      attrs: { 'aria-label': `${n} ${month}`, 'data-result-date': date },
     });
   }
 
-  makeMonthPage() {
+  createMonthPage() {
     const monthPage = [];
     const days = this.month.monthDays();
+
     days.prev.reverse().forEach((day) =>
       monthPage.push(
-        this.makeButton({
+        this.createButton({
           n: day,
           _class: 'calendar__day_lighter',
-          month: this.month.prevMonthName,
+          month: this.month.prevMonthName.string,
+          date: this.month.prevMonthName.date.replace(/^\d+/, day),
         })
       )
     );
 
     days.current.forEach((day) =>
       monthPage.push(
-        this.makeButton({ n: day, month: this.month.currentMonthName })
+        this.createButton({
+          n: day,
+          month: this.month.currentMonthName.string,
+          date: this.month.currentMonthName.date.replace(/^\d+/, day),
+        })
       )
     );
 
     days.next.forEach((day) =>
       monthPage.push(
-        this.makeButton({
+        this.createButton({
           n: day,
           _class: 'calendar__day_lighter',
-          month: this.month.nextMonthName,
+          month: this.month.nextMonthName.string,
+          date: this.month.nextMonthName.date.replace(/^\d+/, day),
         })
       )
     );
@@ -56,7 +59,7 @@ class LampCalendarBody {
     if (!this.calendarDays) {
       this.calendarDays = this.createNode({ className: 'calendar__days' });
     }
-    this.makeMonthPage().forEach((day) => this.calendarDays.appendChild(day));
+    this.createMonthPage().forEach((day) => this.calendarDays.appendChild(day));
     return this.calendarDays;
   }
 

@@ -11,9 +11,9 @@ function createNode({
     );
   }
   if (attrs) {
-    Object.keys(attrs).forEach((attr) =>
-      resultNode.setAttribute(attr, attrs[attr])
-    );
+    Object.keys(attrs)
+      .filter((el) => attrs[el])
+      .forEach((attr) => resultNode.setAttribute(attr, attrs[attr]));
   }
   resultNode.innerHTML = innerHTML;
   return resultNode;

@@ -31,26 +31,36 @@ class LampMonth {
     return this.currentMonth;
   }
 
-  get currentMonthName() {
+  monthName(month) {
     return this.months.get(
-      this.currentMonth.toLocaleString('ru', { month: 'long' }).toLowerCase()
+      month.toLocaleDateString('ru', { month: 'long' }).toLowerCase()
     );
+  }
+
+  static localString(month) {
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    return month.toLocaleDateString('ru', options);
+  }
+
+  get currentMonthName() {
+    return {
+      string: this.monthName(this.currentMonth),
+      date: LampMonth.localString(this.currentMonth),
+    };
   }
 
   get nextMonthName() {
-    return this.months.get(
-      this.nextMonth.firstDay
-        .toLocaleString('ru', { month: 'long' })
-        .toLowerCase()
-    );
+    return {
+      string: this.monthName(this.nextMonth.firstDay),
+      date: LampMonth.localString(this.nextMonth.firstDay),
+    };
   }
 
   get prevMonthName() {
-    return this.months.get(
-      this.prevMonth.lastDay
-        .toLocaleString('ru', { month: 'long' })
-        .toLowerCase()
-    );
+    return {
+      string: this.monthName(this.prevMonth.lastDay),
+      date: LampMonth.localString(this.prevMonth.lastDay),
+    };
   }
 
   setNextMonth() {
