@@ -17,7 +17,6 @@ class LampMonth {
         декабрь: 'Декабря',
       })
     );
-    console.log(this.months);
     this.getNow = () => new Date();
     this.currentMonth = new Date();
     this.calendar = calendar;
@@ -61,6 +60,10 @@ class LampMonth {
       string: this.monthName(this.prevMonth.lastDay),
       date: LampMonth.localString(this.prevMonth.lastDay),
     };
+  }
+
+  get today() {
+    return LampMonth.localString(this.now);
   }
 
   setNextMonth() {
@@ -159,7 +162,8 @@ class LampMonth {
       this.firstDay.getDay() === 0 ? 6 : this.firstDay.getDay() - 1
     )
       .fill(null)
-      .map((_, index) => this.prevMonth.lastDay.getDate() - index);
+      .map((_, index) => this.prevMonth.lastDay.getDate() - index)
+      .reverse();
     const lackDays = [...prevMonth, ...currentMonthDays];
     const nextMonth = Array(7 - (lackDays.length % 7))
       .fill(null)

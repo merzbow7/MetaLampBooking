@@ -1,5 +1,9 @@
 @import '../../form/button/button.scss';
 
+.calendar-wrapper {
+  position: relative;
+}
+
 .calendar{
   width: map-get($form-widths, 'lg');  
   box-shadow: 0px 10px 20px 0px #1F20410D;
@@ -9,6 +13,21 @@
   flex-direction: column;
   row-gap: 20px;
   border-radius: 4px;
+  display: none;
+
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0px;
+
+  &_active {
+    display: flex;
+  }
+
+  &_static {
+    position: initial;    
+  }
+
+
 
   &__arrow {    
     font-family: "Material Icons";    
@@ -53,7 +72,7 @@
 
   
 
-  button.calendar__day{
+  .button_white.calendar__day{
     color: $dark-shade-50;    
     font-size: 12px;    
     font-weight: 400;

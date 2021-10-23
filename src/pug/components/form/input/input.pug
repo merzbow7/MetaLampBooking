@@ -1,12 +1,12 @@
-mixin form__input(options)
+mixin form__input(options= {})
   -
-    options.attr = options.attr ? options.attr : {}
+    options.attr = options.attr || {}
     options.attr.autocomplete="off"
     options.size = options.size ? "form__input_" + options.size : "form__input_md"
-    options.attr.type = options.attr.type ? options.attr.type : "text"    
+    options.attr.type = options.attr.type || "text"    
     options.class = options.class ? `${options.size} ${options.class}`: options.size    
-    options.datatype = options.datatype ? options.datatype : null
-    options.required = options.required ? options.required : null    
+    options.datatype = options.datatype || null
+    options.required = options.required || null    
     options.attr.placeholder = options.datatype==="date" ? "ДД.ММ.ГГГГ" : options.attr.placeholder
   input.form__input(             
     class=options.class,
@@ -14,28 +14,19 @@ mixin form__input(options)
   )&attributes(options.attr)
 
 mixin form__input-group(options)
-  - options.attr = options.attr ? options.attr  : {}
-  - options.attr.id = options.attr.id ? options.attr.id : options.id
-  .form-group
-    if options.attr.id
-      +form__label(options)
+  - options.attr = options.attr || {}
+  - options.attr.id = options.attr.id || options.id || null
+  .form-group    
+    +form__label(options)
       +form__input(options)
-    else
-      +form__label(options)
-        +form__input(options)
 
 
-mixin form__input-group_append(options)  
-  - options.attr = options.attr ? options.attr  : {}
-  - options.attr.id = options.attr.id ? options.attr.id : options.id
-  .input-group
-    if options.attr.id
-      +form__label(options)
-      .input
-        +form__input(options)
-        button.input__btn="arrow_forward"
-    else
-      label.form-group__label= options.label
-        .input
-          +form__input(options)        
-          button.input__btn="arrow_forward"
+mixin form__input-group_append(options= {})  
+  - options.attr = options.attr || {}
+  - options.attr.id = options.attr.id || options.id || `input${Math.round(Math.random() * 562448657)}`    
+  .input-group    
+    +form__label(options)
+    .input
+      +form__input(options)
+      button.input__btn="arrow_forward"
+    

@@ -7,20 +7,55 @@ class LampCalendarBody {
     this.createNode = createNode;
   }
 
+  emitEvent(date) {
+    this.cal.setDate(date);
+  }
+
   createButton({ n = 0, _class = '', month = '', date = null } = {}) {
-    return this.createNode({
+    const buttonColor =
+      date === this.month.today ? 'button_green' : 'button_white';
+    const dayButton = this.createNode({
       tag: 'button',
-      className: `button button_white button_round button_center calendar__day ${_class}`,
+      className: `button ${buttonColor} button_round button_center calendar__day ${_class}`,
       innerHTML: n,
       attrs: { 'aria-label': `${n} ${month}`, 'data-result-date': date },
     });
+    dayButton.addEventListener('click', (e) => {
+      this.emitEvent(e.target.getAttribute('data-result-date'));
+    });
+    return dayButton;
+  }
+
+  buildMonth(source, target, monthObject) {
+    source.forEach((key) =>
+      key.forEach((day) =>
+        target.push(
+          this.createButton({
+            n: day,
+            _class: monthObject.class || '',
+            month: this.month.prevMonthName.string,
+            date: this.month.prevMonthName.date.replace(/^\d+/, day),
+          })
+        )
+      )
+    );
   }
 
   createMonthPage() {
     const monthPage = [];
     const days = this.month.monthDays();
+    // eslint-disable-next-line no-unused-vars
+    const months = {
+      prev: {
+        source: '',
+        method: 'prevMonthName',
+        class: 'calendar__day_lighter',
+      },
+      current: { method: 'currentMonthName' },
+      next: { method: 'nextMonthName', class: 'calendar__day_lighter' },
+    };
 
-    days.prev.reverse().forEach((day) =>
+    days.prev.forEach((day) =>
       monthPage.push(
         this.createButton({
           n: day,

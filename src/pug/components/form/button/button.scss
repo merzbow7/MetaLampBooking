@@ -41,7 +41,7 @@ $buttons-width: (
 
   &_green {    
     @include button_color($green, $greenGradient, $outline);
-  }  
+  }
 
   &_purple {
     @include button_color($purple, $purpleGradient, $outline);    
@@ -51,11 +51,6 @@ $buttons-width: (
     @include button_color(#fff, #fff, $outline);
     color: $dark-shade-50;
     font-weight: 400;
-
-    // & > * {
-    //   color: $dark-shade-50;
-    //   font-weight: 400;
-    // }
   }
 }
 
@@ -94,6 +89,17 @@ $buttons-width: (
     }
   }
 
+  &_round {
+    width: $round-button-size;
+    height: $round-button-size;
+    font-size: 12px;  
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;  
+  }
+
+
+
 }
 
 
@@ -115,10 +121,6 @@ $buttons-width: (
 
 }
 
-.button_round {
-  width: $round-button-size;
-  height: $round-button-size;
-}
 
 .arrow {
   font-family: "Material Icons";

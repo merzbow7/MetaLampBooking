@@ -3,7 +3,7 @@ function createNode({
   className = '',
   innerHTML = '',
   attrs = '',
-}) {
+} = {}) {
   const resultNode = document.createElement(tag);
   if (className) {
     resultNode.classList.add(
