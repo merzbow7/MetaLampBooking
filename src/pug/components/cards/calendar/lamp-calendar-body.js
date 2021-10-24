@@ -8,15 +8,15 @@ class LampCalendarBody {
   }
 
   emitEvent(date) {
-    this.cal.setDate(date);
+    this.cal.date = date;
   }
 
   createButton({ n = 0, _class = '', month = '', date = null } = {}) {
     const buttonColor =
-      date === this.month.today ? 'button_green' : 'button_white';
+      date === this.month.today ? 'button_green' : 'button_transparent';
     const dayButton = this.createNode({
       tag: 'button',
-      className: `button ${buttonColor} button_round button_center calendar__day ${_class}`,
+      className: `button ${buttonColor} button_round button_center  calendar__day ${_class}`,
       innerHTML: n,
       attrs: { 'aria-label': `${n} ${month}`, 'data-result-date': date },
     });
@@ -94,7 +94,13 @@ class LampCalendarBody {
     if (!this.calendarDays) {
       this.calendarDays = this.createNode({ className: 'calendar__days' });
     }
-    this.createMonthPage().forEach((day) => this.calendarDays.appendChild(day));
+    this.createMonthPage().forEach((day) => {
+      const cell = this.createNode({
+        className: 'calendar__cell',
+      });
+      cell.appendChild(day);
+      this.calendarDays.appendChild(cell);
+    });
     return this.calendarDays;
   }
 

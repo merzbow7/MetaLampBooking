@@ -23,11 +23,13 @@ $buttons-width: (
     linear-gradient(180deg, rgba($from, $opacity), rgba($to, $opacity));
 }
 
-@mixin button_color($from, $to, $outline) {
+@mixin button_color($from, $to, $outline, $hover:1) {
   @include button-background($from, $to, $outline: $outline);
 
-  &:hover {
-    @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
+  @if $hover {
+    &:hover {
+      @include button-background($from, $to, $opacity: 0.5, $outline: $outline);
+    }
   }
 }
 
@@ -41,16 +43,26 @@ $buttons-width: (
 
   &_green {    
     @include button_color($green, $greenGradient, $outline);
-  }
+  } 
 
   &_purple {
-    @include button_color($purple, $purpleGradient, $outline);    
+    @include button_color($purple, $purpleGradient, $outline);
+  }
+
+  &_purple_static {
+    @include button_color($purple, $purpleGradient, $outline, 0);
+  }
+
+  &_green_static {    
+    @include button_color($green, $greenGradient, $outline, 0);
   }
 
   &_white {
-    @include button_color(#fff, #fff, $outline);
-    color: $dark-shade-50;
-    font-weight: 400;
+    @include button_color(#fff, #fff, $outline);    
+  }
+
+  &_transparent {
+    background-color: transparent;    
   }
 }
 
@@ -97,9 +109,6 @@ $buttons-width: (
     line-height: 15px;
     letter-spacing: 0em;  
   }
-
-
-
 }
 
 

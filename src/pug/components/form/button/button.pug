@@ -15,8 +15,11 @@ mixin button(options)
       .arrow.arrow_start()= position == "start" ? arrow.icon : ""      
       .arrow.arrow_end()= position == "end" ? arrow.icon : ""    
     if block
-      .button__text
+      if options.simple 
         block
+      else        
+        .button__text
+          block
     else   
       if arrow
         .arrow.arrow_center= arrow.icon

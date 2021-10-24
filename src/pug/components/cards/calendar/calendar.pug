@@ -1,5 +1,7 @@
-mixin calendar() 
+mixin calendar(options) 
   -
+    const [minRange, maxRange] =  options.rangeDays;    
+    console.log(minRange, maxRange);
     week = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
     const now = new Date();  
     const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0);
@@ -10,13 +12,36 @@ mixin calendar()
     const monthString = now.toLocaleDateString('ru', monthOptions).replace(/\s+(Г.|г.)/,'')
     const dayNow = now.getDate()    
     
-    const monthDays = Array(lastDay.getDate()).fill(null).map((_, i) => i+1)
+    let monthDays = Array(lastDay.getDate()).fill(null).map((_, i) => {
+      return {day: i+1, class: ''}
+      })
 
-    Array(firstDay.getDay() - 1).fill(null).
-      forEach((_, index) => monthDays.unshift(prevMonthLastDay.getDate() - index))
+    const prevMonthDays =  Array(firstDay.getDay() - 1).fill(null)
+      .map((_, index) => {
+        return {day: prevMonthLastDay.getDate() - index, class: 'calendar__day_lighter'}
+        }).reverse()
+    let nextMonthDays = []
     if (monthDays.length % 7 !== 0)
-      Array(7 - monthDays.length % 7).fill(null)
-        .forEach((_, index) => monthDays.push(index + 1))
+      nextMonthDays =  Array(7 - monthDays.length % 7)
+        .map((_, index) => {
+      return {day: i+1, class: 'calendar__day_lighter'}
+      })
+      
+    monthDays = [...prevMonthDays, ...monthDays, ...nextMonthDays]
+    
+    function fillCell(day){      
+      console.log(minRange, maxRange);
+      if (day == minRange)  return 'calendar__cell_fillend'      
+      if (day == maxRange)  return 'calendar__cell_fillstart'
+      if (day > minRange && day < maxRange ) return 'calendar__cell_fullfill'
+      return null
+    }
+
+    function dayButton(day) {
+      if (day == dayNow) return "green"            
+      if (day == minRange  || day == maxRange) return "purple"                             
+      return "transparent"
+    }
 
 
   .calendar-wrapper
@@ -32,7 +57,13 @@ mixin calendar()
             span= weekDay
         .calendar__days
           each day  in monthDays
-            +button({class: "calendar__button",background: dayNow == day+1 ? "green" : "white", size: "round"})= day
+            if day
+              .calendar__cell(class=fillCell(day.day))
+                +button({
+                  class: `calendar__day ${day.class}`,
+                  background: dayButton(day.day),
+                  size: "round",
+                  simple: true})= day.day
           
       .controls
         .option.option__controls

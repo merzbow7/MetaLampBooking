@@ -3,40 +3,61 @@ import LampMonth from './lamp-date';
 import LampCalendarBody from './lamp-calendar-body';
 
 class Calendar {
-  constructor(parentNode = null, secondParent = null) {
+  constructor(parentNode = null) {
     this.createNode = createNode;
     this.target = parentNode;
-    this.target2 = document.querySelector(secondParent);
-
-    this.parentNode = this.wrapTarget();
+    this.target2 = this.getTargetSibling();
+    this.parentNode = this.wrapTarget(this.target);
+    this.state = 0;
 
     this.lampMonth = new LampMonth(this);
     this.month = this.lampMonth;
 
     this.parentNode.appendChild(this.init());
     this.addHandlers();
+    this.dates = new Array(2).fill(null);
+  }
+
+  getTargetSibling() {
+    if (this.target.nextSibling) {
+      if (this.target.nextSibling.getName === 'INPUT') {
+        return this.target.nextSibling;
+      }
+    }
+    return null;
   }
 
   setDate(date) {
     this.target.value = date;
   }
 
-  wrapTarget() {
-    let { target } = this;
+  set date(date) {
+    this.dates[this.state] = date;
+  }
+
+  get date() {
+    return this.dates[this.state];
+  }
+
+  wrapTarget(target) {
+    if (!target) return null;
     let parent = target.parentNode;
-    const wrapper = this.createNode({ className: 'calendar-wrapper' });
-    if (parent.tagName === 'LABEL') {
-      target = parent;
-      parent = parent.parentNode;
+    if (!this.wrapper) {
+      this.wrapper = this.createNode({ className: 'calendar-wrapper' });
+      if (parent.tagName === 'LABEL') {
+        target = parent;
+        parent = parent.parentNode;
+      }
     }
     const newTarget = target.cloneNode(true);
-    wrapper.appendChild(newTarget);
-    parent.replaceChild(wrapper, target);
-    this.target = wrapper.querySelector('input');
-    return wrapper;
+    this.wrapper.appendChild(newTarget);
+    parent.replaceChild(this.wrapper, target);
+    this.target = this.wrapper.querySelector('input');
+    return this.wrapper;
   }
 
   addHandlers() {
+    this.target.addEventListener('input', (event) => event.preventDefault());
     this.target.addEventListener('click', () => {
       this.state = 1;
       this.calendar.classList.toggle('calendar_active');
@@ -71,16 +92,16 @@ class Calendar {
     this.header = this.createNode({
       className: 'calendar__month calendar_mb-10',
     });
-    this.row = this.createNode({
+    const row = this.createNode({
       className: 'card__row',
     });
-    this.arrowBack = this.createNode({
+    const arrowBack = this.createNode({
       tag: 'button',
       className: 'calendar__arrow',
       innerHTML: 'arrow_back',
       attrs: { 'aria-label': 'Предыдущий месяц' },
     });
-    this.arrowForward = this.createNode({
+    const arrowForward = this.createNode({
       tag: 'button',
       className: 'calendar__arrow',
       innerHTML: 'arrow_forward',
@@ -91,13 +112,13 @@ class Calendar {
       innerHTML: this.month.monthString(),
     });
 
-    this.arrowBack.addEventListener('click', this.prevMonth.bind(this));
-    this.arrowForward.addEventListener('click', this.nextMonth.bind(this));
+    arrowBack.addEventListener('click', this.prevMonth.bind(this));
+    arrowForward.addEventListener('click', this.nextMonth.bind(this));
 
-    this.row.appendChild(this.arrowBack);
-    this.row.appendChild(this.monthString);
-    this.row.appendChild(this.arrowForward);
-    this.header.appendChild(this.row);
+    row.appendChild(arrowBack);
+    row.appendChild(this.monthString);
+    row.appendChild(arrowForward);
+    this.header.appendChild(row);
     return this.header;
   }
 
