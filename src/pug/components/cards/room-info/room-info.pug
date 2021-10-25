@@ -1,5 +1,7 @@
-mixin room-info(room)        
-  -const parsePrice = require('./components/cards/locals.js').default;  
+-
+  const parsePrice = require('./components/cards/locals.js').default;
+
+mixin room-info(room)  
   .room-info(class=[room.afterline && "room-info_afterline"])
     .room-info__room
       span(class=["room-info__number"]).

@@ -71,6 +71,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: 'asset/resource',
+      },
       pug,
       { test: /\.svg/, type: 'asset/resource' },
       sass,
@@ -92,15 +96,14 @@ module.exports = {
       template: '/pug/index.pug',
     }),
     new ESLintPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: 'assets',
-    //       to: 'assets',
-    //     },
-    //     copyAssetsPath('icons'),
-    //   ],
-    // }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'assets/images/',
+          to: 'assets/images/',
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
