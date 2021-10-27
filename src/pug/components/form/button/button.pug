@@ -1,25 +1,25 @@
-mixin button(options)  
-  - buttonClass = "button"  
-  - buttonType = options.outline ? "button-outline" : "button"   
-  - buttonClass += ` ${buttonType}`
-  - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green"    
-  - buttonWidth = options.size || "md"  
+mixin button(options)
+  - buttonClass = "button";
+  - buttonType = options.outline ? "button-outline" : "button";
+  - buttonClass += ` ${buttonType}`;
+  - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green";
+  - buttonWidth = options.size || "md";
   - buttonClass += ` button_${buttonWidth}`;
   if options.inline == true
-    - buttonClass = "button " + "button-inline button-inline_"  + options.background;  
-  - arrow = options.arrow
-  button(class=[buttonClass, arrow ? "" : "button_center", options.class ])&attributes(options.attributes)
+    - buttonClass = "button " + "button-inline button-inline_" + options.background;
+  - arrow = options.arrow;
+  button(class=[buttonClass, arrow ? "" : "button_center", options.class])&attributes(options.attributes)
     if arrow
-      - position = arrow.position      
-      -icon = arrow.icon
-      .arrow.arrow_start()= position == "start" ? arrow.icon : ""      
-      .arrow.arrow_end()= position == "end" ? arrow.icon : ""    
+      - position = arrow.position;
+      - icon = arrow.icon;
+      .arrow.arrow_start= position == "start" ? arrow.icon : ""
+      .arrow.arrow_end= position == "end" ? arrow.icon : ""
     if block
-      if options.simple 
+      if options.simple
         block
-      else        
+      else
         .button__text
           block
-    else   
+    else
       if arrow
         .arrow.arrow_center= arrow.icon

@@ -1,15 +1,15 @@
-mixin toggle(options)  
+mixin toggle(options)
   label.toggle__label
-    input.toggle__input(type="checkbox")&attributes(options.state)
+    input.toggle__input(type='checkbox')&attributes(options.state)
     span.toggle__text
-      |#{options.content}
-    
+      | #{ options.content }
+
 mixin toggle-group(options)
   fieldset.toggle-group
     if options.label
-      legend.toggle-group__title=options.label
+      legend.toggle-group__title= options.label
     each row in options.content
       .toggle-group__row
         each state, check in row          
           .toggle-group__col.radio
-            +toggle({content: check, state: state})   
+            +toggle({content: check, state: state}) 

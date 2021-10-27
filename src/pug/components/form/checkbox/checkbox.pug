@@ -1,24 +1,23 @@
-mixin checkbox(options)  
+mixin checkbox(options)
   label.checkbox__label
-    input.checkbox__input(type="checkbox")&attributes(options.attrs || options.richCheckbox.attrs) 
+    input.checkbox__input(type='checkbox')&attributes(options.attrs || options.richCheckbox.attrs) 
     if !options.richCheckbox
-      .checkbox__text=options.text
-    else      
-      .checkbox__rich        
-          .checkbox__header_rich=options.richCheckbox.header
-          .checkbox__text_rich=options.richCheckbox.text
-    
+      .checkbox__text= options.text
+    else
+      .checkbox__rich 
+        .checkbox__header_rich= options.richCheckbox.header
+        .checkbox__text_rich= options.richCheckbox.text
+
 mixin checkbox-group(options)
   fieldset.checkbox-group
     if options.label
-      legend.checkbox-group__title=options.label
+      legend.checkbox-group__title= options.label
     each row in options.content      
       .checkbox-group__row
-        if Array.isArray(row) 
+        if Array.isArray(row)
           each check in row          
             .checkbox-group__col.checkbox
               +checkbox(check)
         else
           .checkbox-group__col.checkbox
-              +checkbox(row)
-          
+            +checkbox(row)

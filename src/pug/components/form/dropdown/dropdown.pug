@@ -5,31 +5,39 @@ mixin form__dropdown(options)
     options.dropdowntype = options.dropdowntype || "guests"    
     const _id = `dropdown${Math.round(Math.random() * 562448657)}`
   .dropdown
-    button.dropdown__select(      
+    button.dropdown__select(
       class=_class,
-      type="button",
-      data-form-type="dropdown",
-      data-dropdown-type=options.dropdowntype,          
+      type='button',
+      data-form-type='dropdown',
+      data-dropdown-type=options.dropdowntype,
       id=_id,
-      aria-expanded="false",
-      aria-label=options.label,      
+      aria-expanded='false',
+      aria-label=options.label
     )= options.placeholder
     .dropdown__body(aria-labelledby=_id)
       if options.options.dropdown
-        ul.dropdown__options(aria-hidden="true")
+        ul.dropdown__options(aria-hidden='true')
           each val, text in options.options.dropdown
             li.option
               .option__description= text
               .option__count
-                button.option__dec(type="button", aria-label="Уменьшить", data-min-count=val.min)= "-"
+                button.option__dec(
+                  type='button',
+                  aria-label='Уменьшить',
+                  data-min-count=val.min
+                )= "-"
                 .option__value(data-default-count=val.default)= val.default
-                button.option__inc(type="button", aria-label="Уведичить", data-max-count=val.max)= "+"
+                button.option__inc(
+                  type='button',
+                  aria-label='Уведичить',
+                  data-max-count=val.max
+                )= "+"
           if options.controls
             li.option.option__controls
-              button.option__reset(type="button", aria-label="Очистить")
-                |Очистить
-              button.option__apply(type="button", aria-label="Применить")
-                |Применить      
+              button.option__reset(type='button', aria-label='Очистить')
+                | Очистить
+              button.option__apply(type='button', aria-label='Применить')
+                | Применить
 
 mixin form__dropdown-check(options)
   -
@@ -38,23 +46,23 @@ mixin form__dropdown-check(options)
     const _id = `dropdownCheck${Math.round(Math.random() * 562448657)}`
     options.dropdowntype = "check"
   .dropdown
-    button.dropdown__select.dropdown__select_unborder(      
+    button.dropdown__select.dropdown__select_unborder(
       id=_id,
       class=_class,
-      type="button",
-      data-form-type="dropdown",
-      data-dropdown-type=options.dropdowntype,     
-      aria-expanded="false",
-      aria-label=options.label,      
+      type='button',
+      data-form-type='dropdown',
+      data-dropdown-type=options.dropdowntype,
+      aria-expanded='false',
+      aria-label=options.label
     )= options.placeholder
     .dropdown__body.dropdown__body_unborder(aria-labelledby=_id)
-      .dropdown__options(aria-hidden="true")
-            +checkbox-group(options.options)
+      .dropdown__options(aria-hidden='true')
+        +checkbox-group(options.options)
 
 mixin form__dropdown-group(options)
   .form-group
     if !options.id
-      -options.id = `dropdown${Math.round((Math.random() * 16769023))}`
+      - options.id = `dropdown${Math.round(Math.random() * 16769023)}`;
     if options.label
       +form__label(options)
-    +form__dropdown(options)    
+    +form__dropdown(options) 

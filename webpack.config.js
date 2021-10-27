@@ -12,10 +12,6 @@ const sassPlugin = require('sass');
 const isDev = process.env.NODE_ENV === 'development';
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name]-[hash].${ext}`);
-const copyAssetsPath = (copyPath) => ({
-  from: `pug/**/assets/${copyPath}/*`,
-  to: `assets/${copyPath}/[name][ext]`,
-});
 
 const pug = {
   test: /\.pug$/,
@@ -95,12 +91,28 @@ module.exports = {
       filename: 'index.html',
       template: '/pug/index.pug',
     }),
+    new HtmlWebpackPlugin({
+      filename: 'uikit-3.html',
+      template: '/pug/uikit-3.pug',
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'uikit-2.html',
+      template: '/pug/uikit-2.pug',
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'uikit-1.html',
+      template: '/pug/uikit-1.pug',
+    }),
     new ESLintPlugin(),
     new CopyPlugin({
       patterns: [
         {
           from: 'assets/images/',
           to: 'assets/images/',
+        },
+        {
+          from: '**/assets/icons/*',
+          to: 'assets/icons/[name][ext]',
         },
       ],
     }),

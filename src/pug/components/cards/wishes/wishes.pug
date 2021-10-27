@@ -1,4 +1,4 @@
-mixin wishes()
+mixin wishes
   -
     const guest = {
       dropdown: {                       
@@ -7,40 +7,12 @@ mixin wishes()
         "Младенцы": {default: 0, min:0, max:4},}
       }
 
-  article.card    
+  article.card 
     .card__block
-      header.card__header.h1="Найдём номера под ваши пожелания"      
+      header.card__header.h1= "Найдём номера под ваши пожелания"
       .card__row
-        +form__input-group({            
-          size: "sm",          
-          label: "прибытие",            
-          attr: {                
-            'data-form-type':"datepicker",
-            placeholder: "ДД.ММ.ГГГГ",
-          }
-        })                                 
-        +form__input-group({        
-          size: "sm",          
-          label: "выезд",            
-          attr: {        
-            'data-form-type':"datepicker",
-            placeholder: "ДД.ММ.ГГГГ",              
-          }
-        })                                       
-      +form__dropdown-group({        
-        label: "гости",
-        size: "lg",
-        placeholder: "Сколько гостей",
-        options: guest,
-        dropdowntype: "guests",
-        controls: true,
-      })
+        +form__input-group({ size: "sm", label: "прибытие", attr: { 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+        +form__input-group({ size: "sm", label: "выезд", attr: { 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+      +form__dropdown-group({ label: "гости", size: "lg", placeholder: "Сколько гостей", options: guest, dropdowntype: "guests", controls: true, })
     .card__block
-      +button({
-        background: "green",
-        size: "lg",
-        arrow: {
-          icon: "arrow_forward",
-          position: "end",                 
-        }
-      })="подобрать номер"
+      +button({ background: "green", size: "lg", arrow: { icon: "arrow_forward", position: "end", } })= "подобрать номер"

@@ -1,15 +1,15 @@
-mixin radio(options)  
+mixin radio(options)
   label.radio__label
-    input.radio__input(type="radio")&attributes(options.state)
+    input.radio__input(type='radio')&attributes(options.state)
     .radio__text
-      |#{options.content}
-    
+      | #{ options.content }
+
 mixin radio-group(options)
   fieldset.radio-group
     if options.label
-      legend.radio-group__title=options.label
+      legend.radio-group__title= options.label
     each row in options.content
       .radio-group__row
         each state, check in row          
           .radio-group__col.radio
-            +radio({content: check, state: state})      
+            +radio({content: check, state: state}) 

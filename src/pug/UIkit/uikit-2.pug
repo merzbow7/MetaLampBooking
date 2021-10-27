@@ -1,0 +1,151 @@
+extends base
+
+block content
+  include components/form/form
+  .container-145
+    .page-control
+      .column-1
+        form
+          -
+            const guest = {
+              dropdown: {                       
+                "Взрослые": {default: 0, min:0, max:4},
+                "Дети": {default: 0, min:0, max:4},
+                "Младенцы": {default: 0, min:0, max:4},}
+              }
+            const rooms = {
+              dropdown : {
+                "Спальни": {default: 2, min:2, max:3},
+                "Кровати": {default: 2, min:1, max:4},
+                "Ванные комнаты": {default: 0, min:0, max:2},}
+              }
+
+            const check = {
+              content:[
+                {text: "Можно курить", attrs: {disabled: true}},
+                {text: "Можно с питомцами", attrs: {checked: true}},
+                {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}
+                ]
+              }
+            const input1 = {                       
+              label: "text field",
+              size: "lg",            
+              attr: {
+                id: "test-input",
+                placeholder: "Email",
+                required: true,
+                }
+              }
+
+
+          +form__input-group(input1)
+
+          +form__input-group({ label: "Text Field", size: "lg", attr: { id: "tel-input", type:"tel", focused: true, placeholder: "This is pretty awesome", } })
+
+          +form__dropdown-group({ id: "drpd22312", label: "dropdown", size: "lg", placeholder: "Сколько гостей", options: guest, dropdowntype: "guests", controls: true, })
+
+          +form__dropdown-group({ label: "dropdown", size: "lg", placeholder: "Сколько комнат", options: rooms, dropdowntype: "rooms", }) 
+
+          +form__input-group({ datatype:"date", id: "test-input5", label: "masked text field", size: "lg", placeholder: "ДД.ММ.ГГГГ" }) 
+
+          .flex-row
+            +form__input-group({ size: "sm", class:"form__input_expand", label: "picker", attr: { id: "md12", type:"text", 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+            +form__input-group({ size: "sm", class:"form__input_expand", label: "picker", attr: { id: "md22", 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+
+          +form__input-group_append({ label: "subscription text field", size: "lg", attr: { type: "email", name: "test", placeholder:"Email" } })
+
+          +form__dropdown-check({ label: "dropdown-check", size: "lg", placeholder: "dropdown-check", options: { content:[ {text: "Можно курить", attrs: {disabled: true}}, {text: "Можно с питомцами", attrs: {checked: true}}, {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}}, {richCheckbox: { header: "Широкий коридор", text: "Ширина коридоров в номере не менее 91 см.", attrs: {checked: true} }}, ]}, dropdowntype: "check" })
+
+          +button({background: "green", big: true, end: "arrow_forward"})
+            | Submit
+
+      .column-2
+        +checkbox-group({ label: "Checkbox Buttons", content:[ {text: "Можно курить", attrs: {checked: true, disabled: true}}, {text: "Можно с питомцами", attrs: {checked: true}}, {text: "Можно пригласить гостей (до 10 человек)", attrs: {checked: true}} ] })
+        +radio-group({ label: "Radio Buttons", content:[ {"Мужчина" : {checked: true, name: "sex"}, "Женщина":{checked: false, name: "sex"}}, ] })
+
+        +toggle-group({ label: "Toggle", content:[ {"Получать спецпредложения" : {checked: true, name: "send"}}, {"Получать спецпредложения" : {checked: false, name: "nosend"}}, ] })
+
+        +like({ label: "Toggle", value: "12", state: {checked: true, name: "like"}, })
+
+        +rate({legend: "rate button", value: 4})
+
+        +bullet({ label: "bullet list", list: [ "Нельзя с питомцами", "Без вечеринок и мероприятий", "Время прибытия — после 13:00, а выезд до 12:00" ]}) 
+
+        +checkbox-group({ label: "rich Checkbox Buttons", content:[ {richCheckbox: { header: "Широкий коридор", text: "Ширина коридоров в номере не менее 91 см.", attrs: {checked: true} }}, {richCheckbox: { header: "Помощник для инвалидов", text: "На 1 этаже вас встретит специалист и проводит до номера." }} ] })
+
+      .column-3
+        +form__range-slider-group({ label: "Range Slider", min: 5000, max: 10000, currency: "RUB", width: 266 })
+
+        .form-group.form-group_lg.form-group_rarefied
+          +form__label({label:"BUTTONS"})
+          .buttons-group
+            .buttons-group__row
+              +button({background: "green"})= "click me"
+              +button({background: "purple"})= "click me"
+
+            .buttons-group__row
+              +button({background: "green", outline: true})= "click me"
+              +button({background: "purple", outline: true})= "click me"
+
+            .buttons-group__row
+              +button({inline: true, background: "purple"})= "click me"
+              +button({inline: true, background: "green"})= "click me"
+
+            .buttons-group__row
+              +button({ background: "purple", size: "lg", arrow: { icon: "arrow_forward", position: "end", } })= "click me"
+
+        -
+          const pagination = [          
+              {text: "1",
+                button: {background: "purple", size: "round"}},
+              {text: "2",
+                button: {background: "white", size: "round"}},
+              {text: "3",
+                button: {background: "white", size: "round"}},
+              {text: "...",
+                button: {background: "white", size: "round",
+                  attributes: {disabled:true}}
+                },
+              {text: "15",
+                button: {background: "white", size: "round"}},
+              {button:{background: "green", size: "round", arrow: {
+                  icon: "arrow_forward",
+                  position: "center",                 
+                }}}
+            ]
+
+        .form-group.form-group_rarefied
+          +form__label({label:"pagination"})
+          +pagination(pagination)
+
+      .column-1
+        -
+          const icons = {
+              list:[
+              {icon: "insert_emoticon",
+              header: "Комфорт",
+              text: "Шумопоглощающие стены"},
+              {icon: "location_city",
+              header: "Удобство",
+              text: "Окно в каждой из спален"}
+              ]
+            }
+
+    .page-control
+      .column-1
+        +icon-list-group(icons) 
+
+      .column-4
+        .form-group.form-group_xlg
+          -
+            const userComment = {
+              user: {
+                name: 'Мурад Сарафанов',
+                was: '5 дней назад',
+                url: 'https://s3-alpha-sig.figma.com/img/72c0/cf27/87cd4672e40ea433ba05b7215941c678?Expires=1635120000&Signature=GEMxaPQx6i4yN-cqw8pJQyCIadBV8bBoADucVPyKp2eOi6nQOlny5DZj91iur-7-09GKvl5FcYwpXD54snsU4OTPDyiaTWwLf7llLMFDTpxTrztglejqaoDisTTkgbwig69vaSZ1bYfKGQQwjVuwK6leH1YG~FIHhAfVjVfFHMcPn5a5NLnLOL9VT-pj7YZcg4DTHWhH2RozDvMNbjDZAeKoQUk-NLSKp36gd4B~cl7nCOHl1GJ-sfWakCmwsrHSPm1QNKfgGTwxPk3y0r2qWyW9x-WIuvmsnx9HlUxwPom2JU~BrxHNZBhZnFfHboomd6VdYpAKyYqqJHYj7abwMg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+              },
+              likes: { value: 12, state: {checked: true} },
+              comment: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+            };
+
+          +comment-block(userComment)

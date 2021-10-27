@@ -4,14 +4,14 @@ mixin book-a-room(room)
     const pricePerDay = parsePrice(room.price)
     const days = 4    
     const priceForAllDays = room.price * days
-    
+
     const guest = {
       dropdown: {                       
         "Взрослые": {default: 0, min:0, max:4},
         "Дети": {default: 0, min:0, max:4},
         "Младенцы": {default: 0, min:0, max:4},}
       }
-  
+
     const summary = [
       {description: `${pricePerDay} х ${days} суток`, price: priceForAllDays},
       ...Object.values(room.charges)      
@@ -20,45 +20,19 @@ mixin book-a-room(room)
     const totalPrice = summary.map(item => item.price).reduce((a, b) => a + b)
 
   article.card
-    .card__block      
+    .card__block 
       header.card__header
-        +room-info(room)        
+        +room-info(room) 
 
       .card__row
-          +form__input-group({            
-            size: "sm",          
-            label: "прибытие",            
-            attr: {                
-              'data-form-type':"datepicker",
-              placeholder: "ДД.ММ.ГГГГ",
-            }
-          })                                 
-          +form__input-group({        
-            size: "sm",          
-            label: "выезд",            
-            attr: {        
-              'data-form-type':"datepicker",
-              placeholder: "ДД.ММ.ГГГГ",              
-            }
-          })                                       
-      +form__dropdown-group({        
-        label: "гости",
-        size: "lg",
-        placeholder: "Сколько гостей",
-        options: guest,
-        dropdowntype: "guests",
-        controls: true,
-      })      
+        +form__input-group({ size: "sm", label: "прибытие", attr: { 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+        +form__input-group({ size: "sm", label: "выезд", attr: { 'data-form-type':"datepicker", placeholder: "ДД.ММ.ГГГГ", } }) 
+      +form__dropdown-group({ label: "гости", size: "lg", placeholder: "Сколько гостей", options: guest, dropdowntype: "guests", controls: true, }) 
 
       +summary(summary)
 
     .card__block
       .card__row.card__row_dotline
-        .h2.bg-color_white="Итого"
-        .h2.bg-color_white=parsePrice(totalPrice)
-      +button({
-          background: "purple",
-          size: "lg"          
-        })="забронировать"
-
-    
+        .h2.bg-color_white= "Итого"
+        .h2.bg-color_white= parsePrice(totalPrice)
+      +button({ background: "purple", size: "lg" })= "забронировать"

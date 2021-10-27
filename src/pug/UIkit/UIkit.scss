@@ -1,10 +1,16 @@
 // UI kit components
 @import '../components/color_and_type/color_and_type';
 @import '../components/form/form';
-@import 'uikit-form';
-@import 'uikit-cards';
+@import './uikit-form.scss';
+@import './uikit-cards.scss';
+@import '../components/header/header.scss';
+@import '../components/logo/logo.scss';
+
 
 body {
   background: top 30px left 30px no-repeat url("/assets/logo.svg");
 }
 
+.header-footer {
+  margin: 140px 0;  
+}

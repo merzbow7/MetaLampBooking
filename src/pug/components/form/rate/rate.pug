@@ -1,4 +1,4 @@
-mixin rate(options)  
+mixin rate(options)
   -
     const stars = [
               {name:`stars-room-${options.room}`, value:"1", "aria-label": "1 звезда"},
@@ -7,13 +7,12 @@ mixin rate(options)
               {name:`stars-room-${options.room}`, value:"4", "aria-label": "4 звезды"},
               {name:`stars-room-${options.room}`, value:"5", "aria-label": "5 звёзд"},
               ]
-    
+
     stars.forEach((star, index) => {star.checked = options.value === index + 1})
-    
+
   fieldset.rate(disabled=options.disabled)
     if options.legend
       legend.rate__header= options.legend
     .rate__group
       each star in options.items || stars
-        input.rate__star(type="radio")&attributes(star)
-        
+        input.rate__star(type='radio')&attributes(star)

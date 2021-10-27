@@ -3,64 +3,7 @@ extends base
 block content
   include components/form/form
   include components/cards/cards
+  include components/header/header
 
-  .cards
-    section.cards__column
-      +wishes()
-      +registration()
-    setion.cards__column
-      +book-a-room({
-        price: 9999,
-        number:"888",
-        kind:"ЛЮКС",
-        charges: {
-          serviceСharge : {description: 'Сбор за услуги: скидка 2 179₽', info: true, price: 0},
-          additionalСharge:  {description: 'Сбор за дополнительные услуги',info: true, price: 300}
-          }
-        })
-      +enter()     
-      +form__input-group({            
-          size: "sm",
-          class:"form__input_expand",
-          label: "picker",            
-          attr: {            
-            type:"text",            
-            placeholder: "ДД.ММ.ГГГГ",
-            'data-form-type': 'calendar',
-          }
-        })
-      +form__input-group({            
-          size: "sm",
-          class:"form__input_expand",
-          label: "picker",            
-          attr: {            
-            type:"text",            
-            placeholder: "ДД.ММ.ГГГГ",
-            'data-form-type': 'calendar',
-          }
-        })
-
-    section.cards__column                
-      +calendar({rangeDays: [12, 16]})
-      -
-        images = [{url: "/assets/images/rooms/840.png", alt: "room1"},
-                  {url: "/assets/images/rooms/888.png", alt: "room2"},
-          ]
-          
-          
-      +room-detail({
-        price: 9990,
-        number:"888",
-        kind:"ЛЮКС",
-        comments: 145,
-        star: 5,
-        images
-      })  
-
-      +room-detail({
-        price: 9990,
-        number:"840",        
-        comments: 65,
-        star: 4,
-        images: images.reverse()
-      })  
+  .header-footer
+    +navbar

@@ -5,10 +5,9 @@ mixin room-detail(room)
     .card__block
       .card__block.card__carousel
         +carousel(room.images)
-      - room.afterline = true
+      - room.afterline = true;
       +room-info(room)
       .card__row
         +rate({value: room.star, disabled: true, room: room.number})
         .card__review.
-          #[b=room.comments] Отзывов
-          
+          #[b= room.comments] Отзывов

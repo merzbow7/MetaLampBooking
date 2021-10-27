@@ -38,7 +38,7 @@ $font-colors: (
 @font-face {
 	font-family: 'Montserrat';
 	src: url('./fonts/Montserrat-Regular.eot');
-	src: local('☺'), url('./fonts/Montserrat-Regular.woff') format('woff'), url('./fonts/Montserrat-Regular.ttf') format('truetype'), url('./fonts/Montserrat-Regular.svg') format('svg');
+	src: local('☺'), url('./fonts/Montserrat-Regular.woff') format('woff'), url('./fonts/Montserrat-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -46,15 +46,15 @@ $font-colors: (
 @font-face {
 	font-family: 'Montserrat';
 	src: url('./fonts/Montserrat-Bold.eot');
-	src: local('☺'), url('./fonts/Montserrat-Bold.woff') format('woff'), url('./fonts/Montserrat-Bold.ttf') format('truetype'), url('./fonts/Montserrat-Bold.svg') format('svg');
+	src: local('☺'), url('./fonts/Montserrat-Bold.woff') format('woff'), url('./fonts/Montserrat-Bold.ttf') format('truetype');
 	font-weight: 700;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Material Icons';
-	src: url('./fonts/MaterialIcons-Regular.eot');
-	src: local('☺'), url('./fonts/MaterialIcons-Regular.woff') format('woff'), url('./fonts/MaterialIcons-Regular.ttf') format('truetype'), url('./fonts/MaterialIcons-Regular.svg') format('svg');
+	src: url('./fonts/MaterialIcons-Regular-subset.eot');
+	src: local('☺'), url('./fonts/MaterialIcons-Regular-subset.woff') format('woff'), url('./fonts/MaterialIcons-Regular-subset.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal;
 }

@@ -1,0 +1,22 @@
+include ../logo/logo.pug
+
+-
+  const nav = [
+    {content: "О нас", url: "#", style: "active", drop: null },
+    {content: "Услуги", url: "#", style: null, drop: {} },
+    {content: "Вакансии", url: "#", style: null, drop: null },    
+    {content: "Новости", url: "#", style: null, drop: null },    
+    {content: "Соглашения", url: "#", style: null, drop: {} },    
+    ]
+
+mixin navbar(options)
+  nav.navbar
+    .navbar__logo
+      +logo
+    ul.navbar__menu
+      each item in nav
+        - const styleLink = item.style ? `navbar__item_${item.style}` : item.style;
+        li(class=["navbar__item", styleLink])
+          a.navbar__link(href=item.url)= item.content
+    .navbar__auth
+      +button({backgroun: "green"})= "Войти"

@@ -1,4 +1,4 @@
-mixin calendar(options) 
+mixin calendar(options)
   -
     const [minRange, maxRange] =  options.rangeDays;    
     console.log(minRange, maxRange);
@@ -7,11 +7,11 @@ mixin calendar(options)
     const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0);
     const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
     const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-    
+
     const monthOptions = { year: 'numeric', month: 'long'}
     const monthString = now.toLocaleDateString('ru', monthOptions).replace(/\s+(Г.|г.)/,'')
     const dayNow = now.getDate()    
-    
+
     let monthDays = Array(lastDay.getDate()).fill(null).map((_, i) => {
       return {day: i+1, class: ''}
       })
@@ -26,9 +26,9 @@ mixin calendar(options)
         .map((_, index) => {
       return {day: i+1, class: 'calendar__day_lighter'}
       })
-      
+
     monthDays = [...prevMonthDays, ...monthDays, ...nextMonthDays]
-    
+
     function fillCell(day){      
       console.log(minRange, maxRange);
       if (day == minRange)  return 'calendar__cell_fillend'      
@@ -48,26 +48,22 @@ mixin calendar(options)
     .calendar.calendar_active.calendar_static
       .calendar__month.calendar_mb-10
         .card__row
-          button.calendar__arrow="arrow_back"
-          span.calendar__month-name=monthString
-          button.calendar__arrow="arrow_forward"
+          button.calendar__arrow= "arrow_back"
+          span.calendar__month-name= monthString
+          button.calendar__arrow= "arrow_forward"
       .calendar__body
         .calendar__weekday
           each weekDay in week
             span= weekDay
         .calendar__days
-          each day  in monthDays
+          each day in monthDays
             if day
               .calendar__cell(class=fillCell(day.day))
-                +button({
-                  class: `calendar__day ${day.class}`,
-                  background: dayButton(day.day),
-                  size: "round",
-                  simple: true})= day.day
-          
+                +button({ class: `calendar__day ${day.class}`, background: dayButton(day.day), size: "round", simple: true})= day.day
+
       .controls
         .option.option__controls
-          button.option__reset(aria-label="Очистить")
-            |Очистить
-          button.option__apply(aria-label="Применить")
-            |Применить      
+          button.option__reset(aria-label='Очистить')
+            | Очистить
+          button.option__apply(aria-label='Применить')
+            | Применить

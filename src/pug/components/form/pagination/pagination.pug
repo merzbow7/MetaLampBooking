@@ -1,13 +1,12 @@
-mixin pagination(options)            
+mixin pagination(options)
   .pagination
     each page in options
       .pagination__item
         if page.button
           if page.text
             +button(page.button)= page.text
-          else 
+          else
             +button(page.button)
         else
-          |#{page.text}
+          | #{ page.text }
     .pagination__footer= options.text
-      

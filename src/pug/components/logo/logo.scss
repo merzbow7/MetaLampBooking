@@ -1,0 +1,16 @@
+.logo {
+  display: grid;
+  grid-template-columns: 40px 53px;
+  align-items: center;
+  column-gap: 12.5px;
+
+  &__logo {    
+    width: 40px; 
+    height: 40px;
+  }
+
+  &__toxin {    
+    width: 53px; 
+    height: 13px;
+  }
+}

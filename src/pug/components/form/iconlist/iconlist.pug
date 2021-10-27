@@ -1,11 +1,11 @@
 mixin icon-list(options)
-	.icon-list__icon= options.icon
-	.icon-list__content
-		.icon-list__header= options.header
-		.icon-list__text= options.text
+  .icon-list__icon= options.icon
+  .icon-list__content
+    .icon-list__header= options.header
+    .icon-list__text= options.text
 
 mixin icon-list-group(options)
-	ul.icon-list
-		each item in options.list
-			li.icon-list__item
-				+icon-list(item)
+  ul.icon-list
+    each item in options.list
+      li.icon-list__item
+        +icon-list(item)
