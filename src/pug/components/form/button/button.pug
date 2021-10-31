@@ -1,19 +1,17 @@
 mixin button(options)
-  - buttonClass = "button";
-  - buttonType = options.outline ? "button-outline" : "button";
-  - buttonClass += ` ${buttonType}`;
-  - buttonClass += options.background ? ` ${buttonType}_${options.background}` : " button_green";
-  - buttonWidth = options.size || "md";
-  - buttonClass += ` button_${buttonWidth}`;
-  if options.inline == true
-    - buttonClass = "button " + "button-inline button-inline_" + options.background;
-  - arrow = options.arrow;
-  button(class=[buttonClass, arrow ? "" : "button_center", options.class])&attributes(options.attributes)
+  -
+    const classList = ['button',
+      ` button_${options.size || 'md'}`,
+      `button_${options.background || 'button_green'}`,
+      options.outline ? 'button-outline' : null,
+      options.inline ? 'button-inline' : null,
+      options.arrow ? null : 'button_center',
+    ]
+    const arrow = options.arrow
+  button(class=classList)&attributes(options.attributes)
     if arrow
-      - position = arrow.position;
-      - icon = arrow.icon;
-      .arrow.arrow_start= position == "start" ? arrow.icon : ""
-      .arrow.arrow_end= position == "end" ? arrow.icon : ""
+      .arrow.arrow_start= arrow.position == "start" ? arrow.icon : ""
+      .arrow.arrow_end= arrow.position == "end" ? arrow.icon : ""
     if block
       if options.simple
         block

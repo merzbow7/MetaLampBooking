@@ -1,3 +1,6 @@
+@use 'sass:math';
+
+//variables
 $button-width: 99px;
 $button-height: 44px;
 $round-button-size: 40px;
@@ -5,13 +8,24 @@ $arrow-height: 24px;
 $big-button-size: 320px;
 $outline-border: 2px;
 $button-text-or-bg: white;
+$button-flat: 34px;
+
 $buttons-width: (  
   'sm': 44px,
   'md': 99px,
   'lg': 320px,
 );
 
-@use 'sass:math';
+$button-size: (
+  'sm': (width: 44px,  height: $button-height),
+  'md': (width: 99px,  height: $button-height),
+  'lg': (width: 320px,  height: $button-height),
+  'round': (width: $round-button-size,  height: $round-button-size),  
+  'flat': (width: 87px,  height: $button-flat),
+  'flat-lg': (width: 196px,  height: $button-flat),
+);
+
+
 
 @mixin button-background($from, $to, $opacity: 1, $outline: 0) {
   $state: transparent;
@@ -23,7 +37,7 @@ $buttons-width: (
     linear-gradient(180deg, rgba($from, $opacity), rgba($to, $opacity));
 }
 
-@mixin button_color($from, $to, $outline, $hover:1) {
+@mixin button_bg-color($from, $to, $outline, $hover:1) {
   @include button-background($from, $to, $outline: $outline);
 
   @if $hover {
@@ -42,23 +56,15 @@ $buttons-width: (
   background-origin: border-box;
 
   &_green {    
-    @include button_color($green, $greenGradient, $outline);
+    @include button_bg-color($green, $greenGradient, $outline);
   } 
 
   &_purple {
-    @include button_color($purple, $purpleGradient, $outline);
+    @include button_bg-color($purple, $purpleGradient, $outline);
   }
-
-  &_purple_static {
-    @include button_color($purple, $purpleGradient, $outline, 0);
-  }
-
-  &_green_static {    
-    @include button_color($green, $greenGradient, $outline, 0);
-  }
-
+  
   &_white {
-    @include button_color(#fff, #fff, $outline);    
+    @include button_bg-color(#fff, #fff, $outline);    
   }
 
   &_transparent {
@@ -72,18 +78,18 @@ $buttons-width: (
   align-items: center;
   justify-content: space-between;
   @include abstact_button();
-  color: $button-text-or-bg;
+  color: $button-text-or-bg;  
 
-  @each $name, $width in $buttons-width {
+  @each $name, $size in $button-size {
     &_#{$name} {
-      width: $width;
+      width: map-get($size, "width");
+      height: map-get($size, "height");
     }
   }
 
   &_center {
     justify-content: center;
   }
-
 
   &__text {              
     order: 2;    
@@ -99,15 +105,6 @@ $buttons-width: (
     &_initial {
       text-transform: initial;
     }
-  }
-
-  &_round {
-    width: $round-button-size;
-    height: $round-button-size;
-    font-size: 12px;  
-    font-weight: 700;
-    line-height: 15px;
-    letter-spacing: 0em;  
   }
 }
 

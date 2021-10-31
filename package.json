@@ -9,6 +9,7 @@
     "serve": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
+    "prettier:fix": "prettier --write **/*.pug",
     "prepare": "husky install"
   },
   "author": "sevenamber",
@@ -54,7 +55,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --fix",
-    "*.{html,css,pug}": "prettier --write"
+    "*.pug": "prettier:fix",
+    "*.{html,css}": "prettier --write"
   },
   "dependencies": {
     "nanoevents": "^6.0.2"

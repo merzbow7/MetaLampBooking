@@ -19,4 +19,5 @@ mixin navbar(options)
         li(class=["navbar__item", styleLink])
           a.navbar__link(href=item.url)= item.content
     .navbar__auth
-      +button({backgroun: "green"})= "Войти"
+      +button({background: "green", outline: true, size: 'flat'})= "Войти"
+      +button({background: "purple", size: 'flat-lg'})= "Войти"
