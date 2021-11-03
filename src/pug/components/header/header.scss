@@ -5,18 +5,29 @@
   box-shadow: 0px 10px 20px 0px #1F20410D;
   border: 2px solid black;
   display: grid;
-  align-items: center;
-  grid-template-columns: 140px min-content minmax(20px, 500px) 1fr 140px;
+  align-items: center;  
+  grid-template-columns: minmax(0, 140px) min-content  1fr min-content  minmax(0, 140px);
+
+  
+  
+
+  column-gap: 20px;
 
   font-size: 14px;  
   font-weight: 400;
   line-height: 17px;    
 
-  &__menu {
-    grid-column: 4;
+  &__menu {    
+    grid-column: 3;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     column-gap: 20px;    
+  }
+
+  &__auth {
+    display: flex;
+    grid-column: 4;    
   }
 
   &__logo {
@@ -38,3 +49,9 @@
     }
   }
 }
+
+// @media (max-width: 768px){
+//   .navbar {
+//     grid-template-columns: 0 min-content  1fr min-content  0;
+//   }
+// }

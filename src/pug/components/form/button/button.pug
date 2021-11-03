@@ -2,9 +2,9 @@ mixin button(options)
   -
     const classList = ['button',
       ` button_${options.size || 'md'}`,
-      `button_${options.background || 'button_green'}`,
-      options.outline ? 'button-outline' : null,
-      options.inline ? 'button-inline' : null,
+      `button_${options.background || 'green'}`,
+      options.outline ? 'button_outline' : null,
+      options.inline ? 'button_inline' : null,
       options.arrow ? null : 'button_center',
     ]
     const arrow = options.arrow

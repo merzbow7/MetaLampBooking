@@ -7,7 +7,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
 const sassPlugin = require('sass');
-// const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -76,7 +75,7 @@ module.exports = {
       sass,
       babel,
       {
-        test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[hash][ext][query]',

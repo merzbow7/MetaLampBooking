@@ -109,11 +109,11 @@ $button-size: (
 }
 
 
-.button-outline {
+.button_outline {
   @include abstact_button(1);  
 }
 
-.button-inline {
+.button_inline {
   @include abstact_button(1);
   border: none;  
   height: auto;
